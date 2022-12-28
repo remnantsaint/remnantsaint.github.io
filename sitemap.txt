@@ -2,9 +2,9 @@ http://example.com/2022/12/27/my-test/
 http://example.com/2022/12/27/hello-world/
 http://example.com/about/index.html
 http://example.com/tags/index.html
+http://example.com/categories/index.html
 http://example.com/books/index.html
 http://example.com/repository/index.html
-http://example.com/categories/index.html
 http://example.com/links/index.html
 http://example.com/404.html
 http://example.com/
