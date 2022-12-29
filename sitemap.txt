@@ -4,8 +4,8 @@ http://example.com/about/index.html
 http://example.com/tags/index.html
 http://example.com/books/index.html
 http://example.com/categories/index.html
-http://example.com/links/index.html
 http://example.com/repository/index.html
+http://example.com/links/index.html
 http://example.com/404.html
 http://example.com/
 http://example.com/categories/%E5%85%B6%E4%BB%96/
