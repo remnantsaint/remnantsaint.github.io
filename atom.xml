@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-05T11:58:53.127Z</updated>
+  <updated>2023-01-08T04:21:10.020Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用archlinux参考文章</title>
+    <link href="http://example.com/2023/01/08/%E4%BD%BF%E7%94%A8archlinux%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0/"/>
+    <id>http://example.com/2023/01/08/%E4%BD%BF%E7%94%A8archlinux%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0/</id>
+    <published>2023-01-08T04:18:22.000Z</published>
+    <updated>2023-01-08T04:21:10.020Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要参考：<a href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">https://wiki.archlinuxcn.org/wiki/安装指南</a><br>安装参考：<a href="https://blog.linioi.com/posts/18/">https://blog.linioi.com/posts/18/</a><br>连网参考：</p><ul><li><a href="https://blog.csdn.net/bangren3304/article/details/101078641">https://blog.csdn.net/bangren3304/article/details/101078641</a></li><li><a href="https://blog.csdn.net/ZHISHAN_IoT/article/details/123453619">https://blog.csdn.net/ZHISHAN_IoT/article/details/123453619</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;主要参考：&lt;a href=&quot;https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97&quot;&gt;https://wiki.archlinuxcn.org/wiki/安装指南&lt;/a&gt;&lt;br&gt;
+安装参考</summary>
+      
+    
+    
+    
+    <category term="其他" scheme="http://example.com/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>hexo初建站</title>
