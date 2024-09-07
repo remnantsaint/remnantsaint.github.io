@@ -17,21 +17,27 @@ export default defineValaxyConfig<UserThemeConfig>({
   themeConfig: {
     banner: {
       enable: true,
-      title: '西柿',
+      title: '期待明天',
       cloud: {
         enable: true,
       },
     },
-
+    bg_image:{
+      enable: true,
+      url: '',
+    },
+    colors:{
+      primary: '#FFC0CB',
+    },
     pages: [
       {
-        name: '我的小伙伴们',
+        name: '友人帐',
         url: '/links/',
         icon: 'i-ri-genderless-line',
         color: 'dodgerblue',
       },
       {
-        name: '喜欢的女孩子',
+        name: 'My love',
         url: '/girls/',
         icon: 'i-ri-women-line',
         color: 'hotpink',
@@ -39,7 +45,7 @@ export default defineValaxyConfig<UserThemeConfig>({
     ],
 
     footer: {
-      since: 2016,
+      since: 2022,
       beian: {
         enable: true,
         icp: '萌ICP备20231227号',
@@ -48,4 +54,5 @@ export default defineValaxyConfig<UserThemeConfig>({
   },
 
   unocss: { safelist },
+  
 })
