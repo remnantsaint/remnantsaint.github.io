@@ -6,14 +6,16 @@ export default defineSiteConfig({
   lang: 'zh-CN',
   title: "-Remsait's Blog-",
   subtitle: '折枝的树也能开花',
+  lastUpdated: true,
   author: {
     name: 'Remsait',
     avatar: "https://fastly.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg",	//头像链接
     status: {
-      emoji: '♥'	// 头像旁边的emoji
+      emoji: '♥',	// 头像旁边的emoji
+      message: '孤独中'
     },
   },
-  description: '',
+  description: '成为更好的自己',
   social: [
     {
       name: 'RSS',
@@ -41,6 +43,21 @@ export default defineSiteConfig({
     },
   ],
 
+  codeHeightLimit: 300,
+
+  statistics: {
+    enable: true,
+    readTime: {
+      /**
+       * 阅读速度
+       */
+      speed: {
+        cn: 300,
+        en: 200,
+      },
+    },
+  },
+
   search: {
     enable: true,
   },
@@ -48,7 +65,8 @@ export default defineSiteConfig({
   
   sponsor: {
     enable: true,
-    title: '我很可爱，请给我钱！',
+    title: '友情赞助',
+    description: '我很可爱，请给我钱！',
     methods: [
       {
         name: '支付宝',

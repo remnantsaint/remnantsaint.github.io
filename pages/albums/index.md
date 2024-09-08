@@ -6,6 +6,7 @@ nav: false		# 关闭页面导航
 comment: false	# 关闭评论
 toc: false		# 关闭文章目录
 aside: false	# 关闭目录边栏
+random: true
 albums:			# 相簿
   - caption: 天空
     url: /albums/sky
@@ -16,3 +17,5 @@ albums:			# 相簿
     cover: https://cdn.yuumi.link/albums/green/绿叶丛中蝶.png
     desc: 自然怡人
 ---
+
+<YunAlbums :albums="frontmatter.albums" :random="frontmatter.random" />
