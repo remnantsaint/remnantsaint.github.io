@@ -2,14 +2,25 @@ import { defineSiteConfig } from 'valaxy'
 
 export default defineSiteConfig({
   url: 'https://remsait.com/',
+  favicon: "https://fastly.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg",
   lang: 'zh-CN',
-  title: "西世残圣的博客",
+  title: "-Remsait's Blog-",
   subtitle: '折枝的树也能开花',
   author: {
-    name: '西世残圣',
+    name: 'Remsait',
+    avatar: "https://fastly.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg",	//头像链接
+    status: {
+      emoji: '♥'	// 头像旁边的emoji
+    },
   },
   description: '',
   social: [
+    {
+      name: 'RSS',
+      link: '/atom.xml',
+      icon: 'i-ri-rss-line',
+      color: 'orange',
+    },
     {
       name: 'GitHub',
       link: 'https://github.com/remnantsaint',
@@ -36,24 +47,18 @@ export default defineSiteConfig({
   
   
   sponsor: {
-    enable: false,
+    enable: true,
     title: '我很可爱，请给我钱！',
     methods: [
       {
         name: '支付宝',
-        url: 'https://cdn.yunyoujun.cn/img/donate/alipay-qrcode.jpg',
+        url: '/photo/zhifubao.png',
         color: '#00A3EE',
         icon: 'i-ri-alipay-line',
       },
       {
-        name: 'QQ 支付',
-        url: 'https://cdn.yunyoujun.cn/img/donate/qqpay-qrcode.png',
-        color: '#12B7F5',
-        icon: 'i-ri-qq-line',
-      },
-      {
         name: '微信支付',
-        url: 'https://cdn.yunyoujun.cn/img/donate/wechatpay-qrcode.jpg',
+        url: '/photo/weixin.png',
         color: '#2DC100',
         icon: 'i-ri-wechat-pay-line',
       },

@@ -1,15 +1,8 @@
 ---
-title: 关于我
+title: ♡关于我♡
 ---
 
-I am developing [Valaxy](https://github.com/YunYouJun/valaxy)
-
-If you like it, you can sponsor me in [GitHub](https://github.com/sponsors/YunYouJun) or [sponsors.yunyoujun.cn](https://sponsors.yunyoujun.cn).
+&emsp; 我名叫小刘，22岁，在黑龙江省。未婚，我在东北林业大学上学。我不抽烟，不喝酒，晚上11点睡，每天要睡足8个小时。睡前我一定刷b站，闭上眼马上熟睡。一觉到天亮，绝不把疲劳和压力留到第二天，医生都说我很正常！
 
 ---
-
-我正在开发 [Valaxy](https://github.com/YunYouJun/valaxy) - 下一代静态博客框架。
-
-如果你喜欢它，你可以在 [GitHub](https://github.com/sponsors/YunYouJun) 或 [sponsors.yunyoujun.cn](https://sponsors.yunyoujun.cn) 赞助我。
-
-Check out the [Valaxy | GitHub](https://github.com/YunYouJun/valaxy) for more details.
+since 2022-12-29
