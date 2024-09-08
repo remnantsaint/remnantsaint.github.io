@@ -7,6 +7,6 @@ image:
 cover: 
 top: 
 tags: 
-categories: 123
+categories: "123"
 # author: @Remsait
 ---
