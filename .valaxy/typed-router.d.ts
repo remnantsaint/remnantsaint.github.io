@@ -62,8 +62,6 @@ declare module 'vue-router/auto-routes' {
     '/posts/markdown的基础用法': RouteRecordInfo<'/posts/markdown的基础用法', '/posts/markdown的基础用法', Record<never, never>, Record<never, never>>,
     '/posts/missing-semester': RouteRecordInfo<'/posts/missing-semester', '/posts/missing-semester', Record<never, never>, Record<never, never>>,
     '/posts/python打包': RouteRecordInfo<'/posts/python打包', '/posts/python打包', Record<never, never>, Record<never, never>>,
-    '/posts/test': RouteRecordInfo<'/posts/test', '/posts/test', Record<never, never>, Record<never, never>>,
-    '/posts/text': RouteRecordInfo<'/posts/text', '/posts/text', Record<never, never>, Record<never, never>>,
     '/posts/valaxy建站': RouteRecordInfo<'/posts/valaxy建站', '/posts/valaxy建站', Record<never, never>, Record<never, never>>,
     '/posts/Vim简单应用': RouteRecordInfo<'/posts/Vim简单应用', '/posts/Vim简单应用', Record<never, never>, Record<never, never>>,
     '/slides/': RouteRecordInfo<'/slides/', '/slides', Record<never, never>, Record<never, never>>,

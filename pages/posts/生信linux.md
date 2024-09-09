@@ -5,6 +5,7 @@ date: 2024-09-06 09:34:31
 image: 
 layout: post
 tags: 
+  - 生信
 time_warning: true
 title: 生信linux
 top: 
