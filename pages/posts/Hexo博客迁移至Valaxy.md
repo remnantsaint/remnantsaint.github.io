@@ -24,6 +24,11 @@ valaxy官方文档：<https://valaxy.site/guide/getting-started>
 
 然后下载valaxy命令行：`pnpm add -g valaxy`  全局安装
 
+#### 部署
+参考：<https://valaxy.site/guide/deploy>
+第一个部署在github的一个仓库里很简单
+我每次要三步提交：`git add .`  and   `git commit -m '说明'`  and  `git push`
+git艺不精见谅
 
 
 #### 使用及遇到的问题和解决办法
