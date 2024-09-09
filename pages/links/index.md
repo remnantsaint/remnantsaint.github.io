@@ -15,7 +15,7 @@ links:
     color: "#0078e7"                                                                                #想要友链显示的颜色
   - url: https://moriatyss.github.io
     avatar: https://fastly.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg 
-    name: 久遠寺
+    name: 
     blog: 挂机博客
     desc: その美しさ、その哀れみ
     email: moriatysss@126.com

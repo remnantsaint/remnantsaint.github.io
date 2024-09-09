@@ -73,6 +73,10 @@ top:
 &emsp; 4.累加`$\sum\limits_{i=1}^k a_i$`，效果为$\sum\limits_{i=1}^k a_i$ 
 &emsp; 5.约等于`$\approx$`，效果为$\approx$
 
+#### 12.引用
+&emsp; 在一行的前面加上`>`后带空格，就会有引用的效果，如下：
+> 这是一条引用
+
 
 #### 注意
 &emsp;(1)在使用vscode编辑markdown时，因为用了markdownlint插件导致html标签有黄色波浪线，右键选择命令面板，打开用户设置，输入以下代码：

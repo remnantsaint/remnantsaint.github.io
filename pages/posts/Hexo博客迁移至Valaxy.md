@@ -6,7 +6,7 @@ image:
 layout: post
 tags: 
 time_warning: true
-title: valaxy建站
+title: Hexo博客迁移至Valaxy
 top: 
 ---
 

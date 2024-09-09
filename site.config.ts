@@ -41,6 +41,14 @@ export default defineSiteConfig({
       icon: 'i-ri-bilibili-line',
       color: '#FF8EB3',
     },
+    /*
+    {
+      name: '邮箱',
+      link: 'mailto:me@remsait.com',
+      icon: 'i-ri-mail-line',
+      color: '#8E71C1',
+    },
+    */
   ],
 
   codeHeightLimit: 300,
