@@ -4,6 +4,7 @@ import { addonWaline } from "valaxy-addon-waline";
 import { addonLightGallery } from 'valaxy-addon-lightgallery'
 import { addonBangumi } from 'valaxy-addon-bangumi'
 import { addonLive2d } from 'valaxy-addon-live2d'
+import { addonMeting } from 'valaxy-addon-meting'
 
 // add icons what you will need
 const safelist = [
@@ -53,6 +54,16 @@ export default defineValaxyConfig<UserThemeConfig>({
         },
       },
       skipHello: true
+    }),
+    addonMeting({
+      global: true,
+      /** @see https://github.com/metowolf/MetingJS */
+      props: {
+        id: '405460530',
+        server: 'netease',
+        type: 'playlist',
+        autoplay: false,
+      }
     })
   ],
 
@@ -68,7 +79,7 @@ export default defineValaxyConfig<UserThemeConfig>({
     },
 
     colors:{
-      primary: '#FF1493',
+      primary: '',
     },
 
     fireworks: {
