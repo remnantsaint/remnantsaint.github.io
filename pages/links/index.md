@@ -1,5 +1,5 @@
 ---
-title: 我的小伙伴们
+title: 
 color: '#87CEEB'
 keywords: 链接
 description: 云游的小伙伴们
@@ -22,5 +22,36 @@ links:
     color: "#4F2F4F"
 random: true
 ---
+## 本站信息
+
+<div class="flex gap-5">
+  <span>站名：Remsaitの幻想鄉</span>
+  <span>||</span>
+  <span>
+  地址：<a href="https://www.hairy.blog">https://www.hairy.blog</a>
+  </span>
+  <span>||</span>
+  <span>简介：爱游戏，更爱生活。</span>
+</div>
+
+---
+
+## 申请友链方法
+> 评论区留言
+```yaml
+url:          #网站地址
+avatar:       #可用的头像链接
+name:         #您的名字 （可选
+blogname:     #您博客的名字
+description:  #个人签名（可选
+color:        #友链颜色（可选，不选随机
+```
+
+## 我的小伙伴们
+
+
+
+
+
 
 <YunLinks :links="frontmatter.links" :random="frontmatter.random" />
