@@ -5,7 +5,7 @@ export default defineSiteConfig({
   favicon: "https://fastly.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg",
   lang: 'zh-CN',
   title: "-Remsait's Blog-",
-  subtitle: '折枝的树也能开花',
+  subtitle: 'to be better',
   lastUpdated: true,
   author: {
     name: 'Remsait',
@@ -15,7 +15,7 @@ export default defineSiteConfig({
       message: '孤独中'
     },
   },
-  description: '成为更好的自己',
+  description: '折枝的树也能开花',
   social: [
     {
       name: 'RSS',

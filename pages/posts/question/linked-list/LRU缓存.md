@@ -1,5 +1,7 @@
 ---
-categories: 题解
+categories: 
+  - 刷题计划
+  - 链表
 cover: 
 date: 2023-04-10 19:37:40
 image: 
@@ -12,7 +14,7 @@ title: LRU缓存
 top: 
 ---
 
-![](https://fastly.jsdelivr.net/gh/remnantsaint/hexoImage@main/20230410194125.png)
+![](https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/20230410194125.png)
 难度：中等
 链接：[LeetCode 146. LRU Cache](https://leetcode.cn/problems/lru-cache/)
 题意：实现一个最近最少使用缓存的数据结构，事先给出缓存区大小，进来一个元素，如果是满的就把最长时间未用的元素挤出去

@@ -1,5 +1,7 @@
 ---
-categories: 题解
+categories: 
+  - 刷题计划
+  - 链表
 cover: 
 date: 2023-04-01 07:28:59
 image: 

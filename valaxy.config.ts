@@ -79,7 +79,7 @@ export default defineValaxyConfig<UserThemeConfig>({
     },
 
     colors:{
-      primary: '',
+      primary: '#FF66B2',
     },
 
     fireworks: {
@@ -118,9 +118,9 @@ export default defineValaxyConfig<UserThemeConfig>({
 
     bg_image: {
       enable: true,
-      url: '/bgimage/day4.jpg',	// 白日模式背景
-      dark: "/bgimage/night2.jpg",	// 夜间模式背景
-      opacity: 0.9
+      url: 'https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/aluona.jpg',	// 白日模式背景
+      dark: "https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/bilan.jpg",	// 夜间模式背景
+      opacity: 0.8
     },
 
     say: {

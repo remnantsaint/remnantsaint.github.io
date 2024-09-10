@@ -1,15 +1,20 @@
 ---
 categories: 其他
-cover: 
+cover: https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/valaxy.png
 date: 2024-09-07 21:50:59
 image: 
 layout: post
 tags: 
 time_warning: true
 title: Hexo博客迁移至Valaxy
-top: 
+top: 1
 ---
-#### 安装
+Valaxy框架真的超棒   
+尤其是主题配置和方便多台电脑开发！
+<!-- more -->
+
+## 安装
+
 以下纪录我开始用Valaxy框架，yun主题重新建站的过程
 valaxy官方文档：<https://valaxy.site/guide/getting-started>
 首先下载nvm，然后用nvm下载18版本的node.js，再下载pnpm，其中得把node.js加入环境变量
@@ -24,14 +29,14 @@ valaxy官方文档：<https://valaxy.site/guide/getting-started>
 
 然后下载valaxy命令行：`pnpm add -g valaxy`  全局安装
 
-#### 部署
+## 部署
 参考：<https://valaxy.site/guide/deploy>
 第一个部署在github的一个仓库里很简单
 我每次要三步提交：`git add .`  and   `git commit -m '说明'`  and  `git push`
 git艺不精见谅
 
 
-#### 使用及遇到的问题和解决办法
+## 使用及遇到的问题和解决办法
 `valaxy` 预览界面（本地开发
 `valaxy new name`创建新文章
 
@@ -147,7 +152,7 @@ if __name__ == '__main__':
 
 原来valaxy支持多级分类，舒服了💆‍
 
-
+可以看看其他人`valaxy`框架的博客，哪里泄愤好看直接去github上下源码看，爽
 
 
 

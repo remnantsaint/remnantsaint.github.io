@@ -8,6 +8,7 @@ tags:
 time_warning: true
 title: missing-semester
 top: 
+hide: true
 ---
 
 ### Topic 1: The Shell

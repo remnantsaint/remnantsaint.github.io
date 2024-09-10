@@ -9,7 +9,7 @@ time_warning: true
 title: hexo初建站
 top: 
 ---
-
+![](https://blog-1310084410.cos.ap-beijing.myqcloud.com/img/202409101732702.png)
 1.下载安装git与node.js
 
 2.配置nodejs环境(略)
@@ -67,7 +67,7 @@ hexo new name创建文章
 &emsp; 补充：[picx](https://picx.xpoet.cn/)上传图片更好用，github的token我这种小白直接全勾选，就没有图片上传错误了      
 后面遇到图片查看失败的情况，重新下载了picgo的最新版，然后在github上创建私人令牌添加上去就好使了
 
-> 可使用gitee+picgo进行图床设置，前提是安装node.js，gitee真香
+> gitee图床不好用   不知道为什么本地能看的图片，到网站上就看不到了
 
 14.解决数学公式渲染问题，用kramed，完美解决之前的分数线消失、下标上标显示位置不正确、重复出现公式等问题（有个坑地方需要注意，markdown_it_plus一栏name: markdown-it-katex的设置enable: false，否则不能正确显示）
 
