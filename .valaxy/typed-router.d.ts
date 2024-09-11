@@ -62,7 +62,6 @@ declare module 'vue-router/auto-routes' {
     '/posts/question/linked-list/找出环形链表的入环第一个结点': RouteRecordInfo<'/posts/question/linked-list/找出环形链表的入环第一个结点', '/posts/question/linked-list/找出环形链表的入环第一个结点', Record<never, never>, Record<never, never>>,
     '/posts/question/linked-list/重排链表': RouteRecordInfo<'/posts/question/linked-list/重排链表', '/posts/question/linked-list/重排链表', Record<never, never>, Record<never, never>>,
     '/posts/question/linked-list/LRU缓存': RouteRecordInfo<'/posts/question/linked-list/LRU缓存', '/posts/question/linked-list/LRU缓存', Record<never, never>, Record<never, never>>,
-    '/posts/talk/姬野星奏的三次选择': RouteRecordInfo<'/posts/talk/姬野星奏的三次选择', '/posts/talk/姬野星奏的三次选择', Record<never, never>, Record<never, never>>,
     '/posts/talk/我的ff14之旅': RouteRecordInfo<'/posts/talk/我的ff14之旅', '/posts/talk/我的ff14之旅', Record<never, never>, Record<never, never>>,
     '/posts/Vim简单应用': RouteRecordInfo<'/posts/Vim简单应用', '/posts/Vim简单应用', Record<never, never>, Record<never, never>>,
     '/slides/': RouteRecordInfo<'/slides/', '/slides', Record<never, never>, Record<never, never>>,
