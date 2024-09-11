@@ -8,10 +8,18 @@ tags: valaxy
 time_warning: true
 title: Hexo博客迁移至Valaxy
 top: 10
+aplayer: true
 ---
 Valaxy框架真的超棒   
 尤其是主题配置和方便多台电脑开发！
 <!-- more -->
+
+<meting-js
+ id="520461955"
+ server="netease"
+ type="song"
+ theme="#C20C0C">
+</meting-js>
 
 ## 安装
 
