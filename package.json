@@ -18,7 +18,8 @@
     "valaxy-addon-live2d": "^0.2.2",
     "valaxy-addon-meting": "^0.1.3",
     "valaxy-addon-waline": "^0.2.0",
-    "valaxy-theme-yun": "0.19.9"
+    "valaxy-theme-yun": "0.19.9",
+    "vue-gtag-next": "^1.14.0"
   },
   "devDependencies": {
     "typescript": "^5.5.4",
