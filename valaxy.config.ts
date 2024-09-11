@@ -31,7 +31,7 @@ export default defineValaxyConfig<UserThemeConfig>({
         placeholder: "欢迎写下您的留言！",
       },
       pageview: true,
-      serverURL: 'https://comment.remsait.com/',
+      serverURL: 'comment.remsait.com/',
     }),
     addonBangumi({
       api: 'https://bilibili.remsait.com/api',

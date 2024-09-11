@@ -32,6 +32,7 @@ declare module 'vue-router/auto-routes' {
     '/links/': RouteRecordInfo<'/links/', '/links', Record<never, never>, Record<never, never>>,
     '/page/[page]': RouteRecordInfo<'/page/[page]', '/page/:page', { page: ParamValue<true> }, { page: ParamValue<false> }>,
     '/posts/机器学习': RouteRecordInfo<'/posts/机器学习', '/posts/机器学习', Record<never, never>, Record<never, never>>,
+    '/posts/解决vercel被墙的问题': RouteRecordInfo<'/posts/解决vercel被墙的问题', '/posts/解决vercel被墙的问题', Record<never, never>, Record<never, never>>,
     '/posts/决策树': RouteRecordInfo<'/posts/决策树', '/posts/决策树', Record<never, never>, Record<never, never>>,
     '/posts/链表': RouteRecordInfo<'/posts/链表', '/posts/链表', Record<never, never>, Record<never, never>>,
     '/posts/排序': RouteRecordInfo<'/posts/排序', '/posts/排序', Record<never, never>, Record<never, never>>,
