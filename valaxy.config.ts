@@ -31,10 +31,10 @@ export default defineValaxyConfig<UserThemeConfig>({
         placeholder: "欢迎写下您的留言！",
       },
       pageview: true,
-      serverURL: 'https://waline-text-384y.vercel.app/',
+      serverURL: 'https://comment.remsait.com/',
     }),
     addonBangumi({
-      api: 'https://bilibili-bangumi-component-one.vercel.app/api',
+      api: 'https://bilibili.remsait.com/api',
       bilibiliUid: '275862280',
       bgmEnabled: false,
     }),
