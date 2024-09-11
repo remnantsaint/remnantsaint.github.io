@@ -1,5 +1,7 @@
 ---
-categories: 图论
+categories: 
+  - 算法基础
+  - 图论
 cover: 
 date: 2023-05-09 22:19:58
 image: 

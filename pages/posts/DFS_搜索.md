@@ -1,5 +1,7 @@
 ---
-categories: 搜索
+categories: 
+  - 算法基础
+  - 搜索
 cover: 
 date: 2023-04-11 12:22:11
 image: 

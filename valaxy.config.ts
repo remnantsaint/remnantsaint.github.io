@@ -28,7 +28,7 @@ export default defineValaxyConfig<UserThemeConfig>({
     addonLightGallery(),
     addonWaline({
       locale: {
-        placeholder: "请尝试登录，可以显示个人头像",
+        placeholder: "欢迎写下您的留言！",
       },
       pageview: true,
       serverURL: 'https://waline-text-384y.vercel.app/',
