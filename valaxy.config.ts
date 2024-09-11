@@ -53,7 +53,7 @@ export default defineValaxyConfig<UserThemeConfig>({
           textures: 'https://api.github.com/repos/fghrsh/live2d_api/contents/model/Potion-Maker/Pio/textures',
         },
       },
-      skipHello: true
+      skipHello: true,
     }),
     addonMeting({
       global: true,
