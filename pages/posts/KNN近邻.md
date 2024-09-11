@@ -1,5 +1,7 @@
 ---
-categories: 人工智能
+categories: 
+  - 人工智能
+  - 机器学习
 cover: 
 date: 2024-09-06 09:33:39
 image: 
