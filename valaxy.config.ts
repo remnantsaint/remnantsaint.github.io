@@ -34,7 +34,7 @@ export default defineValaxyConfig<UserThemeConfig>({
       serverURL: 'comment.remsait.com/',
     }),
     addonBangumi({
-      api: 'https://bilibili.remsait.com/api',
+      api: 'https://bilibili-bangumi-component-one.vercel.app/api',
       bilibiliUid: '275862280',
       bgmEnabled: false,
     }),

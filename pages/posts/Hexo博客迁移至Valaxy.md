@@ -4,7 +4,7 @@ cover: https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/valaxy.png
 date: 2024-09-07 21:50:59
 image: 
 layout: post
-tags: 
+tags: valaxy
 time_warning: true
 title: Hexo博客迁移至Valaxy
 top: 10
