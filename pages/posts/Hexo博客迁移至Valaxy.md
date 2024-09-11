@@ -7,7 +7,7 @@ layout: post
 tags: 
 time_warning: true
 title: Hexo博客迁移至Valaxy
-top: 1
+top: 10
 ---
 Valaxy框架真的超棒   
 尤其是主题配置和方便多台电脑开发！
@@ -15,30 +15,33 @@ Valaxy框架真的超棒
 
 ## 安装
 
-以下纪录我开始用Valaxy框架，yun主题重新建站的过程
+> 以下纪录我开始用Valaxy框架，yun主题重新建站的过程
+
+首先得下载 git，直接官网下载最新版
 valaxy官方文档：<https://valaxy.site/guide/getting-started>
-首先下载nvm，然后用nvm下载18版本的node.js，再下载pnpm，其中得把node.js加入环境变量
+首先下载nvm，然后用nvm下载18版本的node.js，再下载pnpm，因为valaxy常用pnpm来管理包
 运行命令`pnpm create valaxy`来安装valaxy，默认主题是`yun`  
 > 很好看！ 
 
-配置一下pnpm环境变量：`pnpm setup`
-
-`pnpm run dev`为开启本地开发环境
-`pnpm new post-title`为新建文章
-`pnpm run build`为构建静态文件  也可以`valaxy build --ssg`
-
-然后下载valaxy命令行：`pnpm add -g valaxy`  全局安装
+默认配置一下pnpm环境变量：`pnpm setup`  
+安装依赖： `pnpm i`
+然后下载valaxy命令行：`pnpm add -g valaxy`  全局安装  
+输入 `valaxy`就可以预览界面啦！
 
 ## 部署
 参考：<https://valaxy.site/guide/deploy>
-第一个部署在github的一个仓库里很简单
+部署在github的一个仓库里很简单
+首先得创建github账户，然后配置 ssh 公钥密钥，具体看 [[Github使用指南 - -Remsait's Blog-](https://remsait.com/posts/Github使用指南)]  
+然后根据valaxy官方网站所说，在自己创的仓库的设置里进行修改（略
 我每次要三步提交：`git add .`  and   `git commit -m '说明'`  and  `git push`
-git艺不精见谅
+提交的是源代码，静态网页会自动部署在 gh 分支
+git艺不精见谅  
+> 一般情况下不需要`valaxy build --ssg`   有时候做修改时需要先进行构建
 
 
-## 使用及遇到的问题和解决办法
-`valaxy` 预览界面（本地开发
+## 使用
 `valaxy new name`创建新文章
+模板可以看官方文档的自定义模板
 
 在主题配置文件中，背景图片可以用`/bgimage/x.jpg`来设置，其中`bgimage`是`public`下的一个文件夹
 
@@ -67,9 +70,20 @@ html.dark{
 .char-right {
     border-left:0px solid rgba(255,255,255, 0)
 }
+
+// 鼠标光标
+body {
+  cursor:url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
+          default;
+  }
+  a,
+  img { cursor:url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+          default;
+}
+
 ```
 
-
+看官方文档的插件橱窗
 设置waline评论系统：<https://waline.js.org/guide/get-started/#html-%E5%BC%95%E5%85%A5-%E5%AE%A2%E6%88%B7%E7%AB%AF>
 跟着这个教程走
 
@@ -150,7 +164,7 @@ if __name__ == '__main__':
 
 经过测试，貌似valaxy的yun主题只支持2、3、4级的多级目录，我原来的博客文章都是4、5级啊啊啊啊   啊啊啊 啊啊啊啊
 
-原来valaxy支持多级分类，舒服了💆‍
+原来valaxy支持多级分类，像写标签那样，舒服了💆‍
 
 可以看看其他人`valaxy`框架的博客，哪里泄愤好看直接去github上下源码看，爽
 
