@@ -39,6 +39,14 @@ $$z = w_{0}x_{0} + w_{1}x_{1} + ......+w_{n}x_n$$
 - 梯度 = 向量
 - 梯度 = 梯度值 + 梯度方向
 
+#### 梯度上升法的思想
+&emsp; 要找到某函数的最大值，最好的方法是沿着该函数的梯度方向探寻。将梯度记为 ▽ ，则函数 f(x,y) 的梯度由下式表示：
+$$▽f(x,y) = \begin{bmatrix}\frac{\partial f(x,y)}{\partial x} 
+ \\
+\frac{\partial f(x,y)}{\partial y}
+\end{bmatrix}$$   
+这个梯度意味着要沿 x 的方向移动$\frac{\partial f(x,y)}{\partial x}$，沿 y 的方向移动$\frac{\partial f(x,y)}{\partial y}$。其中，函数 f(x,y) 必须要在待计算的点上由定义并且可微
+
 
 
 
