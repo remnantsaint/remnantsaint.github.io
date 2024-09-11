@@ -10,9 +10,9 @@ useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
     <div class="copyright"><a href="https://icp.gov.moe/?keyword=20231227" target="_blank">
         萌ICP备20231227号</a>
     </div>
-    <div>本站总访问量 <span id="busuanzi_value_site_pv" /> 次</div>
-    <div>本站访客数 <span id="busuanzi_value_site_uv" /> 人次</div>
     <VCLiveTime start-time="2022-12-27">
+      <div>本站总访问量 <span color="yellow" id="busuanzi_value_site_pv" /> 次</div>
+      <div>本站访客数 <span color="yellow" id="busuanzi_value_site_uv" /> 人次</div>
       <template #live-time-before>
         <span>本站已运行</span>
       </template>
