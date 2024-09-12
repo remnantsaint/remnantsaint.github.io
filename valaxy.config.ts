@@ -59,7 +59,7 @@ export default defineValaxyConfig<UserThemeConfig>({
       global: true,
       /** @see https://github.com/metowolf/MetingJS */
       props: {
-        id: '405460530',
+        id: '2233528190',
         server: 'netease',
         type: 'playlist',
         autoplay: false,
@@ -131,6 +131,8 @@ export default defineValaxyConfig<UserThemeConfig>({
         api: "https://v1.hitokoto.cn/?c=k&c=d&c=i",
       },
     },
+
+
 
     footer: {
       since: 2022,

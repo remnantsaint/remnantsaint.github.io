@@ -209,7 +209,7 @@ if __name__ == '__main__':
 
 
 
-参考链接：
-[karu的博客](https://krau.top/posts/hexo-migrate-to-valaxy)
-[yuumi的博客](https://www.yuumi.link/posts/valaxy)
+参考链接：    
+[karu的博客](https://krau.top/posts/hexo-migrate-to-valaxy)      
+[yuumi的博客](https://www.yuumi.link/posts/valaxy)     
 [valaxy框架](https://valaxy.site/addons/gallery)
