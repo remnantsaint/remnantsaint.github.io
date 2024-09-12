@@ -6,7 +6,7 @@ useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
 </script>
 
 <template>
-  <YunFooter>
+  <YunFooter> 
     <div class="copyright"><a href="https://icp.gov.moe/?keyword=20231227" target="_blank">
         萌ICP备20231227号</a>
     </div>
