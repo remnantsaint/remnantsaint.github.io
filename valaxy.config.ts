@@ -1,4 +1,4 @@
-import { defineValaxyConfig } from 'valaxy'
+import { defineValaxyConfig, random } from 'valaxy'
 import type { UserThemeConfig } from 'valaxy-theme-yun'
 import { addonWaline } from "valaxy-addon-waline";
 import { addonLightGallery } from 'valaxy-addon-lightgallery'
@@ -63,6 +63,8 @@ export default defineValaxyConfig<UserThemeConfig>({
         server: 'netease',
         type: 'playlist',
         autoplay: false,
+        order: 'random',
+        theme: 'pink',
       }
     })
   ],
