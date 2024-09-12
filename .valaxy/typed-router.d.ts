@@ -64,6 +64,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/LRU缓存': RouteRecordInfo<'/posts/LRU缓存', '/posts/LRU缓存', Record<never, never>, Record<never, never>>,
     '/posts/markdown的基础用法': RouteRecordInfo<'/posts/markdown的基础用法', '/posts/markdown的基础用法', Record<never, never>, Record<never, never>>,
     '/posts/missing-semester': RouteRecordInfo<'/posts/missing-semester', '/posts/missing-semester', Record<never, never>, Record<never, never>>,
+    '/posts/SVM': RouteRecordInfo<'/posts/SVM', '/posts/SVM', Record<never, never>, Record<never, never>>,
     '/posts/Vim简单应用': RouteRecordInfo<'/posts/Vim简单应用', '/posts/Vim简单应用', Record<never, never>, Record<never, never>>,
     '/slides/': RouteRecordInfo<'/slides/', '/slides', Record<never, never>, Record<never, never>>,
     '/tags/': RouteRecordInfo<'/tags/', '/tags', Record<never, never>, Record<never, never>>,
