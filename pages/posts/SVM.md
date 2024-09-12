@@ -21,7 +21,7 @@ categories:
 - 要给左右两边的点进行分类
 - 明显发现：选择D会比B、C分隔效果好很多
 
-![](https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/svm1.png)
+![](https://jsd.cdn.zzko.cn/gh/remnantsaint/hexoImage@main/svm1.png)
 
 ## 支持向量机 原理
 ### SVM 工作原理
