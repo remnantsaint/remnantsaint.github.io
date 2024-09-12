@@ -10,8 +10,8 @@ title: Hexo博客迁移至Valaxy
 top: 10
 aplayer: true
 ---
-Valaxy框架真的超棒   
-尤其是主题配置和方便多台电脑开发！
+Valaxy真的很棒   
+解决了不少困扰已久的问题
 <!-- more -->
 
 <meting-js
@@ -181,6 +181,23 @@ if __name__ == '__main__':
 
 可以添加以下类型的图片，在中央更好看一点
 `<img src=""  alt="404" title="鼠标悬停文本"  />`
+
+用这个给图片下面加备注
+```vue
+<center><div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+      谨以此纪念我永远的队友们
+  	</div>
+</center>
+```
+
+发现一个bug ，本地文章列表创建多级目录的时候，在网站刷新一下当前文章就会 404 ！！
+
+
+
+
 
 
 

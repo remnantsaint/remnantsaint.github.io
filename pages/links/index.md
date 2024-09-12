@@ -25,7 +25,7 @@ random: true
 ## 本站信息
 
 <div class="flex gap-5">
-  <span>站名：Remsaitの幻想鄉</span>
+  <span>站名：-Remsait's Blog-</span>
   <span>||</span>
   <span>
   地址：<a href="https://www.hairy.blog">https://www.hairy.blog</a>
