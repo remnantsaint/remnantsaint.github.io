@@ -19,5 +19,12 @@ useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
         <span>喵~</span>
       </template>
     </VCLiveTime>
+    <div class="support" style="display: inline-flex; align-items: center;">
+      本网站由
+      <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
+        <img src="/photo/youpaiyun.png" alt="又拍云" style="height: 20px; vertical-align: middle;" />
+      </a>
+      提供支持
+    </div>
   </YunFooter>
 </template>
