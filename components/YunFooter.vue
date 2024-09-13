@@ -24,7 +24,7 @@ useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
       <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
         <img src="/photo/youpaiyun.png" alt="又拍云" style="height: 20px; vertical-align: middle;" />
       </a>
-      提供支持
+      提供CDN加速/云存储服务
     </div>
   </YunFooter>
 </template>
