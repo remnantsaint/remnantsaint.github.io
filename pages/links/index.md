@@ -7,7 +7,7 @@ aside: false	# 关闭目录边栏
 nav: false
 links: 
   - url: https://www.remsait.com                                                                    #网站地址
-    avatar: https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg     #头像链接  
+    avatar: https://cloudflare.remsait.com/img/QQ图片20240908121531.jpg     #头像链接  
     name: Remsait                                                                                   #名字
     blog: Remsait's 小站                                                                            #网站名
     desc: 折枝的树也能开花                                                                           #个签 or 描述

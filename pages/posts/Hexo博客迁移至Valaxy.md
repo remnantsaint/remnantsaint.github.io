@@ -1,6 +1,6 @@
 ---
 categories: 其他
-cover: https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/valaxy.png
+cover: https://cloudflare.remsait.com/img/valaxy.png
 date: 2024-09-07 21:50:59
 image: 
 layout: post

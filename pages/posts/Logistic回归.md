@@ -25,7 +25,7 @@ top:
 &emsp; 然而这个函数的问题在于：该函数在跳跃点上从0瞬间跳跃到1，这个瞬间跳跃过程有时很难处理。而`Sigmoid函数`在数学上更容易处理，具体公式如下：
 $\sigma (z)=\frac{1}{1+e^{-z} }$   
 &emsp; 下图给出了Sigmoid函数在不同坐标尺度下的两条曲线图。当x为0时，Sigmoid函数值为 0.5，随着 x 的增大，对应的 Sigmoid 值将逼近于 1；而随着 x 的减小，Sigmoid 的值将逼近于0，如果横坐标刻度足够大，Sigmoid 函数看起来很像一个阶跃函数。
-![](https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/%E9%98%B6%E8%B7%83.png)  
+![](https://cloudflare.remsait.com/img/%E9%98%B6%E8%B7%83.png)  
 &emsp; 为了实现 Logistic 回归分类器，我们可以在每个特征上都乘以一个回归系数，然后把所有结果的值相加，将这个总和带入 Sigmoid 函数中，得到一个范围在 0~1 之间的数值。任何大于 0.5 的数据被分入 1 类，小于 0.5 被分入 0 类，因此 Logistic 回归也是一种概率估计。
 
 ### 基于最优化方法的回归系数确定
@@ -46,7 +46,7 @@ $$\nabla f(x,y) = \begin{bmatrix}\frac{\partial f(x,y)}{\partial x}
 \frac{\partial f(x,y)}{\partial y}
 \end{bmatrix}$$   
 &emsp; 这个梯度意味着要沿 x 的方向移动$\frac{\partial f(x,y)}{\partial x}$，沿 y 的方向移动$\frac{\partial f(x,y)}{\partial y}$。其中，函数 f(x,y) 必须要在待计算的点上由定义并且可微。    
-![](https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/tidushangsheng.png)
+![](https://cloudflare.remsait.com/img/tidushangsheng.png)
 &emsp; 梯度上升算法到每个点后都会重新估计移动的方向。从 P0 开始，计算完该点的梯度，函数就根据梯度移动到下一点 P1 。在 P1 点，梯度再次被计算，并沿着新的梯度方向移动到 P2 ，如此循环迭代，直到满足停止条件。迭代过程中，梯度算子总是保证我们能选取到最佳的移动方向，即函数值增长最快的方向。这里所说的是移动方向，未提到移动量的大小，该量值称为步长，记作 α。用向量来表示的话，梯度上升算法的迭代公式如下   
 $w := w + α\nabla wf(w)$   
 &emsp; 该公式将一直被迭代执行，直到达到某个停止条件为止，比如迭代次数达到某个指定值或者算法达到某个可以允许的误差范围。   

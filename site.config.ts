@@ -2,14 +2,14 @@ import { defineSiteConfig } from 'valaxy'
 
 export default defineSiteConfig({
   url: 'https://remsait.com/',
-  favicon: "https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg",
+  favicon: "https://cloudflare.remsait.com/img/QQ图片20240908121531.jpg",
   lang: 'zh-CN',
   title: "-Remsait's Blog-",
   subtitle: 'to be better',
   lastUpdated: true,
   author: {
     name: 'Remsait',
-    avatar: "https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/QQ图片20240908121531.jpg",	//头像链接
+    avatar: "https://cloudflare.remsait.com/img/QQ图片20240908121531.jpg",	//头像链接
     status: {
       emoji: '♥',	// 头像旁边的emoji
       message: '孤独中'

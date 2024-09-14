@@ -12,7 +12,7 @@ title: 删除链表的倒数第N个结点
 top: 
 ---
 
-![](https://cdn.jsdelivr.net/gh/remnantsaint/hexoImage@main/20230401072816.png)
+![](https://cloudflare.remsait.com/img/20230401072816.png)
 用一趟扫描实现：
 题解：本题是力扣上的题，注意力扣上说的头结点是指首元结点，带有数据域，那么就需要设置一个虚拟头结点来指向首元结点，用双指针遍历，first遍历到结尾时与second正好相差n个元素
 ```c++
