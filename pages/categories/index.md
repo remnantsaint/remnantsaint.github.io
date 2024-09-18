@@ -7,9 +7,3 @@ icon: i-ri-folder-2-line
 comment: false
 aside: false
 ---
-123f
-sad
-fas
-df
-asdf
-asdf
