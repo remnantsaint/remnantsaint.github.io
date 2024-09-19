@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ensemble-method
+title: 集成方法
 date: 2024-09-18 10:43:28
 cover: 
 top: 
