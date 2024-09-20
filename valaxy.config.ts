@@ -74,7 +74,7 @@ export default defineValaxyConfig<UserThemeConfig>({
   themeConfig: {
     banner: {
       enable: true,
-      title: ['Remsait','の','幻','想','鄉'],
+      title: ['西柿','の','幻','想','鄉'],
       cloud: {
         enable: true,
       },

@@ -4,11 +4,11 @@ export default defineSiteConfig({
   url: 'https://remsait.com/',
   favicon: "https://cloudflare.remsait.com/img/QQ图片20240908121531.jpg",
   lang: 'zh-CN',
-  title: "-Remsait's Blog-",
+  title: "-西柿's Blog-",
   subtitle: 'to be better',
   lastUpdated: true,
   author: {
-    name: 'Remsait',
+    name: '西柿',
     avatar: "https://cloudflare.remsait.com/img/QQ图片20240908121531.jpg",	//头像链接
     status: {
       emoji: '♥',	// 头像旁边的emoji
