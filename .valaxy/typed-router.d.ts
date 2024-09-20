@@ -47,6 +47,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/删除链表的倒数第N个结点': RouteRecordInfo<'/posts/删除链表的倒数第N个结点', '/posts/删除链表的倒数第N个结点', Record<never, never>, Record<never, never>>,
     '/posts/生信linux': RouteRecordInfo<'/posts/生信linux', '/posts/生信linux', Record<never, never>, Record<never, never>>,
     '/posts/使用archlinux参考文章': RouteRecordInfo<'/posts/使用archlinux参考文章', '/posts/使用archlinux参考文章', Record<never, never>, Record<never, never>>,
+    '/posts/树回归': RouteRecordInfo<'/posts/树回归', '/posts/树回归', Record<never, never>, Record<never, never>>,
     '/posts/腾讯云cos图床+cloudflare+Picgo': RouteRecordInfo<'/posts/腾讯云cos图床+cloudflare+Picgo', '/posts/腾讯云cos图床+cloudflare+Picgo', Record<never, never>, Record<never, never>>,
     '/posts/图的存储': RouteRecordInfo<'/posts/图的存储', '/posts/图的存储', Record<never, never>, Record<never, never>>,
     '/posts/我的ff14之旅': RouteRecordInfo<'/posts/我的ff14之旅', '/posts/我的ff14之旅', Record<never, never>, Record<never, never>>,
