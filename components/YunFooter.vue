@@ -19,5 +19,10 @@ useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
         <span>喵~</span>
       </template>
     </VCLiveTime>
+    <footer style="display: flex; justify-content: center; align-items: center;">
+      <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
+        <img src="https://www.travellings.cn/assets/logo.gif" alt="开往-友链接力" width="80">
+      </a>
+    </footer>
   </YunFooter>
 </template>

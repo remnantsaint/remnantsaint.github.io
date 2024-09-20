@@ -41,6 +41,12 @@ export default defineSiteConfig({
       icon: 'i-ri-bilibili-line',
       color: '#FF8EB3',
     },
+    {
+      name: '开往',
+      link: 'https://www.travellings.cn/go.html',
+      icon: 'i-ri-train-line',
+      color: 'black',
+    },
     /*
     {
       name: '邮箱',
