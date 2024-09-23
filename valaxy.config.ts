@@ -150,6 +150,7 @@ export default defineValaxyConfig<UserThemeConfig>({
         enable: false,
         icp: '萌ICP备20231227号',
       },
+      powered: false,
     },
   },
 

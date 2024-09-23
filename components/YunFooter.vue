@@ -7,6 +7,16 @@ useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
 
 <template>
   <YunFooter> 
+
+<!-- 添加新的版权信息和样式 -->
+    <div class="footer-info">
+      <span>由 </span>
+      <a href="https://github.com/YunYouJun/valaxy" target="_blank" style="color: #ff69b4; text-decoration: none;">Valaxy</a>
+      <span> v0.19.9 驱动 | 主题 - </span>
+      <a href="https://github.com/YunYouJun/valaxy/tree/main/packages/valaxy-theme-yun" target="_blank" style="color: #ff69b4; text-decoration: none;">Yun</a>
+      <span> v0.19.9</span>
+    </div>
+
     <div class="copyright"><a href="https://icp.gov.moe/?keyword=20231227" target="_blank">
         萌ICP备20231227号</a>
     </div>
