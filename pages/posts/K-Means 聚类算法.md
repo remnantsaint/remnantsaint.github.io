@@ -109,6 +109,7 @@ $$d(x,y) = \sqrt{(x_1-y_1)^2 + (x_2-y_2)^2 + ··· + (x_n-y_n)^2} = \sqrt{\sum_
 
 ## Reference
 
+<https://github.com/apachecn/ailearning/blob/master/docs/ml/10.md>
 
 
 
