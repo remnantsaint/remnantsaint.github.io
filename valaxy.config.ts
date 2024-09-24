@@ -120,8 +120,8 @@ export default defineValaxyConfig<UserThemeConfig>({
 
     bg_image: {
       enable: true,
-      url: 'https://cloudflare.remsait.com/img/aluona.jpg',	// 白日模式背景
-      dark: "https://cloudflare.remsait.com/img/bilan.jpg",	// 夜间模式背景
+      url: '/photo/aluona.jpg',	// 白日模式背景
+      dark: "/photo/bilan.jpg",	// 夜间模式背景
       opacity: 0.8
     },
 
