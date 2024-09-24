@@ -15,7 +15,7 @@ categories:
 <!-- more -->
 &emsp; 按以下步骤运行即可升级成功，具体原理我也不懂，照做就 OK 了。
 1. pnpm list valaxy      查看valaxy版本
-2. pnpm i valaxy@版本号   or    pnpm i valaxy -g   安装最新版本
+2. pnpm i valaxy@版本号   或者    pnpm i valaxy -g   安装最新版本
 3. pnpm i -g npm-check        安装npm-check，若已安装可以跳过
 4. npm-check          检查系统插件是否需要升级
 5. pnpm i -g npm-upgrade    安装npm-upgrade，若已安装可以跳过
