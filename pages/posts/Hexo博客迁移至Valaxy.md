@@ -27,11 +27,12 @@ Valaxy真的很棒
 
 首先得下载 git，直接官网下载最新版
 valaxy官方文档：<https://valaxy.site/guide/getting-started>
-首先下载nvm，然后用nvm下载18版本的node.js，再下载pnpm，因为valaxy常用pnpm来管理包
+首先下载nvm，然后用nvm下载18版本的node.js（我下载的是18.20.4），再下载pnpm，因为valaxy常用pnpm来管理包
 运行命令`pnpm create valaxy`来安装valaxy，默认主题是`yun`  
 > 很好看！ 
 
 默认配置一下pnpm环境变量：`pnpm setup`  
+配置一下淘宝镜像源`npm config set registry https://registry.npmmirror.com`
 安装依赖： `pnpm i`
 然后下载valaxy命令行：`pnpm add -g valaxy`  全局安装  
 输入 `valaxy`就可以预览界面啦！
