@@ -49,6 +49,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/生信linux': RouteRecordInfo<'/posts/生信linux', '/posts/生信linux', Record<never, never>, Record<never, never>>,
     '/posts/使用Apriori算法进行关联分析': RouteRecordInfo<'/posts/使用Apriori算法进行关联分析', '/posts/使用Apriori算法进行关联分析', Record<never, never>, Record<never, never>>,
     '/posts/使用archlinux参考文章': RouteRecordInfo<'/posts/使用archlinux参考文章', '/posts/使用archlinux参考文章', Record<never, never>, Record<never, never>>,
+    '/posts/使用FP-growth算法高效发现频繁项集': RouteRecordInfo<'/posts/使用FP-growth算法高效发现频繁项集', '/posts/使用FP-growth算法高效发现频繁项集', Record<never, never>, Record<never, never>>,
     '/posts/树回归': RouteRecordInfo<'/posts/树回归', '/posts/树回归', Record<never, never>, Record<never, never>>,
     '/posts/腾讯云cos图床+cloudflare+Picgo': RouteRecordInfo<'/posts/腾讯云cos图床+cloudflare+Picgo', '/posts/腾讯云cos图床+cloudflare+Picgo', Record<never, never>, Record<never, never>>,
     '/posts/图的存储': RouteRecordInfo<'/posts/图的存储', '/posts/图的存储', Record<never, never>, Record<never, never>>,
