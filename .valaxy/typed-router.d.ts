@@ -41,6 +41,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/解决学习通鼠标移开暂停': RouteRecordInfo<'/posts/解决学习通鼠标移开暂停', '/posts/解决学习通鼠标移开暂停', Record<never, never>, Record<never, never>>,
     '/posts/解决vercel被墙的问题': RouteRecordInfo<'/posts/解决vercel被墙的问题', '/posts/解决vercel被墙的问题', Record<never, never>, Record<never, never>>,
     '/posts/决策树': RouteRecordInfo<'/posts/决策树', '/posts/决策树', Record<never, never>, Record<never, never>>,
+    '/posts/利用PCA简化数据': RouteRecordInfo<'/posts/利用PCA简化数据', '/posts/利用PCA简化数据', Record<never, never>, Record<never, never>>,
     '/posts/链表': RouteRecordInfo<'/posts/链表', '/posts/链表', Record<never, never>, Record<never, never>>,
     '/posts/链表排序': RouteRecordInfo<'/posts/链表排序', '/posts/链表排序', Record<never, never>, Record<never, never>>,
     '/posts/排序': RouteRecordInfo<'/posts/排序', '/posts/排序', Record<never, never>, Record<never, never>>,
@@ -76,6 +77,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/SVM': RouteRecordInfo<'/posts/SVM', '/posts/SVM', Record<never, never>, Record<never, never>>,
     '/posts/valaxy版本升级指南': RouteRecordInfo<'/posts/valaxy版本升级指南', '/posts/valaxy版本升级指南', Record<never, never>, Record<never, never>>,
     '/posts/Vim简单应用': RouteRecordInfo<'/posts/Vim简单应用', '/posts/Vim简单应用', Record<never, never>, Record<never, never>>,
+    '/posts/Vscode配置C++环境': RouteRecordInfo<'/posts/Vscode配置C++环境', '/posts/Vscode配置C++环境', Record<never, never>, Record<never, never>>,
     '/slides/': RouteRecordInfo<'/slides/', '/slides', Record<never, never>, Record<never, never>>,
     '/tags/': RouteRecordInfo<'/tags/', '/tags', Record<never, never>, Record<never, never>>,
   }
