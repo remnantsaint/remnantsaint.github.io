@@ -42,6 +42,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/解决vercel被墙的问题': RouteRecordInfo<'/posts/解决vercel被墙的问题', '/posts/解决vercel被墙的问题', Record<never, never>, Record<never, never>>,
     '/posts/决策树': RouteRecordInfo<'/posts/决策树', '/posts/决策树', Record<never, never>, Record<never, never>>,
     '/posts/利用PCA简化数据': RouteRecordInfo<'/posts/利用PCA简化数据', '/posts/利用PCA简化数据', Record<never, never>, Record<never, never>>,
+    '/posts/利用SVD简化数据': RouteRecordInfo<'/posts/利用SVD简化数据', '/posts/利用SVD简化数据', Record<never, never>, Record<never, never>>,
     '/posts/链表': RouteRecordInfo<'/posts/链表', '/posts/链表', Record<never, never>, Record<never, never>>,
     '/posts/链表排序': RouteRecordInfo<'/posts/链表排序', '/posts/链表排序', Record<never, never>, Record<never, never>>,
     '/posts/排序': RouteRecordInfo<'/posts/排序', '/posts/排序', Record<never, never>, Record<never, never>>,
