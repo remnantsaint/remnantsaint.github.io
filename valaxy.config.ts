@@ -17,6 +17,7 @@ const safelist = [
 export default defineValaxyConfig<UserThemeConfig>({
   // site config see site.config.ts
   theme: 'yun',
+  
   siteConfig: {
     // 启用评论
     comment: {
