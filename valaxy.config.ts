@@ -118,11 +118,10 @@ export default defineValaxyConfig<UserThemeConfig>({
         icon: 'i-ri-folder-line'
       }
     },
-
     bg_image: {
       enable: true,
-      url: 'https://cloudflare.remsait.com/img/aluona.jpg',	// 白日模式背景
-      dark: "https://cloudflare.remsait.com/img/bilan.jpg",	// 夜间模式背景
+      url: 'https://cloudflare.remsait.com/img/%E7%99%BD%E5%A4%A9%E5%A3%81%E7%BA%B81.png',	// 白日模式背景
+      dark: "https://cloudflare.remsait.com/img/aluona.jpg",	// 夜间模式背景
       opacity: 0.8
     },
 
