@@ -31,6 +31,7 @@ declare module 'vue-router/auto-routes' {
     '/girls/': RouteRecordInfo<'/girls/', '/girls', Record<never, never>, Record<never, never>>,
     '/links/': RouteRecordInfo<'/links/', '/links', Record<never, never>, Record<never, never>>,
     '/page/[page]': RouteRecordInfo<'/page/[page]', '/page/:page', { page: ParamValue<true> }, { page: ParamValue<false> }>,
+    '/posts/大数据与MapReduce': RouteRecordInfo<'/posts/大数据与MapReduce', '/posts/大数据与MapReduce', Record<never, never>, Record<never, never>>,
     '/posts/迭代-递归-分治': RouteRecordInfo<'/posts/迭代-递归-分治', '/posts/迭代-递归-分治', Record<never, never>, Record<never, never>>,
     '/posts/对链表插入排序': RouteRecordInfo<'/posts/对链表插入排序', '/posts/对链表插入排序', Record<never, never>, Record<never, never>>,
     '/posts/反转部分链表': RouteRecordInfo<'/posts/反转部分链表', '/posts/反转部分链表', Record<never, never>, Record<never, never>>,
