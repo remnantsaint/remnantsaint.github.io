@@ -7,8 +7,8 @@ top:
 tags: 
   - 机器学习
 categories: 
-  - 机器学习
   - 人工智能
+  - 机器学习
 # author: @Remsait
 ---
 ## 大数据

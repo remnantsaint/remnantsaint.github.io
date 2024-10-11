@@ -9,9 +9,12 @@ tags:
 categories: 其他
 # author: @Remsait
 ---
+
 ## 前言
-&emsp; 单纯想用Vscode运行C++代码来做点题
-<!--more-->
+&emsp; 很早以前配置过VScode上的C++环境，这次换电脑用新的方法重新配置一遍  
+&emsp; PS：单纯想用VScode运行C++代码来做点题
+
+<!-- more -->
 
 ## 安装 MinGW
 参考文章   
