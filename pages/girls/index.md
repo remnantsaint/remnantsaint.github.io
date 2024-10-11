@@ -10,6 +10,11 @@ girls:
     from: 《CODE GEASS》
     url: 
     reason: 帅
+  - name: 牧濑红莉栖
+    avatar: https://th.bing.com/th?id=OIP.oKX43EPFb3EmCMKXBtpiOAHaKS&w=312&h=200&c=12&rs=1&qlt=99&o=6&pid=13.1
+    from: 《命运石之门》
+    url: 
+    reason: 酷
 random: true
 ---
 
