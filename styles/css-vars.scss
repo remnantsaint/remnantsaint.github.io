@@ -21,6 +21,39 @@ html.dark{
 .char-right {
     border-left:0px solid rgba(255,255,255, 0)
 }
+
+/* 默认光标样式（适用于所有元素） */
+* {
+    cursor: url(/douni/小豆泥%20正常选择.cur), auto;
+}
+
+/* 特定元素的光标样式 */
+a,
+img {
+    cursor: url(/douni/帮助选择.cur), pointer;
+}
+
+button {
+    cursor: url(/douni/后台运行.cur), pointer;
+}
+
+input[type="text"],
+textarea {
+    cursor: url(/douni/链接选择.cur), text;
+}
+
+progress {
+    cursor: url(/douni/忙.cur), progress;
+}
+
+.move {
+    cursor: url(/douni/移动.cur), move;
+}
+
+
+
+
+/*
 // 鼠标光标
 body {
     cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),
@@ -30,7 +63,5 @@ body {
   img {
     cursor:url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
           default;
-
-
-    
 }
+*/
