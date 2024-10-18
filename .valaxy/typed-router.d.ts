@@ -78,6 +78,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/missing-semester': RouteRecordInfo<'/posts/missing-semester', '/posts/missing-semester', Record<never, never>, Record<never, never>>,
     '/posts/SVM': RouteRecordInfo<'/posts/SVM', '/posts/SVM', Record<never, never>, Record<never, never>>,
     '/posts/valaxy版本升级指南': RouteRecordInfo<'/posts/valaxy版本升级指南', '/posts/valaxy版本升级指南', Record<never, never>, Record<never, never>>,
+    '/posts/valaxy博客光标美化': RouteRecordInfo<'/posts/valaxy博客光标美化', '/posts/valaxy博客光标美化', Record<never, never>, Record<never, never>>,
     '/posts/Vim简单应用': RouteRecordInfo<'/posts/Vim简单应用', '/posts/Vim简单应用', Record<never, never>, Record<never, never>>,
     '/posts/Vscode配置C++环境': RouteRecordInfo<'/posts/Vscode配置C++环境', '/posts/Vscode配置C++环境', Record<never, never>, Record<never, never>>,
     '/slides/': RouteRecordInfo<'/slides/', '/slides', Record<never, never>, Record<never, never>>,

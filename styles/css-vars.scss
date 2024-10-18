@@ -22,46 +22,55 @@ html.dark{
     border-left:0px solid rgba(255,255,255, 0)
 }
 
-/* 默认光标样式（适用于所有元素） */
-* {
+//主光标样式
+body {
     cursor: url(/douni/小豆泥%20正常选择.cur), auto;
 }
-
 /* 特定元素的光标样式 */
 a,
 img {
-    cursor: url(/douni/帮助选择.cur), pointer;
+    cursor: url(/douni/链接选择.cur), pointer;
 }
-
-button {
-    cursor: url(/douni/后台运行.cur), pointer;
+//左侧栏
+a.site-link-item.yun-icon-btn  {
+    cursor: url(/douni/链接选择.cur), pointer;
 }
-
+a.link-item.yun-icon-btn  {
+    cursor: url(/douni/链接选择.cur), pointer;
+}
+a.links-of-author-item.yun-icon-btn {
+    cursor: url(/douni/链接选择.cur), pointer;
+}
+button.yun-icon-btn {
+    cursor: url(/douni/链接选择.cur), pointer;
+}
+//底部页面导航栏
+nav.pagination a.page-number, nav.pagination a[aria-label="next"] {
+    cursor: url(/douni/链接选择.cur), pointer;
+}
+a.router-link-active.router-link-exact-active.page-number.active {
+    cursor: url(/douni/小豆泥%20正常选择.cur), pointer;
+}
+//下拉上划
+button.go-down {
+    cursor: url(/douni/链接选择.cur), pointer;
+}
+a.back-to-top.yun-icon-btn.show {
+    cursor: url(/douni/链接选择.cur), pointer;
+}
+//文章标题
+a.post-title-link.cursor-pointer {
+    cursor: url(/douni/链接选择.cur), pointer;
+}
+//输入栏样式
 input[type="text"],
 textarea {
-    cursor: url(/douni/链接选择.cur), text;
+    cursor: url(/douni/后台运行.cur), text;
 }
-
-progress {
-    cursor: url(/douni/忙.cur), progress;
+//代码栏的拷贝和下拉
+button.copy {
+    cursor: url(/douni/链接选择.cur), pointer !important;
 }
-
-.move {
-    cursor: url(/douni/移动.cur), move;
+button.collapse {
+    cursor: url(/douni/链接选择.cur), pointer !important;
 }
-
-
-
-
-/*
-// 鼠标光标
-body {
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),
-          auto;
-  }
-  a,
-  img {
-    cursor:url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
-          default;
-}
-*/
