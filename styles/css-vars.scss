@@ -74,3 +74,11 @@ button.copy {
 button.collapse {
     cursor: url(/douni/链接选择.cur), pointer !important;
 }
+//分类+标签选项
+ul.category-list li.category-list-item.inline-flex.items-center.cursor-pointer {
+    cursor: url(/douni/链接选择.cur), pointer !important;
+}
+span.post-tag.cursor-pointer.items-baseline.leading-4 {
+    cursor: url(/douni/链接选择.cur), pointer !important;
+}
+//!important可以覆盖样式
