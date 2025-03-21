@@ -70,6 +70,18 @@ top:
 | 单元格  | 单元格 |
 
 在第二行的`---`中，使用`-:`表示居右对齐、使用`:-`表示居左对齐、使用`:-:`表示居中对齐
+
+如果不想要表头，可以用html表格手写，如下：
+```html
+<table>
+  <tr><td>A</td><td>腺嘌呤，Adenine</td></tr>
+  <tr><td>T</td><td>胸腺嘧啶，Thymine，仅 DNA 中存在</td></tr>
+  <tr><td>G</td><td>鸟嘌呤，Guanine</td></tr>
+  <tr><td>C</td><td>胞嘧啶，Cytosine</td></tr>
+  <tr><td>U</td><td>尿嘧啶，Uracil，仅 RNA 中存在</td></tr>
+</table>
+```
+
 #### 11.数学公式
 &emsp; 1.上标`$O(n^2)$`，效果为$O(n^2)$   
 &emsp; 2.下标`$O(n_2)$`，效果为$O(n_2)$  
