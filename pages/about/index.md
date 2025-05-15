@@ -7,8 +7,10 @@ toc : false
 
 ---
 
-&emsp; 现在我是一名生信方向的研究生，想写出有趣的文字，做有意思的事
+&emsp; 现在我是一名生信方向的研究生，对普通的人类没有兴趣，如果你们当中有谁是外星人、未来人、异世界人、超能力者，请到我这里来。谢谢大家~
+
+<img src="https://cloudflare.remsait.com/img/1.gif"  alt="404"  />
 
 ---
 
-&emsp; 个人邮箱：remnantsaint@163.com    &emsp;      有事请用这个联系我
+&emsp; 个人邮箱：remnantsaint@163.com    &emsp;      有事请用这个联系我!

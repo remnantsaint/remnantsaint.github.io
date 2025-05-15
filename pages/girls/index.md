@@ -15,6 +15,11 @@ girls:
     from: 《命运石之门》
     url: 
     reason: 酷
+  - name: 椎名真由理
+    avatar: https://www.bing.com/th/id/OIP.7e29Z7FaXDKxu1Qvj677iAHaEK?w=290&h=215&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2
+    from: 《命运石之门》
+    url: 
+    reason: 温柔desu
 random: true
 ---
 

@@ -49,17 +49,6 @@ onMounted(() => {
     <div class="live-time-container">
       <span class="live-time-text">本站已运行 {{ liveTime }} 喵~</span>
     </div>
-<!--
-    <footer style="display: flex; justify-content: center; align-items: center;">
-      <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
-        <img src="https://www.travellings.cn/assets/logo.gif" alt="开往-友链接力" width="80">
-      </a>
-    </footer>
-  
-    <footer style="display: flex; justify-content: center; align-items: center;">
-      <a href="https://clustrmaps.com/site/1c1rl"  title="Visit tracker"><img src="//www.clustrmaps.com/map_v2.png?d=SdKJZpvyUWUfIW1vNm9mAQXARJ7Aa9Nmga5DueqJAk0&cl=ffffff" /></a>
-    </footer>
-  -->
   </YunFooter>
 </template>
 
