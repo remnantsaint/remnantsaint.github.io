@@ -24,8 +24,8 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       valaxy-addon-waline:
-        specifier: ^0.2.0
-        version: 0.2.1(typescript@5.8.3)(valaxy@0.19.12(@babel/parser@7.27.2)(@types/markdown-it@14.1.2)(@types/node@22.15.18)(axios@1.9.0)(postcss@8.5.3)(rollup@4.40.2)(typescript@5.8.3)(unhead@1.11.20))
+        specifier: ^0.1.5
+        version: 0.1.5(typescript@5.8.3)(valaxy@0.19.12(@babel/parser@7.27.2)(@types/markdown-it@14.1.2)(@types/node@22.15.18)(axios@1.9.0)(postcss@8.5.3)(rollup@4.40.2)(typescript@5.8.3)(unhead@1.11.20))
       valaxy-theme-yun:
         specifier: 0.19.12
         version: 0.19.12
@@ -3760,10 +3760,10 @@ packages:
   valaxy-addon-meting@0.1.4:
     resolution: {integrity: sha512-aTOCswBIg1/MOIC1vZ7ctaZOOEueVN99tEurAxukq15kJtqyps2/XqZw7Bjvik5LNbHtZd+TzmH+vrvhA/HF5w==}
 
-  valaxy-addon-waline@0.2.1:
-    resolution: {integrity: sha512-A95cnjyAsdypP/QJWIYbfqPyCOhGeMcbFfqSZnJxdAutUdgHH3gQBRrUM6G+/4KR6YHYmk2thNrpGRlGC6CWLg==}
+  valaxy-addon-waline@0.1.5:
+    resolution: {integrity: sha512-FVo9q6P0rFIsVBNsMNKgrCBzTabiU9JjLyi5hO4nlch5cn7k1TN/nrqLPJE0mbXeLJ3UCUaaSsMXMg6O/bLzyA==}
     peerDependencies:
-      valaxy: '>=0.22'
+      valaxy: latest
 
   valaxy-theme-yun@0.19.12:
     resolution: {integrity: sha512-9OZ1WLcRELCApglbKWIFCadTkRyrmdH5z4dcRxs7vblVMo3yY5yHBGDRYmFg0JX5QckVlsUtQ4a7bOBMzBeKEg==}
@@ -7883,7 +7883,7 @@ snapshots:
 
   valaxy-addon-meting@0.1.4: {}
 
-  valaxy-addon-waline@0.2.1(typescript@5.8.3)(valaxy@0.19.12(@babel/parser@7.27.2)(@types/markdown-it@14.1.2)(@types/node@22.15.18)(axios@1.9.0)(postcss@8.5.3)(rollup@4.40.2)(typescript@5.8.3)(unhead@1.11.20)):
+  valaxy-addon-waline@0.1.5(typescript@5.8.3)(valaxy@0.19.12(@babel/parser@7.27.2)(@types/markdown-it@14.1.2)(@types/node@22.15.18)(axios@1.9.0)(postcss@8.5.3)(rollup@4.40.2)(typescript@5.8.3)(unhead@1.11.20)):
     dependencies:
       '@waline/client': 3.4.1(typescript@5.8.3)
       valaxy: 0.19.12(@babel/parser@7.27.2)(@types/markdown-it@14.1.2)(@types/node@22.15.18)(axios@1.9.0)(postcss@8.5.3)(rollup@4.40.2)(typescript@5.8.3)(unhead@1.11.20)

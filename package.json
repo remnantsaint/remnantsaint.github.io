@@ -17,7 +17,7 @@
     "valaxy-addon-lightgallery": "^0.0.3",
     "valaxy-addon-live2d": "^0.2.2",
     "valaxy-addon-meting": "^0.1.4",
-    "valaxy-addon-waline": "^0.2.0",
+    "valaxy-addon-waline": "^0.1.5",
     "valaxy-theme-yun": "0.19.12",
     "vue-gtag-next": "^1.14.0"
   },
