@@ -39,4 +39,60 @@ wsl --install -d Ubuntu-20.04
 注册账号后即可使用  
 
 #### Docker 使用
-##### Docker Hello World
+##### 调试配置
+找到Docker Desktop设置  
+在`Docker engine`中修改如下代码来更改`DNS`和镜像仓库
+```
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "dns": [
+    "1.1.4.4",
+    "8.8.8.8"
+  ],
+  "experimental": false,
+  "features": {
+    "buildkit": true
+  },
+  "registry-mirrors": [
+    "https://docker.m.daocloud.io/",
+    "https://huecker.io/",
+    "https://dockerhub.timeweb.cloud",
+    "https://noohub.ru/",
+    "https://dockerproxy.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://docker.nju.edu.cn",
+    "https://xx4bwyg2.mirror.aliyuncs.com",
+    "http://f1361db2.m.daocloud.io",
+    "https://registry.docker-cn.com",
+    "http://hub-mirror.c.163.com",
+    "https://docker.mirrors.ustc.edu.cn"
+  ]
+}
+```
+##### docker 常用命令
+1. docker ps：显示正在运行的容器
+2. docker ps -a ：显示所有容器
+3. docker images：查看本地已有镜像和大小
+4. docker pull <镜像名>：从Docker Hub下载镜像
+5. docker rmi <镜像名或ID>：删除镜像
+6. docker build -t <镜像名>：构建镜像
+7. docker run -it <镜像名>：以交互方式运行一个新容器
+8. docker run -d <镜像名>：后台运行容器
+9. docker start <容器ID或名>：启动已停止容器
+10. docker stop <容器ID或名>：停止正在运行容器
+11. rm：删除容器
+12. restart：重启容器
+13. docker save -o xxx.tar 镜像名：导出镜像文件
+14. docker load -i xxx.tar：从tar文件加载镜像
+15. docker builder prune：删除build cache
+16. docker system df：查看当前缓存大小
+##### 构建镜像
+首先需要一个`Dockerfile`文件，文件具体编写方法暂略  
+然后在`Dockerfile`文件所在目录构建镜像：`docker build -t imagename .`，这样就生成了一个镜像，可以在Docker Desktop的镜像栏中看到  
+然后可以运行镜像：`docker run -it imagename`  
+进入镜像会，会看到如下格式：`root@<容器ID>:/#`，Docker Desktop的容器栏也能看到，用`exit`即可退出  
