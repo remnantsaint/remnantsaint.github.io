@@ -5,11 +5,10 @@ date: 2025-05-15 11:40:45
 cover: 
 top: 
 tags: 
-categories: 
+- docker
+categories: 其他
 # author: @Remsait
 ---
-
-参考网站：[菜鸟网](https://www.runoob.com/docker/docker-tutorial.html)
 
 #### Docker简介
 
@@ -81,18 +80,24 @@ wsl --install -d Ubuntu-20.04
 4. docker pull <镜像名>：从Docker Hub下载镜像
 5. docker rmi <镜像名或ID>：删除镜像
 6. docker build -t <镜像名>：构建镜像
-7. docker run -it <镜像名>：以交互方式运行一个新容器
+7. docker run -it --name <自定义容器名> <镜像名>：以交互方式运行一个新容器
 8. docker run -d <镜像名>：后台运行容器
-9. docker start <容器ID或名>：启动已停止容器
-10. docker stop <容器ID或名>：停止正在运行容器
+9. docker start <容器ID>：启动已停止容器
+10. docker exec -it <容器ID> /bin/bash 或/bin/sh ：进入交互模式
+11. docker start -ai <容器ID>：启动并进入交互模式
+10. docker stop <容器ID>：停止正在运行容器
 11. rm：删除容器
 12. restart：重启容器
 13. docker save -o xxx.tar 镜像名：导出镜像文件
 14. docker load -i xxx.tar：从tar文件加载镜像
 15. docker builder prune：删除build cache
 16. docker system df：查看当前缓存大小
+17. docker cp linux中文件路径  容器id:容器中路径：复制粘贴文件
 ##### 构建镜像
 首先需要一个`Dockerfile`文件，文件具体编写方法暂略  
 然后在`Dockerfile`文件所在目录构建镜像：`docker build -t imagename .`，这样就生成了一个镜像，可以在Docker Desktop的镜像栏中看到  
-然后可以运行镜像：`docker run -it imagename`  
+##### 用镜像构建容器
+用镜像构建容器：`docker run -it imagename`  
 进入镜像会，会看到如下格式：`root@<容器ID>:/#`，Docker Desktop的容器栏也能看到，用`exit`即可退出  
+
+> 接下来就是随便用不同容器来进行linux环境管理等需求了
