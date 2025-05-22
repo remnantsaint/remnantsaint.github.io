@@ -93,6 +93,7 @@ wsl --install -d Ubuntu-20.04
 15. docker builder prune：删除build cache
 16. docker system df：查看当前缓存大小
 17. docker cp linux中文件路径  容器id:容器中路径：复制粘贴文件
+18. docker stats：查看当前容器性能
 ##### 构建镜像
 首先需要一个`Dockerfile`文件，文件具体编写方法暂略  
 然后在`Dockerfile`文件所在目录构建镜像：`docker build -t imagename .`，这样就生成了一个镜像，可以在Docker Desktop的镜像栏中看到  
