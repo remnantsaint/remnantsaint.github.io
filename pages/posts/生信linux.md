@@ -6,7 +6,6 @@ image:
 layout: post
 tags: 
   - 生信
-time_warning: true
 title: 生信linux
 top: 
 ---
@@ -18,3 +17,5 @@ top:
 安装.sh文件方法：sudo sh *.sh
 
 经过思考，决定不用ubuntu了     （悲
+
+2025/5/26   这个月用docker来创建ubuntu20.04环境运行生信软件感觉不错
