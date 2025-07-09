@@ -1,3 +1,9 @@
+> 以下在`git bash`中运行
+
+# 克隆到本地
+```
+git clone git@github.com:remnantsaint/Valaxy_blog.git
+```
 # 安装依赖
 ```
 pnpm i
