@@ -8,6 +8,7 @@ tags:
  - leetcode
 categories: 
  - 刷题计划
+hide: true
 # author: @Remsait
 ---
 > 记录所有做过的leetcode题
@@ -161,6 +162,7 @@ class Solution {
 ### 69. x 的平方根 
 思路：用二分查找从 1 ~ x 找到平方小于等于 x 的最大整数。  
 时间复杂度：O(log n)
+
 ```c++
 class Solution {
    public:
@@ -177,6 +179,36 @@ class Solution {
                 return mid;
         }
         return l - 1;
+    }
+};
+```
+
+### 209. 长度最小的子数组
+思路：滑动窗口
+时间复杂度： O(n)
+
+```c++
+class Solution {
+   public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int sum = 0;        // 滑动窗口数值之和
+        int i = 0;          // 滑动窗口起始位置
+        int sublength = 0;  // 滑动窗口的长度
+        int ans = 0x7fffffff;
+        for (int j = 0; j < nums.size(); j++) {
+            sum += nums[j];
+            // 注意这里使用while，每次更新 i（起始位置），并不断比较子序列是否符合条件
+            while (sum >= target) {            
+                // 找符合条件最短连续子序列
+                sublength = (j - i + 1);  // 取子序列的长度
+                ans = ans < sublength ? ans : sublength;
+                // 这里体现出滑动窗口的精髓之处，不断变更i（子序列的起始位置）
+                sum = sum - nums[i];
+                i++;
+            }
+        }
+        // 如果ans没有被赋值的话，就返回0，说明没有符合条件的子序列
+        return ans == 0x7fffffff ? 0 : ans;
     }
 };
 ```
@@ -307,4 +339,34 @@ class Solution {
         return a;
     }
 };
+```
+
+### 1109. 航班预订统计
+思路：使用了**差分数组**的经典思想来解决区间批量更新问题，在`[l,r]`区间内增加或减少数值，就能用到差分法，使`a[l] += value ，a[r+1] -= value`，注意`r+1`时候的溢出，对`a`数组每一位求前缀和即为更新后的数组。  
+时间复杂度：O(n)  
+代码如下：
+```c++
+class Solution {
+   public:
+    vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+        vector<int> result(n + 2, 0);  // 多开空间防越界
+        // 构建差分数组（仍用传统for循环）
+        for (int i = 0; i < bookings.size(); i++) {
+            result[bookings[i][0]] += bookings[i][2];
+            result[bookings[i][1] + 1] -= bookings[i][2];
+        }
+        // 前缀和还原（直接在result上操作）
+        for (int i = 1; i <= n; i++) {
+            result[i] += result[i - 1];
+        }
+        // 截取需要的部分
+        result.erase(result.begin());      // 删除第1个元素（索引0）
+        result.erase(result.begin() + n);  // 删除第n+1个元素
+        return result;
+    }
+};
+/*
+再遍历vector二维动态数组的时候，可以使用for(auto& booking: bookings) 来自动遍历每一行
+用booking[0]和booking[1]等访问每一行的列数据
+*/
 ```

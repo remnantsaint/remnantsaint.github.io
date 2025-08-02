@@ -65,6 +65,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/一些Tip': RouteRecordInfo<'/posts/一些Tip', '/posts/一些Tip', Record<never, never>, Record<never, never>>,
     '/posts/移除元素（双指针）': RouteRecordInfo<'/posts/移除元素（双指针）', '/posts/移除元素（双指针）', Record<never, never>, Record<never, never>>,
     '/posts/预测数值型数据：回归': RouteRecordInfo<'/posts/预测数值型数据：回归', '/posts/预测数值型数据：回归', Record<never, never>, Record<never, never>>,
+    '/posts/长度最小的子数组': RouteRecordInfo<'/posts/长度最小的子数组', '/posts/长度最小的子数组', Record<never, never>, Record<never, never>>,
     '/posts/找出环形链表的入环第一个结点': RouteRecordInfo<'/posts/找出环形链表的入环第一个结点', '/posts/找出环形链表的入环第一个结点', Record<never, never>, Record<never, never>>,
     '/posts/重排链表': RouteRecordInfo<'/posts/重排链表', '/posts/重排链表', Record<never, never>, Record<never, never>>,
     '/posts/DFS_搜索': RouteRecordInfo<'/posts/DFS_搜索', '/posts/DFS_搜索', Record<never, never>, Record<never, never>>,
