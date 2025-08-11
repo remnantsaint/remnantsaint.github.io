@@ -37,6 +37,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/二分查找': RouteRecordInfo<'/posts/二分查找', '/posts/二分查找', Record<never, never>, Record<never, never>>,
     '/posts/反转部分链表': RouteRecordInfo<'/posts/反转部分链表', '/posts/反转部分链表', Record<never, never>, Record<never, never>>,
     '/posts/反转链表': RouteRecordInfo<'/posts/反转链表', '/posts/反转链表', Record<never, never>, Record<never, never>>,
+    '/posts/哈希表理论基础': RouteRecordInfo<'/posts/哈希表理论基础', '/posts/哈希表理论基础', Record<never, never>, Record<never, never>>,
     '/posts/合并有序链表': RouteRecordInfo<'/posts/合并有序链表', '/posts/合并有序链表', Record<never, never>, Record<never, never>>,
     '/posts/环形链表Ⅱ': RouteRecordInfo<'/posts/环形链表Ⅱ', '/posts/环形链表Ⅱ', Record<never, never>, Record<never, never>>,
     '/posts/回文数': RouteRecordInfo<'/posts/回文数', '/posts/回文数', Record<never, never>, Record<never, never>>,
