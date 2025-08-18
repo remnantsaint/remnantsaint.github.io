@@ -1,1 +1,120 @@
-// you can custom css here
+// 自定义文章卡片样式 - 左右交替布局
+.post-card-image {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--va-c-bg-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-card-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--va-c-primary);
+}
+
+// 没有图片的卡片也添加悬停效果
+.post-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--va-c-bg-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--va-c-primary);
+}
+
+// 左右交替布局 - 偶数文章图片在右边
+.yun-post-list .post-card-image:nth-child(even) .post-card-info {
+  flex-direction: row-reverse;
+}
+
+.yun-post-list .post-card-image:nth-child(even) .cover {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+// 奇数文章图片在左边（默认）
+.yun-post-list .post-card-image:nth-child(odd) .cover {
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+// 图片悬停效果 - 只保留缓慢放大
+.cover {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+// 标题悬停效果
+.post-title-link:hover {
+  color: var(--va-c-primary);
+  transition: color 0.3s ease;
+}
+
+// 为不同主题模式优化
+html.dark .post-card-image,
+html.dark .post-card {
+  background: rgba(5, 16, 29, 0.8);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+html.dark .post-card-image:hover,
+html.dark .post-card:hover {
+  border-color: var(--va-c-primary);
+  background: rgba(5, 16, 29, 0.9);
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .yun-post-list .post-card-image .post-card-info {
+    flex-direction: column !important;
+  }
+  
+  .yun-post-list .post-card-image .cover {
+    margin: 0 0 15px 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+// 添加淡入动画
+.yun-post-list .post-card-image,
+.yun-post-list .post-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 为每个卡片添加延迟动画
+.yun-post-list .post-card-image:nth-child(1),
+.yun-post-list .post-card:nth-child(1) { animation-delay: 0.1s; }
+.yun-post-list .post-card-image:nth-child(2),
+.yun-post-list .post-card:nth-child(2) { animation-delay: 0.2s; }
+.yun-post-list .post-card-image:nth-child(3),
+.yun-post-list .post-card:nth-child(3) { animation-delay: 0.3s; }
+.yun-post-list .post-card-image:nth-child(4),
+.yun-post-list .post-card:nth-child(4) { animation-delay: 0.4s; }
+.yun-post-list .post-card-image:nth-child(5),
+.yun-post-list .post-card:nth-child(5) { animation-delay: 0.5s; }

@@ -2,6 +2,7 @@
 categories: 其他
 cover: https://cloudflare.remsait.com/img/valaxy.png
 date: 2024-09-07 21:50:59
+updated: 2025-8-18
 image: 
 layout: post
 tags: valaxy
@@ -101,16 +102,32 @@ image是文章中的顶图   cover是显示在主页的图
 
 girls添加头像时直接在百度搜图片，然后复制链接，挂了再补
 
-新建了个scaffolds文件夹，里面放`post.md`名字的模板，用`valaxy new --layout post name`命令创建新文件，缩写是`valaxy new -l post name`
+新建了个scaffolds文件夹，里面放`post.md`名字的模板，用`valaxy new --layout post name`命令创建新文件，缩写是`valaxy new -l post name`  
+模板如下：   
+```md
+---
+layout: <%=layout%>
+title: <%=title%>
+date: <%=date%>
+updated: <%=date.split(' ')[0]%>
+time_warning: true 
+cover: 
+top: 
+tags: 
+categories: 
+# author: @Remsait
+---
+```
 > 貌似创建模板后，直接valaxy new name即可
 标签要类似这样创建
+
 ```
 tags:
   - valaxy
   - 笔记
 ```
 字数统计和阅读时长不用写在FrongMatter
-标签最好换行用`  - `来写
+标签最好换行用` - `来写
 
 转移文章时候用karu大佬给的脚本来进行，代码如下,自己修改对应的frontmatter：
 需要先安装依赖：`pip3 install python-frontmatter`
@@ -203,10 +220,11 @@ if __name__ == '__main__':
 好难啊，暂时不想改主题了(艰难花费两天时间改完了），以后有时间系统学习一下vue相关的。没有前端基础，自己创个新界面都费劲。
 原hexo界面仍然部署在github-page上，想用原来的也很简单，因为是两个库，主要是迁移文章太麻烦啦！！  
 
-当git拉取不对的时候，最好直接删掉本地valaxy文件夹，重新在github上拉取，方法如下：(1)先git clone到本地 （2）进入目录后 `pnpm i`  (3) 大功告成  
+当git拉取不对的时候，最好直接删掉本地valaxy文件夹，重新在github上拉取，方法如下：(1)先git clone到本地 （2）进入目录后 `pnpm i`  (3) 大功告成      
 
+在`styles/index.scss`文件中修改了主页文章卡片的悬停动态效果，具体问 AI  
 
-
+文章的`time_warning`标签要配合`updated`标签一起使用  
 
 
 
