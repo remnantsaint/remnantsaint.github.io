@@ -32,7 +32,7 @@ export default defineValaxyConfig<UserThemeConfig>({
         placeholder: "欢迎写下您的留言！",
       },
       pageview: true,
-      serverURL: 'comment.remsait.com/',
+      serverURL: 'https://celadon-florentine-94df5b.netlify.app/.netlify/functions/comment',
     }),
     addonBangumi({
       api: 'https://bilibili.remsait.com/api',
@@ -70,7 +70,7 @@ export default defineValaxyConfig<UserThemeConfig>({
     })
   ],
 
-  
+
 
   themeConfig: {
     banner: {
