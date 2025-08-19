@@ -78,6 +78,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/移除元素': RouteRecordInfo<'/posts/移除元素', '/posts/移除元素', Record<never, never>, Record<never, never>>,
     '/posts/有效的字母异位词': RouteRecordInfo<'/posts/有效的字母异位词', '/posts/有效的字母异位词', Record<never, never>, Record<never, never>>,
     '/posts/预测数值型数据：回归': RouteRecordInfo<'/posts/预测数值型数据：回归', '/posts/预测数值型数据：回归', Record<never, never>, Record<never, never>>,
+    '/posts/栈与队列理论基础': RouteRecordInfo<'/posts/栈与队列理论基础', '/posts/栈与队列理论基础', Record<never, never>, Record<never, never>>,
     '/posts/长度最小的子数组': RouteRecordInfo<'/posts/长度最小的子数组', '/posts/长度最小的子数组', Record<never, never>, Record<never, never>>,
     '/posts/找出字符串中第一个匹配项的下标': RouteRecordInfo<'/posts/找出字符串中第一个匹配项的下标', '/posts/找出字符串中第一个匹配项的下标', Record<never, never>, Record<never, never>>,
     '/posts/重排链表': RouteRecordInfo<'/posts/重排链表', '/posts/重排链表', Record<never, never>, Record<never, never>>,

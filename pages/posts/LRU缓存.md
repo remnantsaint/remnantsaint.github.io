@@ -1,14 +1,15 @@
 ---
 categories: 
-  - 刷题计划
+  - 算法基础
   - 链表
 cover: 
 date: 2023-04-10 19:37:40
+updated: 2023-04-11
 image: 
 layout: post
 tags:
   - 链表
-  - 哈希
+  - 哈希表
 time_warning: true
 title: LRU缓存
 top: 

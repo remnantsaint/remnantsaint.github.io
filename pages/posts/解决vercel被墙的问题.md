@@ -12,7 +12,7 @@ categories:
 # author: @Remsait
 ---
 ## 前言
-&emsp; 我在使用 valaxy 框架，搭配 yun 主题来搭建自己的博客，根据官方文档，把评论插件`waline`和追番插件`bangumi`都配置好后，两者都部署在`vercel`网站上。
+&emsp; 我在使用 valaxy 框架，搭配 yun 主题来搭建自己的博客，根据官方文档，把评论插件`waline`和追番插件`bangumi`都配置好后，评论配置在`netlify`，追番配置在`vercel`。  
 &emsp; 但是 vercel 网站上的应用有可能因为 dns 污染而被墙，以下是让其在国内能访问的办法  
 
 <!-- more -->
@@ -39,6 +39,8 @@ comment 准备部署在 Netlify 网站，[教程](https://waline.js.org/guide/de
 > 
 
 这个 comment 是 github 上 fork 的项目的`netlify/functions/comment.js`  
+
+感觉还是`netlify`好啊
 
 
 

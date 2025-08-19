@@ -206,7 +206,7 @@ if __name__ == '__main__':
     display: inline-block;
     color: #999;
     padding: 2px;">
-      谨以此纪念我永远的队友们
+      滴滴滴
   	</div>
 </center>
 ```
@@ -226,7 +226,7 @@ if __name__ == '__main__':
 
 文章的`time_warning`标签要配合`updated`标签一起使用  
 
-
+图床配置详见：[腾讯云cos图床+cloudflare+Picgo](https://remsait.com/posts/%E8%85%BE%E8%AE%AF%E4%BA%91cos%E5%9B%BE%E5%BA%8A+cloudflare+Picgo)  
 
 
 
