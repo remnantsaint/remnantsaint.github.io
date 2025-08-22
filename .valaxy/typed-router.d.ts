@@ -40,6 +40,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/反转字符串': RouteRecordInfo<'/posts/反转字符串', '/posts/反转字符串', Record<never, never>, Record<never, never>>,
     '/posts/哈希表理论基础': RouteRecordInfo<'/posts/哈希表理论基础', '/posts/哈希表理论基础', Record<never, never>, Record<never, never>>,
     '/posts/合并有序链表': RouteRecordInfo<'/posts/合并有序链表', '/posts/合并有序链表', Record<never, never>, Record<never, never>>,
+    '/posts/滑动窗口最大值': RouteRecordInfo<'/posts/滑动窗口最大值', '/posts/滑动窗口最大值', Record<never, never>, Record<never, never>>,
     '/posts/环形链表Ⅱ': RouteRecordInfo<'/posts/环形链表Ⅱ', '/posts/环形链表Ⅱ', Record<never, never>, Record<never, never>>,
     '/posts/回文数': RouteRecordInfo<'/posts/回文数', '/posts/回文数', Record<never, never>, Record<never, never>>,
     '/posts/机器学习': RouteRecordInfo<'/posts/机器学习', '/posts/机器学习', Record<never, never>, Record<never, never>>,
