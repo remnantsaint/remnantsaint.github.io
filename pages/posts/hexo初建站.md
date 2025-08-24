@@ -2,6 +2,7 @@
 categories: 其他
 cover: 
 date: 2022-12-29 16:30:48
+updated: 2022-12-31
 image: 
 layout: post
 tags: 
@@ -9,7 +10,6 @@ time_warning: true
 title: hexo初建站
 top: 
 ---
-![](https://blog-1310084410.cos.ap-beijing.myqcloud.com/img/202409101732702.png)
 1.下载安装git与node.js
 
 2.配置nodejs环境(略)
