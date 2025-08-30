@@ -34,6 +34,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/大数据与MapReduce': RouteRecordInfo<'/posts/大数据与MapReduce', '/posts/大数据与MapReduce', Record<never, never>, Record<never, never>>,
     '/posts/迭代-递归-分治': RouteRecordInfo<'/posts/迭代-递归-分治', '/posts/迭代-递归-分治', Record<never, never>, Record<never, never>>,
     '/posts/对链表插入排序': RouteRecordInfo<'/posts/对链表插入排序', '/posts/对链表插入排序', Record<never, never>, Record<never, never>>,
+    '/posts/二叉树层序遍历': RouteRecordInfo<'/posts/二叉树层序遍历', '/posts/二叉树层序遍历', Record<never, never>, Record<never, never>>,
     '/posts/二叉树理论基础': RouteRecordInfo<'/posts/二叉树理论基础', '/posts/二叉树理论基础', Record<never, never>, Record<never, never>>,
     '/posts/二分查找': RouteRecordInfo<'/posts/二分查找', '/posts/二分查找', Record<never, never>, Record<never, never>>,
     '/posts/反转部分链表': RouteRecordInfo<'/posts/反转部分链表', '/posts/反转部分链表', Record<never, never>, Record<never, never>>,
