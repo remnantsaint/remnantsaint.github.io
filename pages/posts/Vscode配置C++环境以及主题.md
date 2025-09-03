@@ -151,7 +151,14 @@ categories: 其他
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp"
-    }
+    },
+    
+    "editor.formatOnSave": true,
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "C_Cpp.formatting": "vcFormat",
+    "clang-format.style": "Google"
 }
 ```
 
