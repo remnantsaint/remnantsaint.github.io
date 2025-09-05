@@ -6,5 +6,7 @@ toc: false		# 关闭文章目录
 aside: false	# 关闭目录边栏
 nav: false
 ---
+> 你愿意跟我看一辈子的番剧吗
+
 
 <ValaxyBangumi />
