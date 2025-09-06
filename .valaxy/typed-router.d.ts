@@ -96,6 +96,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/重排链表': RouteRecordInfo<'/posts/重排链表', '/posts/重排链表', Record<never, never>, Record<never, never>>,
     '/posts/字符串操作基础': RouteRecordInfo<'/posts/字符串操作基础', '/posts/字符串操作基础', Record<never, never>, Record<never, never>>,
     '/posts/最大平均通过率': RouteRecordInfo<'/posts/最大平均通过率', '/posts/最大平均通过率', Record<never, never>, Record<never, never>>,
+    '/posts/左叶子之和': RouteRecordInfo<'/posts/左叶子之和', '/posts/左叶子之和', Record<never, never>, Record<never, never>>,
     '/posts/DFS_搜索': RouteRecordInfo<'/posts/DFS_搜索', '/posts/DFS_搜索', Record<never, never>, Record<never, never>>,
     '/posts/DFS_图论': RouteRecordInfo<'/posts/DFS_图论', '/posts/DFS_图论', Record<never, never>, Record<never, never>>,
     '/posts/docker基础教程': RouteRecordInfo<'/posts/docker基础教程', '/posts/docker基础教程', Record<never, never>, Record<never, never>>,
