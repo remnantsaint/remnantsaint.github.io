@@ -41,6 +41,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/二叉树层序遍历': RouteRecordInfo<'/posts/二叉树层序遍历', '/posts/二叉树层序遍历', Record<never, never>, Record<never, never>>,
     '/posts/二叉树的所有路径': RouteRecordInfo<'/posts/二叉树的所有路径', '/posts/二叉树的所有路径', Record<never, never>, Record<never, never>>,
     '/posts/二叉树理论基础': RouteRecordInfo<'/posts/二叉树理论基础', '/posts/二叉树理论基础', Record<never, never>, Record<never, never>>,
+    '/posts/二叉搜索树': RouteRecordInfo<'/posts/二叉搜索树', '/posts/二叉搜索树', Record<never, never>, Record<never, never>>,
     '/posts/二分查找': RouteRecordInfo<'/posts/二分查找', '/posts/二分查找', Record<never, never>, Record<never, never>>,
     '/posts/翻转二叉树': RouteRecordInfo<'/posts/翻转二叉树', '/posts/翻转二叉树', Record<never, never>, Record<never, never>>,
     '/posts/反转部分链表': RouteRecordInfo<'/posts/反转部分链表', '/posts/反转部分链表', Record<never, never>, Record<never, never>>,
