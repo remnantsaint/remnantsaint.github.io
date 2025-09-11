@@ -40,6 +40,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/对链表插入排序': RouteRecordInfo<'/posts/对链表插入排序', '/posts/对链表插入排序', Record<never, never>, Record<never, never>>,
     '/posts/二叉树层序遍历': RouteRecordInfo<'/posts/二叉树层序遍历', '/posts/二叉树层序遍历', Record<never, never>, Record<never, never>>,
     '/posts/二叉树的所有路径': RouteRecordInfo<'/posts/二叉树的所有路径', '/posts/二叉树的所有路径', Record<never, never>, Record<never, never>>,
+    '/posts/二叉树的最近公共祖先': RouteRecordInfo<'/posts/二叉树的最近公共祖先', '/posts/二叉树的最近公共祖先', Record<never, never>, Record<never, never>>,
     '/posts/二叉树理论基础': RouteRecordInfo<'/posts/二叉树理论基础', '/posts/二叉树理论基础', Record<never, never>, Record<never, never>>,
     '/posts/二叉搜索树': RouteRecordInfo<'/posts/二叉搜索树', '/posts/二叉搜索树', Record<never, never>, Record<never, never>>,
     '/posts/二分查找': RouteRecordInfo<'/posts/二分查找', '/posts/二分查找', Record<never, never>, Record<never, never>>,
