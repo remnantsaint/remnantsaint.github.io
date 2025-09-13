@@ -8,6 +8,7 @@ cover:
 top: 
 tags: 
  - GNN
+ - 深度学习
 categories: 
  - 深度学习
 # author: @Remsait
