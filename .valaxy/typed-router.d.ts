@@ -43,6 +43,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/二叉树的最近公共祖先': RouteRecordInfo<'/posts/二叉树的最近公共祖先', '/posts/二叉树的最近公共祖先', Record<never, never>, Record<never, never>>,
     '/posts/二叉树理论基础': RouteRecordInfo<'/posts/二叉树理论基础', '/posts/二叉树理论基础', Record<never, never>, Record<never, never>>,
     '/posts/二叉搜索树': RouteRecordInfo<'/posts/二叉搜索树', '/posts/二叉搜索树', Record<never, never>, Record<never, never>>,
+    '/posts/二叉搜索树的修改与构造': RouteRecordInfo<'/posts/二叉搜索树的修改与构造', '/posts/二叉搜索树的修改与构造', Record<never, never>, Record<never, never>>,
     '/posts/二分查找': RouteRecordInfo<'/posts/二分查找', '/posts/二分查找', Record<never, never>, Record<never, never>>,
     '/posts/翻转二叉树': RouteRecordInfo<'/posts/翻转二叉树', '/posts/翻转二叉树', Record<never, never>, Record<never, never>>,
     '/posts/反转部分链表': RouteRecordInfo<'/posts/反转部分链表', '/posts/反转部分链表', Record<never, never>, Record<never, never>>,
