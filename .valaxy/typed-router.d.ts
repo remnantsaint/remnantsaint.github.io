@@ -77,7 +77,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/人员站位的方案数Ⅰ': RouteRecordInfo<'/posts/人员站位的方案数Ⅰ', '/posts/人员站位的方案数Ⅰ', Record<never, never>, Record<never, never>>,
     '/posts/删除链表的倒数第N个节点': RouteRecordInfo<'/posts/删除链表的倒数第N个节点', '/posts/删除链表的倒数第N个节点', Record<never, never>, Record<never, never>>,
     '/posts/设计链表': RouteRecordInfo<'/posts/设计链表', '/posts/设计链表', Record<never, never>, Record<never, never>>,
-    '/posts/深度学习之旅': RouteRecordInfo<'/posts/深度学习之旅', '/posts/深度学习之旅', Record<never, never>, Record<never, never>>,
+    '/posts/深度学习Pytorch入门': RouteRecordInfo<'/posts/深度学习Pytorch入门', '/posts/深度学习Pytorch入门', Record<never, never>, Record<never, never>>,
     '/posts/生信基础': RouteRecordInfo<'/posts/生信基础', '/posts/生信基础', Record<never, never>, Record<never, never>>,
     '/posts/生信linux': RouteRecordInfo<'/posts/生信linux', '/posts/生信linux', Record<never, never>, Record<never, never>>,
     '/posts/使用Apriori算法进行关联分析': RouteRecordInfo<'/posts/使用Apriori算法进行关联分析', '/posts/使用Apriori算法进行关联分析', Record<never, never>, Record<never, never>>,

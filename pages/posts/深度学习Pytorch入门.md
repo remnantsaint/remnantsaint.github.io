@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 深度学习之旅
+title: 深度学习Pytorch入门
 date: 2025-03-03 13:18:03
-updated: 2025-09-15 
+updated: 2025-09-17
 time_warning: true
 cover: 
 top: 
@@ -46,13 +46,13 @@ print(f"Python解释器路径: {sys.executable}")
 ### Python 中魔法方法的用法
   __call__ 是 python 中的魔法方法，可以让类的实例具备像函数一样被调用的能力  
   比如定义一个 person = Person() 的实例，用 `person()` 就能调用 __call__ 方法  
-  
+
   __init__ 是初始化方法，在最初的 person = Person() 的 () 内可以输出参数来初始化  
-  
+
   可以自己重写一些魔法方法再应用
 ## PyTorch 加载数据
   两个类：Dataset , Dataloader  
-  
+
   Dataset 提供一种方式去获取数据及其 label  
   Dataloader 为后面网络提供不同的数据形式  
 `read_data.py`代码如下：
@@ -170,7 +170,7 @@ writer.close()
   Image.open() 输入的是 PIL 格式  
   ToTensor() 输出的是 tensor 张量
   cv.imread() 输出的是 narrays 格式
-  
+
   方法中有 `ToTensor()、Normalize()、Resize()、Compose()`，具体使用方法如代码所示：
 ```python
 from PIL import Image
@@ -302,4 +302,231 @@ for epoch in range(2):
 writer.close()
 ```
 ## 神经网络的基本骨架——nn.Module的使用
+  nn 即是 Neural network 神经网络  
+  前向传播：输入进入神经网络中，最后产生输出  
+### 简单的 python 函数
+简单的 python 函数代码如下：  
+```python
+from torch import nn
+import torch
 
+class Test(nn.Module): 
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, input):
+        output = input + 1
+        return output
+
+test = Test()
+x = torch.tensor(1.0)
+output= test(x)
+print(output)
+```
+## 卷积神经网络
+### 简单卷积运算 F.conv2d
+  卷积运算就是把一个小一点的卷积核放到图像上每个位置相乘后全部相加，然后滑动  
+```python
+from torch import nn
+import torch.nn.functional as F
+import torch
+input = torch.tensor([[1, 2, 0, 3, 1],
+                      [0, 1, 2, 3, 1],
+                      [1, 2, 1, 0, 0],
+                      [5, 2, 3, 1, 1],
+                      [2, 1, 0, 1, 1]])
+kernel = torch.tensor([[1, 2, 1],
+                       [0, 1, 0],
+                       [2, 1, 0]])
+input = torch.reshape(input, (1, 1, 5, 5)) # minibatch图片数量 channels通道数
+kernel = torch.reshape(kernel, (1, 1, 3, 3))
+output = F.conv2d(input, kernel, stride=1) # 进行卷积运算
+print(output)
+output2 = F.conv2d(input, kernel, stride=2)
+print(output2)
+output3 = F.conv2d(input, kernel, stride=1, padding=1) # 外填充1层0，5,5变成 7,7
+print(output3)
+```
+### 卷积层 torch.nn.Conv2d
+  `class torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros', device=None, dtype=None)`  
+  
+  其中 out_channels 与卷积核数量相同；in_channels 与 上一层输出数量和一开始的输入是什么有关  
+```python
+from torch import nn
+from torch.nn import Conv2d
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard.writer import SummaryWriter
+from torchvision import datasets
+import torchvision
+import torch
+
+dataset = datasets.CIFAR10("./dataset", train=False, transform=torchvision.transforms.ToTensor(), download=True)
+dataloader = DataLoader(dataset, batch_size=64, shuffle=True, drop_last=False, num_workers=0)
+
+class Conv(nn.Module):
+    def __init__(self) -> None:
+        super().__init__() # 调用父类的构造函数
+        self.conv1 = Conv2d(in_channels=3, out_channels=6, kernel_size=3, stride=1, padding=0) # 进行一次卷积变换
+    
+    def forward(self, x):
+        x = self.conv1(x)
+        return x
+
+conv = Conv()
+
+writer = SummaryWriter("logs")
+
+step = 0
+# 输入图片像素是 32×32
+for data in dataloader:
+    imgs, targets = data
+    output = conv(imgs) # __call__ 方法自动调用前向
+    # print(imgs.shape)
+    # print(output.shape) # [图片数量，通道数，卷积操作后的高宽]
+    writer.add_images("input", imgs, step)
+    output = torch.reshape(output,(-1, 3, 30, 30)) # 因为压缩了通道数，-1被计算成128
+    writer.add_images("output", output, step)
+    step += 1
+
+writer.close()
+```
+### 最大池化的使用 torch.nn.MaxPool2d
+  池化层：用于降低特征图的空间维度，减少计算量和参数数量，同时保留最重要的特征信息  
+  
+  最大池化就是设定一个池化核，然后放到输入图像，每个核覆盖的范围只会取最大值  
+  
+  `torch.nn.MaxPool2d(kernel_size, stride=None, padding=0, dilation=1, return_indices=False, ceil_mode=False)[source]`  
+  
+  其中 stride 默认和 kernel_size 相同，return_indices 是最大池化时返回下标索引，ceil_mode 是当剩下的位置不能填满 kernel 的话，就舍弃，当 ceil_mode 为 True 的时候，就不舍弃  
+  
+  池化层的输入输出如下：  
+* $Input:（N，C，H_{in}，W_{in}）$
+* $Output:（N，C，H_{out}，W_{out}）$ , where
+  $$H_{\text{out}} = \left\lfloor \frac{H_{\text{in}} + 2 \times \text{padding}[0] - \text{dilation}[0] \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1 \right\rfloor$$
+
+  $$W_{\text{out}} = \left\lfloor \frac{W_{\text{in}} + 2 \times \text{padding}[1] - \text{dilation}[1] \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1 \right\rfloor$$
+  
+  就像打了马赛克一样，代码如下：
+```python
+import torch
+from torch import nn
+from torch.nn import Conv2d, MaxPool2d
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard.writer import SummaryWriter
+from torchvision import datasets
+import torchvision
+
+dataset = datasets.CIFAR10("./dataset", train=False, transform=torchvision.transforms.ToTensor(), download=True)
+dataloader = DataLoader(dataset, batch_size=64, shuffle=True, drop_last=False, num_workers=0)
+# input = torch.tensor([[1, 2, 0, 3, 1],
+#                       [0, 1, 2, 3, 1],
+#                       [1, 2, 1, 0, 0],
+#                       [5, 2, 3, 1, 1],
+#                       [2, 1, 0, 1, 1]], dtype=torch.float32)
+# input = torch.reshape(input, (-1, 1, 5, 5)) # -1被计算成 1
+# print(input.shape)
+
+class Conv(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.maxpool1 = MaxPool2d(kernel_size=3, ceil_mode=True) # stride 默认等于 kernel_size
+        # 池化操作只支持浮点类型（float32/float64）或者半精度（float16/bfloat16）
+    def forward(self, x):
+        output = self.maxpool1(x)
+        return output
+
+conv = Conv()
+writer = SummaryWriter("logs")
+step = 0
+for data in dataloader:
+    imgs, targets = data
+    writer.add_images("input", imgs, step)
+    output = conv(imgs) # 池化操作通道数不变
+    writer.add_images("output", output, step)
+    print(imgs.shape, " ", output.shape)
+    step += 1
+
+writer.close()
+```
+### 非线性激活 
+  $$ReLU(x) = (x)^+ = max(0, x)$$  
+  $$Sigmoid(x) = \sigma (x) = \frac{1}{1 + exp(-x)} $$  
+  
+  ReLU 中的 inplace 参数的意思是是否覆盖原值，如果为 false 需要设置一个值去接  
+  
+```python
+import torch
+from torch import nn
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard.writer import SummaryWriter
+from torchvision import datasets
+import torchvision
+
+input = torch.tensor([[1.0, -0.5],[-1, 3]])
+input = torch.reshape(input, (-1, 1, 2, 2))
+
+dataset = datasets.CIFAR10("./dataset", train=False, transform=torchvision.transforms.ToTensor(), download=True)
+dataloader = DataLoader(dataset, batch_size=64, shuffle=True, drop_last=False, num_workers=0)
+
+class Nen(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.relu1 = nn.ReLU()
+        self.sigmoid1 = nn.Sigmoid()
+    
+    def forward(self, x):
+        output = self.sigmoid1(x)
+        return output
+
+nen = Nen()
+# output = relu(input) # 正数不变，负数为0
+# print(output)
+
+step = 0
+writer = SummaryWriter("logs")
+for data in dataloader:
+    imgs, targets = data
+    writer.add_images("input", imgs, step)
+    output = nen(imgs)
+    writer.add_images("output", output, step)
+    step += 1
+writer.close()
+```
+### 线性层及其他层介绍
+  Normalization 归一化层 ：进行归一化，参数是通道数量，均值为 0，方差为 1， torch.nn.BatchNorm2d  
+  Recurrent 循环层：RNN LSTM 之类的  
+  Transformer 层  
+  Linear 线性层：nn.Linear ，$y = xA^T + b$ ，输入核输出是全连接层的神经元数量，权重和偏置自动计算  
+  Dropout 层：随机失活  
+  Sparse 稀疏层：nn.Embedding  
+  
+  线性层代码如下：
+```c++
+import torch
+from torch.nn import Linear
+from torch.utils.data import DataLoader
+import torchvision
+
+dataset = torchvision.datasets.CIFAR10("./dataset", train=True, transform=torchvision.transforms.ToTensor(), download=True)
+dataloader = DataLoader(dataset, batch_size=64, drop_last=True)
+
+class Remsait(torch.nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.linear1 = Linear(196608, 10)
+    def forward(self, x):
+        output = self.linear1(x)
+        return output
+
+remsait = Remsait()
+for data in dataloader:
+    imgs, targets = data
+    # print(imgs.shape)
+    # output = torch.reshape(imgs, (1, 1, 1, -1))
+    output = torch.flatten(imgs) # 线性层要求是二维向量，所以要先展平（正确应该是保留batchsize
+    # output = torch.flatten(imgs, start_dim=1)  # 从第1维开始展平，保留 batch 维度
+    # print(output.shape)
+    output = remsait(output)
+    print(output.shape)
+```
+## 神经网络搭建小实战与 Sequential 的使用
