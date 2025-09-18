@@ -10,7 +10,7 @@ tags:
  - 深度学习
 categories: 
  - 深度学习
-# author: @Remsait
+
 ---
 ## 环境准备
   首先要在jupyter上能进行`import pytorch`，实验室电脑不支持CUDA，所以下CPU版的pytorch  
@@ -39,7 +39,6 @@ print(f"Python解释器路径: {sys.executable}")
 ```
   本文章参考我是土堆教程，代码在 Cursor 上运行，PyCharm 中会报 Numpy 的版本依赖错误，可以尝试用高版本 Python  
   缺少对应的 python 包时自行下载  
-  代码仓库在 [learn_pytorch]()  
 ## 基本知识
   `dir()`函数能让我们知道工具箱，以及工具箱中都有什么东西，比如 dir(torch)  
   `help()`函数能让我们知道每个工具的使用方法,比如 help(torch.cuda.is_available)  
