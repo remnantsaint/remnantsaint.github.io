@@ -43,14 +43,14 @@ print(f"Python解释器路径: {sys.executable}")
 ## 基本知识
   `dir()`函数能让我们知道工具箱，以及工具箱中都有什么东西，比如 dir(torch)  
   `help()`函数能让我们知道每个工具的使用方法,比如 help(torch.cuda.is_available)  
-  
+
   运行 python 代码的三种方式：python文件、pycharm python console、jupyter notebook  
 ### Python 中魔法方法的用法
   __call__ 是 python 中的魔法方法，可以让类的实例具备像函数一样被调用的能力  
   比如定义一个 person = Person() 的实例，用 `person()` 就能调用 __call__ 方法  
-  
+
   __init__ 是初始化方法，在最初的 person = Person() 的 () 内可以输出参数来初始化  
-  
+
   可以自己重写一些魔法方法再应用
 ## PyTorch 加载数据
   两个类：Dataset , Dataloader  
@@ -658,7 +658,7 @@ for epoch in range(5):
         running_loss = result_loss + running_loss
     print(running_loss)
 ```
-## 现有网络模型的使用及修改
+## 现有网络模型的使用及其修改
   举例使用 VGG 模型  
   xxx.add_module() 添加层，可以在 xxx. 后面加上模块名来修改特定模块  
   也可以直接用模块名加[]索引来修改指定层  
@@ -860,5 +860,5 @@ writer.close()
 
 ## Reference
   [B站我是土堆 PyTorch 入门教程](https://www.bilibili.com/video/BV1hE411t7RN/)  
-  
+
   [PyTorch 官方文档](https://docs.pytorch.org/docs/stable/)  
