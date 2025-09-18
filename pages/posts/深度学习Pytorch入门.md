@@ -2,7 +2,7 @@
 layout: post
 title: 深度学习Pytorch入门
 date: 2025-03-03 13:18:03
-updated: 2025-09-17
+updated: 2025-09-18
 time_warning: true
 cover: 
 top: 
@@ -24,8 +24,7 @@ categories:
   conda install jupyter -y
 #重新启动jupyter并选择已存在内核
 ```
-  注意不要既用`conda`来安装包，又用`pip`安装包，会导致依赖发生问题  
-
+  注意不要既用`conda`来安装包，又用`pip`安装包，会导致依赖发生问题（优先 conda ，没办法就用 pip 吧  
   在 Anaconda prompt 中输入 `jupyter notebook D:` 就能打开了  
   用 jupyter 前先在Anaconda中切换到pytorch环境，再打开 jupyter 换内核
 ```python
@@ -38,21 +37,23 @@ print(f"PyTorch版本: {torch.__version__}")
 # 查看当前Python解释器路径（确认是否为目标环境）
 print(f"Python解释器路径: {sys.executable}")
 ```
+  本文章参考我是土堆教程，代码在 Cursor 上运行，PyCharm 中会报 Numpy 的版本依赖错误，可以尝试用高版本 Python  
+  缺少对应的 python 包时自行下载  
+  代码仓库在 [learn_pytorch]()  
 ## 基本知识
   `dir()`函数能让我们知道工具箱，以及工具箱中都有什么东西，比如 dir(torch)  
   `help()`函数能让我们知道每个工具的使用方法,比如 help(torch.cuda.is_available)  
-
+  
   运行 python 代码的三种方式：python文件、pycharm python console、jupyter notebook  
 ### Python 中魔法方法的用法
   __call__ 是 python 中的魔法方法，可以让类的实例具备像函数一样被调用的能力  
   比如定义一个 person = Person() 的实例，用 `person()` 就能调用 __call__ 方法  
-
+  
   __init__ 是初始化方法，在最初的 person = Person() 的 () 内可以输出参数来初始化  
-
+  
   可以自己重写一些魔法方法再应用
 ## PyTorch 加载数据
   两个类：Dataset , Dataloader  
-
   Dataset 提供一种方式去获取数据及其 label  
   Dataloader 为后面网络提供不同的数据形式  
 `read_data.py`代码如下：
@@ -137,6 +138,7 @@ writer.close()
 ### 结构及用法
   先创建一个具体的工具，比如 tool = transforms.ToTensor()  
   然后用这个 tool ：result = tool(imput)  
+  `Transforms.py` 代码如下：  
 ```python
 from PIL import Image
 from torchvision import transforms
@@ -168,10 +170,10 @@ writer.close()
 ```
 ### 常见的 Transforms
   Image.open() 输入的是 PIL 格式  
-  ToTensor() 输出的是 tensor 张量
-  cv.imread() 输出的是 narrays 格式
-
-  方法中有 `ToTensor()、Normalize()、Resize()、Compose()`，具体使用方法如代码所示：
+  ToTensor() 输出的是 tensor 张量  
+  cv.imread() 输出的是 narrays 格式  
+  方法中有 `ToTensor()、Normalize()、Resize()、Compose()`  
+  `usefulTransforms.py`代码如下：  
 ```python
 from PIL import Image
 from torchvision import transforms
@@ -240,7 +242,7 @@ writer.close()
 ## torchvision 中的数据集使用
 ### datasets 的使用
   使用 torchvision 中的 datasets工具包，能自己下载官方有的数据集  
-代码如下：  
+  `dataset_transform.py`代码如下：  
 ```python
 from torchvision import transforms, datasets
 from torch.utils.tensorboard import SummaryWriter
@@ -269,6 +271,7 @@ writer.close()
 ```
 ## DataLoader 的使用
   datasets 只是告诉我们数据集的位置，dataloader 能将数据加载到神经网络中  
+  `dataloader.py`代码如下：  
 ```python
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard.writer import SummaryWriter
@@ -305,7 +308,7 @@ writer.close()
   nn 即是 Neural network 神经网络  
   前向传播：输入进入神经网络中，最后产生输出  
 ### 简单的 python 函数
-简单的 python 函数代码如下：  
+简单的 python 函数`nn_model.py`代码如下：  
 ```python
 from torch import nn
 import torch
@@ -326,6 +329,7 @@ print(output)
 ## 卷积神经网络
 ### 简单卷积运算 F.conv2d
   卷积运算就是把一个小一点的卷积核放到图像上每个位置相乘后全部相加，然后滑动  
+  `nn.conv.py`代码如下：  
 ```python
 from torch import nn
 import torch.nn.functional as F
@@ -349,7 +353,7 @@ print(output3)
 ```
 ### 卷积层 torch.nn.Conv2d
   `class torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode='zeros', device=None, dtype=None)`  
-  
+  `nn.conv2d.py`代码如下
   其中 out_channels 与卷积核数量相同；in_channels 与 上一层输出数量和一开始的输入是什么有关  
 ```python
 from torch import nn
@@ -392,21 +396,16 @@ writer.close()
 ```
 ### 最大池化的使用 torch.nn.MaxPool2d
   池化层：用于降低特征图的空间维度，减少计算量和参数数量，同时保留最重要的特征信息  
-  
   最大池化就是设定一个池化核，然后放到输入图像，每个核覆盖的范围只会取最大值  
-  
   `torch.nn.MaxPool2d(kernel_size, stride=None, padding=0, dilation=1, return_indices=False, ceil_mode=False)[source]`  
-  
   其中 stride 默认和 kernel_size 相同，return_indices 是最大池化时返回下标索引，ceil_mode 是当剩下的位置不能填满 kernel 的话，就舍弃，当 ceil_mode 为 True 的时候，就不舍弃  
-  
   池化层的输入输出如下：  
-* $Input:（N，C，H_{in}，W_{in}）$
-* $Output:（N，C，H_{out}，W_{out}）$ , where
+* $Input: (N, C, H_{in}, W_{in})$
+* $Output: (N, C, H_{out}, W_{out})$ , where
   $$H_{\text{out}} = \left\lfloor \frac{H_{\text{in}} + 2 \times \text{padding}[0] - \text{dilation}[0] \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1 \right\rfloor$$
-
   $$W_{\text{out}} = \left\lfloor \frac{W_{\text{in}} + 2 \times \text{padding}[1] - \text{dilation}[1] \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1 \right\rfloor$$
   
-  就像打了马赛克一样，代码如下：
+  就像打了马赛克一样，`nn_maxpool.py`代码如下：
 ```python
 import torch
 from torch import nn
@@ -451,9 +450,8 @@ writer.close()
 ### 非线性激活 
   $$ReLU(x) = (x)^+ = max(0, x)$$  
   $$Sigmoid(x) = \sigma (x) = \frac{1}{1 + exp(-x)} $$  
-  
   ReLU 中的 inplace 参数的意思是是否覆盖原值，如果为 false 需要设置一个值去接  
-  
+  `nn.ReLU.py`代码如下：  
 ```python
 import torch
 from torch import nn
@@ -499,9 +497,8 @@ writer.close()
   Linear 线性层：nn.Linear ，$y = xA^T + b$ ，输入核输出是全连接层的神经元数量，权重和偏置自动计算  
   Dropout 层：随机失活  
   Sparse 稀疏层：nn.Embedding  
-  
-  线性层代码如下：
-```c++
+  线性层`nn.Linear.py`代码如下：
+```python
 import torch
 from torch.nn import Linear
 from torch.utils.data import DataLoader
@@ -530,3 +527,338 @@ for data in dataloader:
     print(output.shape)
 ```
 ## 神经网络搭建小实战与 Sequential 的使用
+  `torch.nn.Sequential(*args)`  
+  就是把各种操作按序列方式添加到一起  
+  比如：  
+```python
+model = torch.nn.Sequential(
+    torch.nn.Conv2d(1,20,5),
+    torch.nn.ReLU(),
+    torch.nn.Conv2d(20,64,5),
+    torch.nn.ReLU()
+)
+```
+  用CIFAR10的模型如下图所示：
+![](https://cloudflare.remsait.com/img/Conv2d-202509181030921.png)
+  卷积前后尺寸不变的话，其他参数默认，padding = (kernel_size - 1) / 2  
+  `nn.seq.py`代码如下，其中包括了画模型图：
+```python
+import torch
+from torch import nn
+from torch.nn import Conv2d, Flatten, Linear, MaxPool2d, Sequential
+from torch.utils.tensorboard.writer import SummaryWriter
+
+class Remsait(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        # 卷积前后尺寸不变的话，其他参数默认，padding = (kernel_size - 1) / 2
+        self.model1 = Sequential(
+            Conv2d(3, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 64, 5, padding=2),
+            MaxPool2d(2),
+            Flatten(),
+            Linear(1024, 64),
+            Linear(64, 10)
+        )
+    def forward(self, x):
+        x = self.model1(x)
+        return x
+remsait = Remsait()
+print(remsait)
+input = torch.ones(64, 3, 32, 32) # batch_size channels H W
+output = remsait(input)
+print(output.shape)
+
+writer = SummaryWriter("logs")
+writer.add_graph(remsait, input) # 画一个模型图
+writer.close()
+```
+## 损失函数
+  损失函数能计算实际输出和目标之间的差距  
+  为我们更新输出提供一定的依据（反向传播）  
+  nn.L1Loss 平均绝对误差 MAE ：每位相减后加起来除以 n  
+  nn.MSELoss 均方误差 MSE 较为常用，$MSE = \frac{1}{n}\sum_{i=1}^{n}(x_i-y_i)^2$  
+  nn.CrossEntropyLoss 交叉熵损失，主要用于分类任务，内置了 softmax  
+  `nn.loss.py`代码如下：  
+```python
+import torch
+from torch.nn import MSELoss
+
+inputs = torch.tensor([1, 3, 3], dtype=torch.float32)
+targets = torch.tensor([1, 2, 5], dtype=torch.float32)
+
+# inputs = torch.reshape(inputs, (1, 1, 1, 3))
+# targets = torch.reshape(targets, (1, 1, 1, 3))
+
+loss = torch.nn.L1Loss() # 对应每位相减，取绝对值后全部相加
+result = loss(inputs, targets)
+print(result)
+
+loss_mse = MSELoss()
+result = loss_mse(inputs, targets)
+print(result)
+
+x = torch.tensor([0.1, 0.2, 0.7])
+y = torch.tensor([2]) # 正确的标签索引
+x = torch.reshape(x, (1, 3))
+loss_cross = torch.nn.CrossEntropyLoss()
+result_cross = loss_cross(x, y)
+print(result_cross) # 越小越好
+```
+## 反向传播与优化器
+  模型刚初始化时，卷积层、线性层的权重都是随机值，无法提取图像的有效特征  
+  给模型加上训练闭环，不断调整权重，才能效果更好  
+  前向传播->算损失->反向传播（计算梯度）->优化器更新权重  
+  优化器：torch.optiom  
+  用到：optim.zero_grad()、result_loss.backward()、optim.step()  
+  `nn.optim.py`代码如下  
+```python
+from torch import nn, optim
+import torch
+from torch.nn import Conv2d, Flatten, Linear, MaxPool2d, Sequential
+from torch.utils.data import DataLoader
+import torchvision
+dataset = torchvision.datasets.CIFAR10("./dataset", train=False, transform=torchvision.transforms.ToTensor(), download=True)
+dataloader = DataLoader(dataset, batch_size=1)
+class Remsait(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.model1 = Sequential(
+            Conv2d(3, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 64, 5, padding=2),
+            MaxPool2d(2),
+            Flatten(),
+            Linear(1024, 64),
+            Linear(64, 10)
+        )
+    def forward(self, x):
+        x = self.model1(x)
+        return x
+
+loss = nn.CrossEntropyLoss()
+remsait = Remsait()
+optim = torch.optim.SGD(remsait.parameters(), lr=0.01)
+for epoch in range(5):
+    running_loss = 0.0
+    for data in dataloader:
+        imgs, targets = data
+        outputs = remsait(imgs)
+        # print(outputs)
+        # print(targets)
+        result_loss = loss(outputs, targets)
+        optim.zero_grad()
+        result_loss.backward()
+        optim.step()
+        running_loss = result_loss + running_loss
+    print(running_loss)
+```
+## 现有网络模型的使用及修改
+  举例使用 VGG 模型  
+  xxx.add_module() 添加层，可以在 xxx. 后面加上模块名来修改特定模块  
+  也可以直接用模块名加[]索引来修改指定层  
+  `model_pretrained.py`代码如下：  
+```python
+import torch
+import torchvision
+from torchvision.datasets import ImageNet
+from torch.utils.data import DataLoader
+
+# train_data = ImageNet("./imagenet", split='train', download=True, transform=torchvision.transforms.ToTensor())
+vgg16_False = torchvision.models.vgg16(pretrained=False)
+vgg16_True = torchvision.models.vgg16(pretrained=True)
+train_data = torchvision.datasets.CIFAR10('./dataset', train=True, transform=torchvision.transforms.ToTensor(), download=True)
+dataloader = DataLoader('train_data', batch_size=1)
+# CIFAR10 是10分类，vgg最后是1000分类，所以我们要改动现有的模型，添加一层线性层即可
+vgg16_True.classifier.add_module('relu', torch.nn.ReLU(inplace=True))
+vgg16_True.classifier.add_module('drop', torch.nn.Dropout(p=0.5, inplace=False))
+vgg16_True.classifier.add_module('add_linear', torch.nn.Linear(1000, 10, bias=True)) # 添加层
+vgg16_False.classifier[6] = torch.nn.Linear(4096, 10, bias=True) # 修改模型
+print(vgg16_True)
+```
+## 模型的保存与加载
+  `model_save.py`保存代码如下：  
+```python
+import torch
+from torch import nn
+import torchvision
+
+vgg16 = torchvision.models.vgg16(pretrained=True)
+
+# 保存方式 1，会保存所有的结构和参数
+torch.save(vgg16, "./model/vgg16_method1.pth")
+
+# 保存方式 2，只存参数，如权重偏置，更灵活，官方推荐
+torch.save(vgg16.state_dict(), "./model/vgg16_method2.pth")
+
+# 陷阱1
+class Remsait(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=3)
+    def forward(self, x):
+        x = self.conv1(x)
+        return x
+remsait = Remsait()
+torch.save(remsait, "./model/remsait_method1.pth")
+```
+  `model_load.py`加载代码如下：  
+```python
+import torch
+from torch import nn
+import torchvision
+from model_save import *
+
+# 方式 1 保存方式1加载模型
+model1 = torch.load("./model/vgg16_method1.pth")
+# print(model1)
+
+# 方式 2 给模型加载保存的参数
+model2 = torchvision.models.vgg16(pretrained=False)
+model2.load_state_dict(torch.load("./model/vgg16_method2.pth"))
+# print(model2)
+
+# 陷阱1
+# class Remsait(nn.Module):
+#     def __init__(self) -> None:
+#         super().__init__()
+#         self.conv1 = nn.Conv2d(3, 64, kernel_size=3)
+#     def forward(self, x):
+#         x = self.conv1(x)
+#         return x
+model = torch.load('./model/remsait_method1.pth')
+print(model) # 直接输出会报错，需要把模型那个类复制过来，或者添加头文件，但是不需要创建对象
+```
+## 完整的模型训练套路
+  `src/model.py`模型代码如下：  
+```python
+from torch.utils.data import DataLoader
+import torchvision
+import torch
+from torch import nn
+from torch.nn import Sequential, Conv2d, ReLU, MaxPool2d, Flatten, Linear
+
+# 搭建神经网络
+class Remsait(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.model = Sequential(
+            Conv2d(3, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 64, 5, padding=2),
+            MaxPool2d(2),
+            Flatten(),
+            Linear(64*4*4, 64),
+            Linear(64, 10)
+        )
+    def forward(self, x):
+        x = self.model(x)
+        return x
+
+# 被调用时不运行，运行该代码时才运行
+if __name__ == '__main__':
+    remsait = Remsait()
+    input = torch.ones(64, 3, 32, 32)
+    output = remsait(input)
+    print(output.shape)
+```
+  以数据集 CIFAR10 为例，`src/train.py`代码如下：  
+```python
+from torch import optim
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard.writer import SummaryWriter
+import torchvision
+import torch
+from torch.nn import CrossEntropyLoss
+from model import *
+
+# 准备数据集 注意要在终端进入 src 目录下，才能正常找到数据集
+train_data = torchvision.datasets.CIFAR10('../dataset', train=True, transform=torchvision.transforms.ToTensor(), download=True)
+test_data = torchvision.datasets.CIFAR10('../dataset', train=False, transform=torchvision.transforms.ToTensor(), download=True)
+
+# 获取数据集长度
+train_data_size = len(train_data)
+test_data_size = len(test_data)
+print("训练数据集的长度为：{}".format(train_data_size))
+print("测试数据集的长度为：{}".format(test_data_size))
+
+# 加载数据集
+train_dataloader = DataLoader(train_data, batch_size=64)
+test_dataloader = DataLoader(test_data, batch_size=64)
+
+# 导入网络模型
+remsait = Remsait()
+
+# 损失函数
+loss_fn = CrossEntropyLoss()
+
+# 优化器（随机梯度下降
+learning_rate = 1e-2
+optimizer = optim.SGD(remsait.parameters(), lr=learning_rate)
+
+# 设置训练网络的一些参数
+total_train_step = 0 # 记录训练次数
+total_test_step = 0 # 记录测试次数
+epoch = 10 # 训练轮数
+
+# 添加 tensorboard
+writer = SummaryWriter("../logs")
+
+# 训练
+for i in range(epoch):
+    print("-----第 {} 轮训练开始-----".format(i + 1))
+    # 训练步骤开始
+    remsait.train()
+    for data in train_dataloader:
+        imgs, targets = data
+        outputs = remsait(imgs)
+        loss = loss_fn(outputs, targets)
+        # 优化器调优
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        total_train_step += 1
+        if total_train_step % 100 == 0:
+            print("训练次数：{}, Loss: {}".format(total_train_step, loss.item())) # a.item()会打印数值
+            writer.add_scalar("train_loss", loss.item(), total_train_step)
+
+    # 每轮训练完成后，应该进行测试
+    remsait.eval()
+    total_test_loss = 0
+    total_accuracy = 0
+    with torch.no_grad(): # 关闭梯度计算
+        for data in test_dataloader:
+            imgs, targets = data
+            outputs = remsait(imgs) # 参数存在模型中
+            loss = loss_fn(outputs, targets)
+            total_test_loss += loss.item()
+            accuracy = (outputs.argmax(1) == targets).sum() # 沿着类别(列)维度比较不同样本
+            total_accuracy += accuracy
+    print("整体测试集上的 Loss: {}".format(total_test_loss))
+    print(f"整体测试集上的正确率: {total_accuracy / test_data_size}")
+    writer.add_scalar("test_loss", total_test_loss, total_test_step)
+    writer.add_scalar("test_accuracy", total_accuracy/test_data_size, total_test_step)
+    total_test_step += 1
+
+    # 保存每轮模型
+    torch.save(remsait, "remsait_{}.pth".format(i))
+    # torch.save(remsait.state_dict(), f"remsait_{i}.pth") # 官方推荐
+    print(f"remsait_{i + 1}.pth 模型已保存")
+
+writer.close()
+```
+## GPU 训练
+
+## 完整的模型验证套路
+
+## Reference
+  [B站我是土堆 PyTorch 入门教程](https://www.bilibili.com/video/BV1hE411t7RN/)  
+  
+  [PyTorch 官方文档](https://docs.pytorch.org/docs/stable/)  
