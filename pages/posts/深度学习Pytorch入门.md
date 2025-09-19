@@ -8,10 +8,16 @@ cover:
 top: 
 tags: 
  - 深度学习
+ - pytorch
 categories: 
  - 深度学习
-
 ---
+  本文章参考我是土堆教程，代码在 Cursor 上运行，PyCharm 中会报 Numpy 的版本依赖错误，可以尝试用高版本 Python  
+
+  缺少对应的 python 包时自行用 conda 或 pip 下载   
+
+  代码仓库在[learn_pytorch](https://github.com/remnantsaint/learn_pytorch)  
+
 ## 环境准备
   首先要在jupyter上能进行`import pytorch`，实验室电脑不支持CUDA，所以下CPU版的pytorch  
 ```bash
@@ -37,8 +43,7 @@ print(f"PyTorch版本: {torch.__version__}")
 # 查看当前Python解释器路径（确认是否为目标环境）
 print(f"Python解释器路径: {sys.executable}")
 ```
-  本文章参考我是土堆教程，代码在 Cursor 上运行，PyCharm 中会报 Numpy 的版本依赖错误，可以尝试用高版本 Python  
-  缺少对应的 python 包时自行下载  
+
 ## 基本知识
   `dir()`函数能让我们知道工具箱，以及工具箱中都有什么东西，比如 dir(torch)  
   `help()`函数能让我们知道每个工具的使用方法,比如 help(torch.cuda.is_available)  
@@ -768,7 +773,7 @@ if __name__ == '__main__':
     output = remsait(input)
     print(output.shape)
 ```
-  以数据集 CIFAR10 为例，`src/train.py`代码如下：  
+  以数据集 CIFAR10 为例，`src/train.py`训练代码如下：  
 ```python
 from torch import optim
 from torch.utils.data import DataLoader
@@ -849,14 +854,176 @@ for i in range(epoch):
     # 保存每轮模型
     torch.save(remsait, "remsait_{}.pth".format(i))
     # torch.save(remsait.state_dict(), f"remsait_{i}.pth") # 官方推荐
-    print(f"remsait_{i + 1}.pth 模型已保存")
+    print(f"remsait_{i}.pth 模型已保存")
 
 writer.close()
 ```
 ## GPU 训练
+  方式一：模型、数据、损失函数 ，在这三者后添加 `.cuda()`即可   
+  方式二：用 `.to(device)`，其中 `device = torch.device("cuda" if torch.cuda.is_available() else "cpu")`  
+  在 google colab 中，要在左上角的修改-笔记本设置中改成使用 gpu
+  在 colab 上用 ! 前缀，就能用终端命令  
+  `src/train_gpu.py`代码如下：  
+```python
+from torch import optim, nn
+from torch.cuda import is_available
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard.writer import SummaryWriter
+import torchvision
+import torch
+from torch.nn import CrossEntropyLoss
+from torch.nn import Sequential, Conv2d, ReLU, MaxPool2d, Flatten, Linear
+import time
 
+# 准备数据集 注意要在终端进入 src 目录下，才能正常找到数据集
+train_data = torchvision.datasets.CIFAR10('../dataset', train=True, transform=torchvision.transforms.ToTensor(), download=True)
+test_data = torchvision.datasets.CIFAR10('../dataset', train=False, transform=torchvision.transforms.ToTensor(), download=True)
+
+# 获取数据集长度
+train_data_size = len(train_data)
+test_data_size = len(test_data)
+print("训练数据集的长度为：{}".format(train_data_size))
+print("测试数据集的长度为：{}".format(test_data_size))
+
+# 加载数据集
+train_dataloader = DataLoader(train_data, batch_size=64)
+test_dataloader = DataLoader(test_data, batch_size=64)
+
+# 搭建神经网络
+class Remsait(nn.Module):
+    def __init__(self) -> None:
+        super().__init__()
+        self.model = Sequential(
+            Conv2d(3, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 32, 5, padding=2),
+            MaxPool2d(2),
+            Conv2d(32, 64, 5, padding=2),
+            MaxPool2d(2),
+            Flatten(),
+            Linear(64*4*4, 64),
+            Linear(64, 10)
+        )
+    def forward(self, x):
+        x = self.model(x)
+        return x
+
+# 定义设备
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# 导入网络模型
+remsait = Remsait()
+# if torch.cuda.is_available():
+#     remsait = remsait.cuda()
+remsait.to(device)
+
+# 损失函数
+loss_fn = CrossEntropyLoss()
+# if torch.cuda.is_available():
+#     loss_fn = loss_fn.cuda()
+loss_fn.to(device)
+
+# 优化器（随机梯度下降
+learning_rate = 1e-2
+optimizer = optim.SGD(remsait.parameters(), lr=learning_rate)
+
+
+# 设置训练网络的一些参数
+total_train_step = 0 # 记录训练次数
+total_test_step = 0 # 记录测试次数
+epoch = 10 # 训练轮数
+
+# 添加 tensorboard
+writer = SummaryWriter("../logs")
+
+time_start = time.time()
+
+# 训练
+for i in range(epoch):
+    print("-----第 {} 轮训练开始-----".format(i + 1))
+    # 训练步骤开始
+    remsait.train()
+    for data in train_dataloader:
+        imgs, targets = data
+        # if torch.cuda.is_available():
+        #     imgs = imgs.cuda()
+        #     targets = targets.cuda()
+        imgs.to(device)
+        targets.to(device)
+        outputs = remsait(imgs)
+        loss = loss_fn(outputs, targets)
+        # 优化器调优
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        total_train_step += 1
+        if total_train_step % 100 == 0:
+            print("训练次数：{}, Loss: {}".format(total_train_step, loss.item())) # a.item()会打印数值
+            writer.add_scalar("train_loss", loss.item(), total_train_step)
+
+    # 每轮训练完成后，应该进行测试
+    remsait.eval()
+    total_test_loss = 0
+    total_accuracy = 0
+    with torch.no_grad(): # 关闭梯度计算
+        for data in test_dataloader:
+            imgs, targets = data
+            # if torch.cuda.is_available():
+            #     imgs = imgs.cuda()
+            #     targets = targets.cuda()
+            imgs.to(device)
+            targets.to(device)
+            outputs = remsait(imgs) # 参数存在模型中
+            loss = loss_fn(outputs, targets)
+            total_test_loss += loss.item()
+            accuracy = (outputs.argmax(1) == targets).sum() # 沿着类别(列)维度比较不同样本
+            total_accuracy += accuracy
+    print("整体测试集上的 Loss: {}".format(total_test_loss))
+    print(f"整体测试集上的正确率: {total_accuracy / test_data_size}")
+    writer.add_scalar("test_loss", total_test_loss, total_test_step)
+    writer.add_scalar("test_accuracy", total_accuracy/test_data_size, total_test_step)
+    total_test_step += 1
+
+    # 保存每轮模型
+    torch.save(remsait, "remsait_{}.pth".format(i))
+    # torch.save(remsait.state_dict(), f"remsait_{i}.pth") # 官方推荐
+    print(f"remsait_{i}.pth 模型已保存")
+
+time_end = time.time()
+print(f"运行时间: {time_end - time_start}")
+writer.close()
+```
 ## 完整的模型验证套路
+  给已经训练好的模型提供输入，来测试模型的性能  
+  `src/test.py`代码如下：   
+```python
+from PIL import Image
+import torchvision
+from torchvision.transforms import Resize, ToTensor
+from model import *
+import torch
 
+image_path = 'dog.png'
+image = Image.open(image_path)
+print(image)
+image = image.convert('RGB') # png是四通道，多一个透明度通道
+
+# 截图保留的图片像素宽高不同, Reize成模型输入像素大小
+transform = torchvision.transforms.Compose([Resize((32, 32)), ToTensor()])
+
+image = transform(image)
+image = torch.reshape(image, (1, 3, 32, 32))
+# print(image.shape)
+
+model = torch.load("remsait_9.pth", map_location=torch.device('cpu'))
+# print(model)
+
+model.eval()
+with torch.no_grad():
+    output = model(image)
+    print(output)
+    print(output.argmax(1)) # 输出预测值最大的标签下标，下标从 0 开始
+```
 ## Reference
   [B站我是土堆 PyTorch 入门教程](https://www.bilibili.com/video/BV1hE411t7RN/)  
 
