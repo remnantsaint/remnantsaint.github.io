@@ -120,6 +120,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/LRU缓存': RouteRecordInfo<'/posts/LRU缓存', '/posts/LRU缓存', Record<never, never>, Record<never, never>>,
     '/posts/markdown的基础用法': RouteRecordInfo<'/posts/markdown的基础用法', '/posts/markdown的基础用法', Record<never, never>, Record<never, never>>,
     '/posts/missing-semester': RouteRecordInfo<'/posts/missing-semester', '/posts/missing-semester', Record<never, never>, Record<never, never>>,
+    '/posts/Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读': RouteRecordInfo<'/posts/Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读', '/posts/Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读', Record<never, never>, Record<never, never>>,
     '/posts/SVM': RouteRecordInfo<'/posts/SVM', '/posts/SVM', Record<never, never>, Record<never, never>>,
     '/posts/Transformer文献精读': RouteRecordInfo<'/posts/Transformer文献精读', '/posts/Transformer文献精读', Record<never, never>, Record<never, never>>,
     '/posts/valaxy版本升级指南': RouteRecordInfo<'/posts/valaxy版本升级指南', '/posts/valaxy版本升级指南', Record<never, never>, Record<never, never>>,
