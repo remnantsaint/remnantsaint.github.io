@@ -1,0 +1,1 @@
+import{m as i,a2 as s,n as f}from"./app-D6Hejker.js";function o(a,n=!1){const e=i();return s(()=>a,async()=>{let t;if(typeof a=="string"){if(!f)return;t=await fetch(a).then(r=>r.json())||[]}else t=a;e.value=n?Array.from(t).sort(()=>Math.random()-.5):t},{immediate:!0}),{data:e}}export{o as u};

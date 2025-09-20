@@ -1,0 +1,1535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://remsait.com/</id>
+    <title>-西柿's Blog-</title>
+    <updated>2025-09-20T06:11:14.397Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>西柿</name>
+        <email>i@valaxy.site</email>
+        <uri>https://valaxy.site</uri>
+    </author>
+    <link rel="alternate" href="https://remsait.com/"/>
+    <link rel="self" href="https://remsait.com/atom.xml"/>
+    <subtitle>折枝的树也能开花</subtitle>
+    <logo>https://cloudflare.remsait.com/img/QQ图片20240908121531.jpg</logo>
+    <icon>https://remsait.com/favicon.svg</icon>
+    <rights>CC BY-NC-SA 4.0 2025 © 西柿</rights>
+    <entry>
+        <title type="html"><![CDATA[解决学习通鼠标移开暂停]]></title>
+        <id>https://remsait.com/posts/解决学习通鼠标移开暂停</id>
+        <link href="https://remsait.com/posts/解决学习通鼠标移开暂停"/>
+        <updated>2024-09-23T11:44:49.000Z</updated>
+        <content type="html"><![CDATA[<p>  在电脑浏览器中用学习通看网课，偶尔有的网课会设置鼠标移开后就自动暂停视频，对想节省时间的同学十分不友好，以下是解决办法</p>
+<p>在浏览器中点击<code>f12</code>进入开发者面板，点击顶栏的源代码，</p>
+<br/><p>访问 <a href="https://remsait.com/posts/解决学习通鼠标移开暂停" target="_blank">https://remsait.com/posts/解决学习通鼠标移开暂停</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[设计链表]]></title>
+        <id>https://remsait.com/posts/设计链表</id>
+        <link href="https://remsait.com/posts/设计链表"/>
+        <updated>2025-08-06T11:39:18.000Z</updated>
+        <content type="html"><![CDATA[<h2>707. 设计链表</h2>
+<p><a href="https://leetcode.cn/problems/design-linked-list/description/">题目链接</a><br>
+题意：在链表中实现以下功能</p>
+<br/><p>访问 <a href="https://remsait.com/posts/设计链表" target="_blank">https://remsait.com/posts/设计链表</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[迭代&递归&分治]]></title>
+        <id>https://remsait.com/posts/迭代-递归-分治</id>
+        <link href="https://remsait.com/posts/迭代-递归-分治"/>
+        <updated>2023-04-02T20:02:43.000Z</updated>
+        <content type="html"><![CDATA[<h4>迭代</h4>
+<p>1.迭代法称为辗转法，不断的用变量旧值求出新值，即对一组指令循环执行，最终得到新值作为结果。<br>
+2.在代码中表现为在一个循环内，不断循环最终得到结果。</p>
+<h4>递归</h4>
+<p>1.定义：递归</p>
+<br/><p>访问 <a href="https://remsait.com/posts/迭代-递归-分治" target="_blank">https://remsait.com/posts/迭代-递归-分治</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[重排链表]]></title>
+        <id>https://remsait.com/posts/重排链表</id>
+        <link href="https://remsait.com/posts/重排链表"/>
+        <updated>2023-04-03T18:14:24.000Z</updated>
+        <content type="html"><![CDATA[<p>难度：中等<br>
+题目链接：<a href="https://leetcode.cn/problems/reorder-list/">https://leetcode.cn/problems/reorder-list/</a><br>
+![](<a href="https://cloudflare.remsait.com/img/2023">https://cloudflare.remsait.com/img/2023</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/重排链表" target="_blank">https://remsait.com/posts/重排链表</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[链表]]></title>
+        <id>https://remsait.com/posts/链表</id>
+        <link href="https://remsait.com/posts/链表"/>
+        <updated>2023-04-03T18:04:57.000Z</updated>
+        <content type="html"><![CDATA[<p>链表是一种通过指针串联在一起的线性结构，每一个节点由两部分组成，一个是数据域一个是指针域（存放指向下一个节点的指针），最后一个节点的指针域指向 null<br>
+链表的入口节点称为链表的头结点，也就是</p>
+<br/><p>访问 <a href="https://remsait.com/posts/链表" target="_blank">https://remsait.com/posts/链表</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[链表排序]]></title>
+        <id>https://remsait.com/posts/链表排序</id>
+        <link href="https://remsait.com/posts/链表排序"/>
+        <updated>2023-04-08T21:47:58.000Z</updated>
+        <content type="html"><![CDATA[<p>难度：中等<br>
+链接：<a href="https://leetcode.cn/problems/sort-list/">Sort List</a><br>
+题意：在时间复杂度为O(nlogn)内，空间复杂度为O(1)内对给定首元结</p>
+<br/><p>访问 <a href="https://remsait.com/posts/链表排序" target="_blank">https://remsait.com/posts/链表排序</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[链表相交]]></title>
+        <id>https://remsait.com/posts/链表相交</id>
+        <link href="https://remsait.com/posts/链表相交"/>
+        <updated>2025-08-07T14:58:34.000Z</updated>
+        <content type="html"><![CDATA[<h2>160. 相交链表</h2>
+<p><a href="https://leetcode.cn/problems/intersection-of-two-linked-lists/">题目链接</a></p>
+<h3>题意</h3>
+<p>给出两个链表，</p>
+<br/><p>访问 <a href="https://remsait.com/posts/链表相交" target="_blank">https://remsait.com/posts/链表相交</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[长度最小的子数组]]></title>
+        <id>https://remsait.com/posts/长度最小的子数组</id>
+        <link href="https://remsait.com/posts/长度最小的子数组"/>
+        <updated>2025-08-02T10:12:30.000Z</updated>
+        <content type="html"><![CDATA[<h2>209. 长度最小的子数组</h2>
+<p><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/">题目链接</a><br>
+给定一个含有 n 个正整数的数组和</p>
+<br/><p>访问 <a href="https://remsait.com/posts/长度最小的子数组" target="_blank">https://remsait.com/posts/长度最小的子数组</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[预测数值型数据：回归]]></title>
+        <id>https://remsait.com/posts/预测数值型数据：回归</id>
+        <link href="https://remsait.com/posts/预测数值型数据：回归"/>
+        <updated>2024-09-19T09:48:55.000Z</updated>
+        <content type="html"><![CDATA[<h2>回归 概述</h2>
+<p>前面集中分类的目标变量是标称型数据，而回归是对连续型数据作出处理，回归的目的是预测数值型数据的目标值</p>
+<h2>回归 场景</h2>
+<p>回归的目的是预测数值型的目标值，最直接的办法是依据输入写出一</p>
+<br/><p>访问 <a href="https://remsait.com/posts/预测数值型数据：回归" target="_blank">https://remsait.com/posts/预测数值型数据：回归</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.238Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[朴素贝叶斯]]></title>
+        <id>https://remsait.com/posts/朴素贝叶斯</id>
+        <link href="https://remsait.com/posts/朴素贝叶斯"/>
+        <updated>2024-09-06T10:50:55.000Z</updated>
+        <content type="html"><![CDATA[<h4>朴素贝叶斯概述</h4>
+<p>  贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。首先需要介绍贝叶斯分类算法的基础——贝叶斯定理。最后，通过实例来讨论贝叶斯</p>
+<br/><p>访问 <a href="https://remsait.com/posts/朴素贝叶斯" target="_blank">https://remsait.com/posts/朴素贝叶斯</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[树回归]]></title>
+        <id>https://remsait.com/posts/树回归</id>
+        <link href="https://remsait.com/posts/树回归"/>
+        <updated>2024-09-20T09:58:49.000Z</updated>
+        <content type="html"><![CDATA[<h2>树回归 概述</h2>
+<ul>
+<li>树回归可以用于分类，也可以用于回归</li>
+</ul>
+<h3>树回归 场景</h3>
+<p>  线性回归有一些强大的方法，到那时这些方法创建的模型需要拟合所有的样本点（局部加权线性回归除外）。当拥有</p>
+<br/><p>访问 <a href="https://remsait.com/posts/树回归" target="_blank">https://remsait.com/posts/树回归</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[环形链表Ⅱ]]></title>
+        <id>https://remsait.com/posts/环形链表Ⅱ</id>
+        <link href="https://remsait.com/posts/环形链表Ⅱ"/>
+        <updated>2023-04-07T21:57:04.000Z</updated>
+        <content type="html"><![CDATA[<p>难度：中等<br>
+链接：<a href="https://leetcode.cn/problems/linked-list-cycle-ii/">Linked List Cycle II</a><br>
+题意：给一个可能有环的链表，若</p>
+<br/><p>访问 <a href="https://remsait.com/posts/环形链表Ⅱ" target="_blank">https://remsait.com/posts/环形链表Ⅱ</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[生信linux]]></title>
+        <id>https://remsait.com/posts/生信linux</id>
+        <link href="https://remsait.com/posts/生信linux"/>
+        <updated>2024-09-06T09:34:31.000Z</updated>
+        <content type="html"><![CDATA[<p>刚开学，我想尝试一下用ubuntu来学习生信方面的知识，安装完ubuntu20.04版本后，要用xshell连接，但是ubuntu有点特别，需要开启open-ssh服务，用以下命令`sudo apt</p>
+<br/><p>访问 <a href="https://remsait.com/posts/生信linux" target="_blank">https://remsait.com/posts/生信linux</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[生信基础]]></title>
+        <id>https://remsait.com/posts/生信基础</id>
+        <link href="https://remsait.com/posts/生信基础"/>
+        <updated>2025-03-21T10:13:15.000Z</updated>
+        <content type="html"><![CDATA[<p>这篇文章记录深入学习生信过程中学到的东西</p>
+<br/><p>访问 <a href="https://remsait.com/posts/生信基础" target="_blank">https://remsait.com/posts/生信基础</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[移除元素]]></title>
+        <id>https://remsait.com/posts/移除元素</id>
+        <link href="https://remsait.com/posts/移除元素"/>
+        <updated>2025-08-01T07:18:06.000Z</updated>
+        <content type="html"><![CDATA[<h2>27. 移除元素</h2>
+<p><a href="https://leetcode.cn/problems/remove-element/">题目链接</a><br>
+给一个数组 nums 和一个值 val，需要原地删除所有数值等于</p>
+<br/><p>访问 <a href="https://remsait.com/posts/移除元素" target="_blank">https://remsait.com/posts/移除元素</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[移除链表元素]]></title>
+        <id>https://remsait.com/posts/移除链表元素</id>
+        <link href="https://remsait.com/posts/移除链表元素"/>
+        <updated>2025-08-05T10:57:00.000Z</updated>
+        <content type="html"><![CDATA[<h2>203. 移除链表元素</h2>
+<p><a href="https://leetcode.cn/problems/remove-linked-list-elements/">题目链接</a><br>
+题意：删除链表中等于给定值 val</p>
+<br/><p>访问 <a href="https://remsait.com/posts/移除链表元素" target="_blank">https://remsait.com/posts/移除链表元素</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[腾讯云cos图床+cloudflare+Picgo]]></title>
+        <id>https://remsait.com/posts/腾讯云cos图床+cloudflare+Picgo</id>
+        <link href="https://remsait.com/posts/腾讯云cos图床+cloudflare+Picgo"/>
+        <updated>2024-09-15T08:15:51.000Z</updated>
+        <content type="html"><![CDATA[<h2>前言</h2>
+<p>以前一直是用github作为图床，同时使用免费cdn，但是缺点就是偶尔会加载不出来图片，科学上网后倒是可以正常看，总之很烦，手机看也是基本加载不出来图片。</p>
+<p>现在考虑用存储桶来存储图片，同时使用 cloudflare 代理网站来提供 cdn 加速。我的域名没有备案，所以就得腾讯云 cos 中国外的存储桶</p>
+<br/><p>访问 <a href="https://remsait.com/posts/腾讯云cos图床+cloudflare+Picgo" target="_blank">https://remsait.com/posts/腾讯云cos图床+cloudflare+Picgo</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[螺旋矩阵Ⅱ]]></title>
+        <id>https://remsait.com/posts/螺旋矩阵Ⅱ</id>
+        <link href="https://remsait.com/posts/螺旋矩阵Ⅱ"/>
+        <updated>2025-08-03T14:15:31.000Z</updated>
+        <content type="html"><![CDATA[<h2>59. 螺旋矩阵Ⅱ</h2>
+<p><a href="https://leetcode.cn/problems/spiral-matrix-ii/description/">题目链接</a><br>
+给定一个正整数 n ，生成一个包含</p>
+<br/><p>访问 <a href="https://remsait.com/posts/螺旋矩阵Ⅱ" target="_blank">https://remsait.com/posts/螺旋矩阵Ⅱ</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.237Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[合并有序链表]]></title>
+        <id>https://remsait.com/posts/合并有序链表</id>
+        <link href="https://remsait.com/posts/合并有序链表"/>
+        <updated>2023-04-04T21:42:25.000Z</updated>
+        <content type="html"><![CDATA[<p>难度：简单<br>
+链接：<a href="https://leetcode.cn/problems/merge-two-sorted-lists/">https://leetcode.cn/problems/merge-two-sorted-lists/</a><br>
+题意：给两个有序链表，将其合并为一个链表并返回首元结点。<br>
+题解：<br>
+&amp;e</p>
+<br/><p>访问 <a href="https://remsait.com/posts/合并有序链表" target="_blank">https://remsait.com/posts/合并有序链表</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[哈希表理论基础]]></title>
+        <id>https://remsait.com/posts/哈希表理论基础</id>
+        <link href="https://remsait.com/posts/哈希表理论基础"/>
+        <updated>2025-08-09T09:08:16.000Z</updated>
+        <content type="html"><![CDATA[<h2>理论基础</h2>
+<h3>哈希表</h3>
+<p>什么是哈希表？<br>
+哈希表是根据关键码的值而直接进行访问的数据结构<br>
+简单来说数组就是哈希表，用处是<strong>用来快速判断一个元素是否出现在集合里</strong><br>
+例如要查找一个</p>
+<br/><p>访问 <a href="https://remsait.com/posts/哈希表理论基础" target="_blank">https://remsait.com/posts/哈希表理论基础</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[回文数]]></title>
+        <id>https://remsait.com/posts/回文数</id>
+        <link href="https://remsait.com/posts/回文数"/>
+        <updated>2023-03-22T17:46:13.000Z</updated>
+        <content type="html"><![CDATA[<h2>[NOIP1999 普及组] 回文数</h2>
+<h2>题目描述</h2>
+<p>若一个数（首位不为零）从左向右读与从右向左读都一样，我们就将其称之为回文数。</p>
+<p>例如：给定一个十进制数 $56$，将 $56$ 加 $</p>
+<br/><p>访问 <a href="https://remsait.com/posts/回文数" target="_blank">https://remsait.com/posts/回文数</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[图的存储]]></title>
+        <id>https://remsait.com/posts/图的存储</id>
+        <link href="https://remsait.com/posts/图的存储"/>
+        <updated>2023-05-07T17:25:32.000Z</updated>
+        <content type="html"><![CDATA[<p>想要对图进行操作，就得先学习图的存储方式。</p>
+<p>本文中用$n$代指图的点数，$m$代指图的边数（注意，点的标号不会超过n）</p>
+<h3>直接存边</h3>
+<p>使用一个数组来存边，数组中每个元素都包含一条边的起点与</p>
+<br/><p>访问 <a href="https://remsait.com/posts/图的存储" target="_blank">https://remsait.com/posts/图的存储</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[大数据与MapReduce]]></title>
+        <id>https://remsait.com/posts/大数据与MapReduce</id>
+        <link href="https://remsait.com/posts/大数据与MapReduce"/>
+        <updated>2024-10-10T14:02:50.000Z</updated>
+        <content type="html"><![CDATA[<h2>大数据</h2>
+<h3>大数据 概述</h3>
+<p>  数据很大，本地存不下，用云端多台电脑存，收集到的数据远远超出我们的处理能力</p>
+<h3>大数据 场景</h3>
+<pre><code class="language-text">假如你为一家网络购物商店工作，很多用</code></pre>
+<br/><p>访问 <a href="https://remsait.com/posts/大数据与MapReduce" target="_blank">https://remsait.com/posts/大数据与MapReduce</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[对链表插入排序]]></title>
+        <id>https://remsait.com/posts/对链表插入排序</id>
+        <link href="https://remsait.com/posts/对链表插入排序"/>
+        <updated>2023-04-05T22:16:17.000Z</updated>
+        <content type="html"><![CDATA[<p>难度：中等<br>
+题目链接：<a href="https://leetcode.cn/problems/insertion-sort-list/">LeetCode 147. Insertion Sort List</a><br>
+题</p>
+<br/><p>访问 <a href="https://remsait.com/posts/对链表插入排序" target="_blank">https://remsait.com/posts/对链表插入排序</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[找出字符串中第一个匹配项的下标]]></title>
+        <id>https://remsait.com/posts/找出字符串中第一个匹配项的下标</id>
+        <link href="https://remsait.com/posts/找出字符串中第一个匹配项的下标"/>
+        <updated>2025-08-17T16:03:43.000Z</updated>
+        <content type="html"><![CDATA[<h2>28. 找出字符串中第一个匹配项的下标</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in">https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/找出字符串中第一个匹配项的下标" target="_blank">https://remsait.com/posts/找出字符串中第一个匹配项的下标</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[排序]]></title>
+        <id>https://remsait.com/posts/排序</id>
+        <link href="https://remsait.com/posts/排序"/>
+        <updated>2023-03-24T20:33:17.000Z</updated>
+        <content type="html"><![CDATA[<p><img src="https://cloudflare.remsait.com/img/image-20230324210604464.png" alt="image-20230324210604464"></p>
+<h4>排</h4>
+<br/><p>访问 <a href="https://remsait.com/posts/排序" target="_blank">https://remsait.com/posts/排序</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[替换数字]]></title>
+        <id>https://remsait.com/posts/替换数字</id>
+        <link href="https://remsait.com/posts/替换数字"/>
+        <updated>2025-08-16T13:15:22.000Z</updated>
+        <content type="html"><![CDATA[<h2>替换数字</h2>
+<p><a href="https://kamacoder.com/problempage.php?pid=1064">题目链接</a><br>
+题意：<br>
+给一个字符串，包含小写字母和数字字符，编写一个函数，将字符</p>
+<br/><p>访问 <a href="https://remsait.com/posts/替换数字" target="_blank">https://remsait.com/posts/替换数字</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[有效的字母异位词]]></title>
+        <id>https://remsait.com/posts/有效的字母异位词</id>
+        <link href="https://remsait.com/posts/有效的字母异位词"/>
+        <updated>2025-08-11T08:19:02.000Z</updated>
+        <content type="html"><![CDATA[<h2>242. 有效的字母异位词</h2>
+<p><a href="https://leetcode.cn/problems/valid-anagram/">题目链接</a><br>
+题意：给两个字符串 s 与 t ，编写一个函数来判断 t</p>
+<br/><p>访问 <a href="https://remsait.com/posts/有效的字母异位词" target="_blank">https://remsait.com/posts/有效的字母异位词</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.236Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用Apriori算法进行关联分析]]></title>
+        <id>https://remsait.com/posts/使用Apriori算法进行关联分析</id>
+        <link href="https://remsait.com/posts/使用Apriori算法进行关联分析"/>
+        <updated>2024-09-24T09:08:42.000Z</updated>
+        <content type="html"><![CDATA[<h2>关联分析</h2>
+<p>  关联分析是一种在大规模数据集中寻找有趣关系的任务，这些关系可以有以下两种形式</p>
+<ul>
+<li>频繁项集：经常出现在一块的物品的集合</li>
+<li>关联规则：按时两种物品之间存在很强的关系</li>
+</ul>
+<br/><p>访问 <a href="https://remsait.com/posts/使用Apriori算法进行关联分析" target="_blank">https://remsait.com/posts/使用Apriori算法进行关联分析</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用FP-growth算法高效发现频繁项集]]></title>
+        <id>https://remsait.com/posts/使用FP-growth算法高效发现频繁项集</id>
+        <link href="https://remsait.com/posts/使用FP-growth算法高效发现频繁项集"/>
+        <updated>2024-09-25T10:18:49.000Z</updated>
+        <content type="html"><![CDATA[<h2>前言</h2>
+<p>在[使用Apriori算法进行关联分析](<a href="https://remsait.com/posts/%E4%BD%BF%E7%94%A8Apriori%E7%AE%97%E6%B3%95%E8%25">https://remsait.com/posts/使用Apriori算法�%</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/使用FP-growth算法高效发现频繁项集" target="_blank">https://remsait.com/posts/使用FP-growth算法高效发现频繁项集</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[决策树]]></title>
+        <id>https://remsait.com/posts/决策树</id>
+        <link href="https://remsait.com/posts/决策树"/>
+        <updated>2024-09-06T09:34:09.000Z</updated>
+        <content type="html"><![CDATA[<h2>前言</h2>
+<p>  经过研一第一个月的学习汇报，导师让我选择一个机器学习算法和生物信息数据库弄懂，并且在一个月后的组会上汇报，借此我选择了决策树这个算法，完善这篇文章。</p>
+<br/><p>访问 <a href="https://remsait.com/posts/决策树" target="_blank">https://remsait.com/posts/决策树</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[删除链表的倒数第N个节点]]></title>
+        <id>https://remsait.com/posts/删除链表的倒数第N个节点</id>
+        <link href="https://remsait.com/posts/删除链表的倒数第N个节点"/>
+        <updated>2025-08-07T13:16:10.000Z</updated>
+        <content type="html"><![CDATA[<h2>19. 删除链表的倒数第 N 个结点</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/descripti">https://leetcode.cn/problems/remove-nth-node-from-end-of-list/descripti</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/删除链表的倒数第N个节点" target="_blank">https://remsait.com/posts/删除链表的倒数第N个节点</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[利用PCA简化数据]]></title>
+        <id>https://remsait.com/posts/利用PCA简化数据</id>
+        <link href="https://remsait.com/posts/利用PCA简化数据"/>
+        <updated>2024-09-26T08:58:28.000Z</updated>
+        <content type="html"><![CDATA[<h2>降维技术</h2>
+<h3>场景</h3>
+<ul>
+<li>在电视上看足球比赛，显示器上会有一个球</li>
+<li>显示器大概包含了 100万 像素点，而球则可能是由较少的像素点组成，例如说一千像素点</li>
+<li>人们实时将显示器上的百万像素转换</li>
+</ul>
+<br/><p>访问 <a href="https://remsait.com/posts/利用PCA简化数据" target="_blank">https://remsait.com/posts/利用PCA简化数据</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[利用SVD简化数据]]></title>
+        <id>https://remsait.com/posts/利用SVD简化数据</id>
+        <link href="https://remsait.com/posts/利用SVD简化数据"/>
+        <updated>2024-09-27T08:05:33.000Z</updated>
+        <content type="html"><![CDATA[<h2>SVD（奇异值分解） 概述</h2>
+<p>  提取信息的一种方法，可以把 SVD 看成是从噪声数据中抽取相关特征。奇异值相当于方阵中的特征值，奇异值分解相当于方阵中的特征值分解。从生物信息学到金融学</p>
+<br/><p>访问 <a href="https://remsait.com/posts/利用SVD简化数据" target="_blank">https://remsait.com/posts/利用SVD简化数据</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[区间和]]></title>
+        <id>https://remsait.com/posts/区间和</id>
+        <link href="https://remsait.com/posts/区间和"/>
+        <updated>2025-08-04T10:14:49.000Z</updated>
+        <content type="html"><![CDATA[<h2>区间和</h2>
+<p><a href="https://kamacoder.com/problempage.php?pid=1070">题目链接</a><br>
+给定一个整数数组 Array ，计算该数组在每个指定区间内的元素的总和</p>
+<br/><p>访问 <a href="https://remsait.com/posts/区间和" target="_blank">https://remsait.com/posts/区间和</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[反转字符串]]></title>
+        <id>https://remsait.com/posts/反转字符串</id>
+        <link href="https://remsait.com/posts/反转字符串"/>
+        <updated>2025-08-15T11:29:20.000Z</updated>
+        <content type="html"><![CDATA[<h2>344. 反转字符串</h2>
+<p><a href="https://leetcode.cn/problems/reverse-string/description/">题目链接</a><br>
+题意：<br>
+编写一个函数，作用是将输入</p>
+<br/><p>访问 <a href="https://remsait.com/posts/反转字符串" target="_blank">https://remsait.com/posts/反转字符串</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[反转部分链表]]></title>
+        <id>https://remsait.com/posts/反转部分链表</id>
+        <link href="https://remsait.com/posts/反转部分链表"/>
+        <updated>2023-04-02T22:35:50.000Z</updated>
+        <content type="html"><![CDATA[<p>难度：中等<br>
+题目链接：<a href="https://leetcode.cn/problems/reverse-linked-list-ii/description/">https://leetcode.cn/problems/reverse-linked-list-ii/description/</a><br>
+题意：反转链表的一部分，从left到rig</p>
+<br/><p>访问 <a href="https://remsait.com/posts/反转部分链表" target="_blank">https://remsait.com/posts/反转部分链表</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[反转链表]]></title>
+        <id>https://remsait.com/posts/反转链表</id>
+        <link href="https://remsait.com/posts/反转链表"/>
+        <updated>2023-04-02T20:47:07.000Z</updated>
+        <content type="html"><![CDATA[<h2>206. 反转链表</h2>
+<p><a href="https://leetcode.cn/problems/reverse-linked-list/description/">题目链接</a><br>
+题意：给出一个链表的头结点（首</p>
+<br/><p>访问 <a href="https://remsait.com/posts/反转链表" target="_blank">https://remsait.com/posts/反转链表</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.235Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[docker基础教程]]></title>
+        <id>https://remsait.com/posts/docker基础教程</id>
+        <link href="https://remsait.com/posts/docker基础教程"/>
+        <updated>2025-05-15T11:40:45.000Z</updated>
+        <content type="html"><![CDATA[<p>后悔没早用Docker了</p>
+<br/><p>访问 <a href="https://remsait.com/posts/docker基础教程" target="_blank">https://remsait.com/posts/docker基础教程</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[集成方法]]></title>
+        <id>https://remsait.com/posts/ensemble-method</id>
+        <link href="https://remsait.com/posts/ensemble-method"/>
+        <updated>2024-09-18T10:43:28.000Z</updated>
+        <content type="html"><![CDATA[<h2>集成方法 概述</h2>
+<ul>
+<li>概念：集成方法是对其他算法进行组合的一种形式</li>
+<li>通俗来说，当做重要决定时，大家可能都会考虑多个专家而不是一个人的意见，也就是说多方面考虑。</li>
+<li>集成方法：
+<ul>
+<li>投票选举法</li>
+</ul>
+</li>
+</ul>
+<br/><p>访问 <a href="https://remsait.com/posts/ensemble-method" target="_blank">https://remsait.com/posts/ensemble-method</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Git基础教程]]></title>
+        <id>https://remsait.com/posts/git基础教程</id>
+        <link href="https://remsait.com/posts/git基础教程"/>
+        <updated>2023-04-18T19:12:39.000Z</updated>
+        <content type="html"><![CDATA[<h3>Git命令简易汇总</h3>
+<pre><code class="language-shell">#初始化
+git init
+
+#添加到暂存区
+git add &lt;filename&gt;
+
+#提交文件
+git commit -m &quot;&lt;commit des</code></pre>
+<br/><p>访问 <a href="https://remsait.com/posts/git基础教程" target="_blank">https://remsait.com/posts/git基础教程</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[linux一些命令]]></title>
+        <id>https://remsait.com/posts/linux一些命令</id>
+        <link href="https://remsait.com/posts/linux一些命令"/>
+        <updated>2023-05-02T11:09:33.000Z</updated>
+        <content type="html"><![CDATA[<p><code>du -sh</code>查看文件夹大小；<code>du -sh *</code>查看该文件夹下每个文件或文件夹的大小</p>
+<p><code>systemctl start &lt;service&gt;</code>开启服务<br>
+`systemctl enable &lt;se</p>
+<br/><p>访问 <a href="https://remsait.com/posts/linux一些命令" target="_blank">https://remsait.com/posts/linux一些命令</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Valaxy博客光标美化]]></title>
+        <id>https://remsait.com/posts/valaxy博客光标美化</id>
+        <link href="https://remsait.com/posts/valaxy博客光标美化"/>
+        <updated>2024-10-18T11:21:15.000Z</updated>
+        <content type="html"><![CDATA[<h2>前言</h2>
+<p>  早就想换换网页的光标了，但是网络上找到的方法在 valaxy-yun 主题博客里没法完美应用，接下来会介绍怎么完美的解决网页替换光标样式的方法。</p>
+<br/><p>访问 <a href="https://remsait.com/posts/valaxy博客光标美化" target="_blank">https://remsait.com/posts/valaxy博客光标美化</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[valaxy版本升级指南]]></title>
+        <id>https://remsait.com/posts/valaxy版本升级指南</id>
+        <link href="https://remsait.com/posts/valaxy版本升级指南"/>
+        <updated>2024-09-24T12:40:40.000Z</updated>
+        <content type="html"><![CDATA[<h2>前言</h2>
+<p>  我刚开始使用<code>valaxy</code>框架，并搭配<code>yun</code>主题时，这两者的版本都是<code>0.19.9</code>，此时在分类和标签界面会有一点小bug，当云游君推出新版本修复这个bug后，我迫不及待的想要更新版本，但是却没有更新博客框架和主题的经验，屡次碰壁后尝试更新<code>hexo</code>博客的方法并成功，以下为纪录。</p>
+<br/><p>访问 <a href="https://remsait.com/posts/valaxy版本升级指南" target="_blank">https://remsait.com/posts/valaxy版本升级指南</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[两两交换链表中的节点]]></title>
+        <id>https://remsait.com/posts/两两交换链表中的节点</id>
+        <link href="https://remsait.com/posts/两两交换链表中的节点"/>
+        <updated>2025-08-07T10:30:13.000Z</updated>
+        <content type="html"><![CDATA[<h2>24. 两两交换链表中的节点</h2>
+<p><a href="https://leetcode.cn/problems/swap-nodes-in-pairs/">题目链接</a></p>
+<h3>题意</h3>
+<p>给定一个链表，两两交换其中相邻</p>
+<br/><p>访问 <a href="https://remsait.com/posts/两两交换链表中的节点" target="_blank">https://remsait.com/posts/两两交换链表中的节点</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[两个数组的交集]]></title>
+        <id>https://remsait.com/posts/两个数组的交集</id>
+        <link href="https://remsait.com/posts/两个数组的交集"/>
+        <updated>2025-08-12T08:35:22.000Z</updated>
+        <content type="html"><![CDATA[<h2>349. 两个数组的交集</h2>
+<p><a href="https://leetcode.cn/problems/intersection-of-two-arrays/description/">题目链接</a><br>
+题意：给两</p>
+<br/><p>访问 <a href="https://remsait.com/posts/两个数组的交集" target="_blank">https://remsait.com/posts/两个数组的交集</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[两数之和]]></title>
+        <id>https://remsait.com/posts/两数之和</id>
+        <link href="https://remsait.com/posts/两数之和"/>
+        <updated>2025-08-13T08:47:02.000Z</updated>
+        <content type="html"><![CDATA[<h2>1. 两数之和</h2>
+<p><a href="https://leetcode.cn/problems/two-sum/">题目链接</a><br>
+题意：给一个整数数组和一个目标值，在数组中找到为目标值的两个数，并返回下标<br>
+思</p>
+<br/><p>访问 <a href="https://remsait.com/posts/两数之和" target="_blank">https://remsait.com/posts/两数之和</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二分查找]]></title>
+        <id>https://remsait.com/posts/二分查找</id>
+        <link href="https://remsait.com/posts/二分查找"/>
+        <updated>2025-07-31T11:17:54.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>以后最大标题用 ##</p>
+</blockquote>
+<h2>704. 二分查找</h2>
+<p><a href="https://leetcode.cn/problems/binary-search/description/">题目链接</a><br>
+二分查找是在</p>
+<br/><p>访问 <a href="https://remsait.com/posts/二分查找" target="_blank">https://remsait.com/posts/二分查找</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.234Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DFS_图论]]></title>
+        <id>https://remsait.com/posts/DFS_图论</id>
+        <link href="https://remsait.com/posts/DFS_图论"/>
+        <updated>2023-05-09T22:19:58.000Z</updated>
+        <content type="html"><![CDATA[<h4>引入</h4>
+<p>DFS全称是<a href="https://en.wikipedia.org/wiki/Depth-first_search">Depth First Search</a>，中文名是深度优先搜索，是一</p>
+<br/><p>访问 <a href="https://remsait.com/posts/DFS_图论" target="_blank">https://remsait.com/posts/DFS_图论</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DFS_搜索]]></title>
+        <id>https://remsait.com/posts/DFS_搜索</id>
+        <link href="https://remsait.com/posts/DFS_搜索"/>
+        <updated>2023-04-11T12:22:11.000Z</updated>
+        <content type="html"><![CDATA[<p>  DFS为图论中的概念。在<strong>搜索算法</strong>中，该词常指利用递归函数方便地暴力枚举的算法，与图论中的DFS算法有一定相似之处，但并不完全相同<br>
+  比如一种例题，n 等于 m 个数</p>
+<br/><p>访问 <a href="https://remsait.com/posts/DFS_搜索" target="_blank">https://remsait.com/posts/DFS_搜索</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Github使用指南]]></title>
+        <id>https://remsait.com/posts/Github使用指南</id>
+        <link href="https://remsait.com/posts/Github使用指南"/>
+        <updated>2023-06-20T07:51:51.000Z</updated>
+        <content type="html"><![CDATA[<h4>创建Github账号，记住Github用户名、邮箱、密码（略）</h4>
+<h4>下载安装Git（略）</h4>
+<h4>配置Git</h4>
+<p>打开git bash（可以在开始界面找到，或者在文件夹空白处右键选择打</p>
+<br/><p>访问 <a href="https://remsait.com/posts/Github使用指南" target="_blank">https://remsait.com/posts/Github使用指南</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[K-Means 聚类算法]]></title>
+        <id>https://remsait.com/posts/K-Means 聚类算法</id>
+        <link href="https://remsait.com/posts/K-Means 聚类算法"/>
+        <updated>2024-09-23T11:44:10.000Z</updated>
+        <content type="html"><![CDATA[<h2>聚类</h2>
+<h3>概念</h3>
+<p>  聚类就是将一个具有相似特征的数据集合自动归类到一起，称为一个簇，簇内的对象越相似，聚类的效果越好。<br>
+  聚类是一种无监督学习方法，不需要预先标注好</p>
+<br/><p>访问 <a href="https://remsait.com/posts/K-Means 聚类算法" target="_blank">https://remsait.com/posts/K-Means 聚类算法</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[KNN近邻]]></title>
+        <id>https://remsait.com/posts/KNN近邻</id>
+        <link href="https://remsait.com/posts/KNN近邻"/>
+        <updated>2024-09-06T09:33:39.000Z</updated>
+        <content type="html"><![CDATA[<h4>KNN算法原理</h4>
+<ol>
+<li>一句话总结：“近朱者赤近墨者黑”</li>
+<li>KNN是一个简单的无显示学习过程，非泛化学习的监督学习模型。在分类和回归中均有应用。</li>
+<li>先给出已知的数据集，计算未知数据与</li>
+</ol>
+<br/><p>访问 <a href="https://remsait.com/posts/KNN近邻" target="_blank">https://remsait.com/posts/KNN近邻</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Logistic回归]]></title>
+        <id>https://remsait.com/posts/Logistic回归</id>
+        <link href="https://remsait.com/posts/Logistic回归"/>
+        <updated>2024-09-06T10:52:42.000Z</updated>
+        <content type="html"><![CDATA[<h2>Logistic回归概念</h2>
+<h3>概述</h3>
+<p>  Logistic回归又叫逻辑回归，实际上是用来做分类，主要思想是根据现有数据对分类边界线建立回归公式，以此进行分类</p>
+<h3>Sigmoi</h3>
+<br/><p>访问 <a href="https://remsait.com/posts/Logistic回归" target="_blank">https://remsait.com/posts/Logistic回归</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[支持向量机]]></title>
+        <id>https://remsait.com/posts/SVM</id>
+        <link href="https://remsait.com/posts/SVM"/>
+        <updated>2024-09-12T09:35:20.000Z</updated>
+        <content type="html"><![CDATA[<h2>支持向量机 概述</h2>
+<p>支持向量机（SVM）是一种监督学习算法</p>
+<ul>
+<li>支持向量 就是离分隔超平面最近的那些点。</li>
+<li>机 就是表示一种算法，而不是表示机器</li>
+</ul>
+<h2>支持向量机 场景</h2>
+<ul>
+<li>要给左右两边的点</li>
+</ul>
+<br/><p>访问 <a href="https://remsait.com/posts/SVM" target="_blank">https://remsait.com/posts/SVM</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vim简单应用]]></title>
+        <id>https://remsait.com/posts/Vim简单应用</id>
+        <link href="https://remsait.com/posts/Vim简单应用"/>
+        <updated>2023-04-08T17:35:07.000Z</updated>
+        <content type="html"><![CDATA[<h5>1、模式转换</h5>
+<ul>
+<li>命令行模式可以输入<code>i、a</code>等进入编辑模式</li>
+<li>编辑模式点击<code>esc</code>按键进入命令行模式</li>
+<li>命令行模式点击<code>shift+;</code>进入低行模式</li>
+</ul>
+<h5>2、编辑模式</h5>
+<br/><p>访问 <a href="https://remsait.com/posts/Vim简单应用" target="_blank">https://remsait.com/posts/Vim简单应用</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T06:08:39.233Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读]]></title>
+        <id>https://remsait.com/posts/Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读</id>
+        <link href="https://remsait.com/posts/Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读"/>
+        <updated>2025-09-20T12:17:56.000Z</updated>
+        <content type="html"><![CDATA[<h1>基于自监督方法学习到的几何表征预测突变诱导的蛋白质稳定性变化</h1>
+<p>[Prediction of mutation-induced protein stability changes based o</p>
+<br/><p>访问 <a href="https://remsait.com/posts/Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读" target="_blank">https://remsait.com/posts/Prediction of mutation-induced protein stability changes based on the geometric representations learned by a self-supervised method 文献精读</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-20T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[深度学习Pytorch入门]]></title>
+        <id>https://remsait.com/posts/深度学习Pytorch入门</id>
+        <link href="https://remsait.com/posts/深度学习Pytorch入门"/>
+        <updated>2025-03-03T13:18:03.000Z</updated>
+        <content type="html"><![CDATA[<p>本文章参考我是土堆教程，代码在 Cursor 上运行，PyCharm 中会报 Numpy 的版本依赖错误，可以尝试用高版本 Python</p>
+<p>缺少对应的 python 包时自行用 conda</p>
+<br/><p>访问 <a href="https://remsait.com/posts/深度学习Pytorch入门" target="_blank">https://remsait.com/posts/深度学习Pytorch入门</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-18T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二叉搜索树的修改与构造]]></title>
+        <id>https://remsait.com/posts/二叉搜索树的修改与构造</id>
+        <link href="https://remsait.com/posts/二叉搜索树的修改与构造"/>
+        <updated>2025-09-13T21:47:44.000Z</updated>
+        <content type="html"><![CDATA[<h2>701. 二叉搜索树中的插入操作</h2>
+<p><a href="https://leetcode.cn/problems/insert-into-a-binary-search-tree/">题目链接</a><br>
+题意：给定二叉</p>
+<br/><p>访问 <a href="https://remsait.com/posts/二叉搜索树的修改与构造" target="_blank">https://remsait.com/posts/二叉搜索树的修改与构造</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-17T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Transformer文献精读]]></title>
+        <id>https://remsait.com/posts/Transformer文献精读</id>
+        <link href="https://remsait.com/posts/Transformer文献精读"/>
+        <updated>2025-09-13T09:34:51.000Z</updated>
+        <content type="html"><![CDATA[<h2>摘要</h2>
+<p>提出了一种新的简单网络架构 Transformer，它仅基于注意力机制，完全省去了循环和卷积</p>
+<p>做了两个机器翻译的实验，效果特别好，并行度更好，训练时间更少</p>
+<h2>结论</h2>
+<p>介绍</p>
+<br/><p>访问 <a href="https://remsait.com/posts/Transformer文献精读" target="_blank">https://remsait.com/posts/Transformer文献精读</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GNN]]></title>
+        <id>https://remsait.com/posts/GNN</id>
+        <link href="https://remsait.com/posts/GNN"/>
+        <updated>2025-09-12T14:12:10.000Z</updated>
+        <content type="html"><![CDATA[<h2>图是什么</h2>
+<p>图是表示实体之间的一些关系，实体就是 nodes 点 ，关系就是 edges 边</p>
+<p>图一般有两种，无向图 与 有向图</p>
+<h3>数据如何表示成图</h3>
+<p>比如一张突变，长宽都是</p>
+<br/><p>访问 <a href="https://remsait.com/posts/GNN" target="_blank">https://remsait.com/posts/GNN</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-12T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二叉树的最近公共祖先]]></title>
+        <id>https://remsait.com/posts/二叉树的最近公共祖先</id>
+        <link href="https://remsait.com/posts/二叉树的最近公共祖先"/>
+        <updated>2025-09-11T12:20:11.000Z</updated>
+        <content type="html"><![CDATA[<h2>236. 二叉树的最近公共祖先</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/descr">https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/descr</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/二叉树的最近公共祖先" target="_blank">https://remsait.com/posts/二叉树的最近公共祖先</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-11T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二叉搜索树]]></title>
+        <id>https://remsait.com/posts/二叉搜索树</id>
+        <link href="https://remsait.com/posts/二叉搜索树"/>
+        <updated>2025-09-10T15:48:53.000Z</updated>
+        <content type="html"><![CDATA[<h2>700. 二叉搜索树中的搜索</h2>
+<p><a href="https://leetcode.cn/problems/search-in-a-binary-search-tree/">题目链接</a><br>
+题意：给定二叉搜索</p>
+<br/><p>访问 <a href="https://remsait.com/posts/二叉搜索树" target="_blank">https://remsait.com/posts/二叉搜索树</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-10T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些tips]]></title>
+        <id>https://remsait.com/posts/一些Tip</id>
+        <link href="https://remsait.com/posts/一些Tip"/>
+        <updated>2023-03-29T21:41:37.000Z</updated>
+        <content type="html"><![CDATA[<p>定义比较大的数组的时候（例如1e5），要放在全局变量，否则ide会提示段错误</p>
+<p>ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);清</p>
+<br/><p>访问 <a href="https://remsait.com/posts/一些Tip" target="_blank">https://remsait.com/posts/一些Tip</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-09T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[合并二叉树]]></title>
+        <id>https://remsait.com/posts/合并二叉树</id>
+        <link href="https://remsait.com/posts/合并二叉树"/>
+        <updated>2025-09-09T09:56:13.000Z</updated>
+        <content type="html"><![CDATA[<h2>617. 合并二叉树</h2>
+<p><a href="https://leetcode.cn/problems/merge-two-binary-trees/description/">题目链接</a><br>
+题意：给两颗二叉树，合</p>
+<br/><p>访问 <a href="https://remsait.com/posts/合并二叉树" target="_blank">https://remsait.com/posts/合并二叉树</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-09T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[从中序与后序遍历序列构造二叉树]]></title>
+        <id>https://remsait.com/posts/从中序与后序遍历序列构造二叉树</id>
+        <link href="https://remsait.com/posts/从中序与后序遍历序列构造二叉树"/>
+        <updated>2025-09-08T14:58:24.000Z</updated>
+        <content type="html"><![CDATA[<h2>106. 从中序与后序遍历构造二叉树</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-pos">https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-pos</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/从中序与后序遍历序列构造二叉树" target="_blank">https://remsait.com/posts/从中序与后序遍历序列构造二叉树</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-08T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[单调栈]]></title>
+        <id>https://remsait.com/posts/单调栈</id>
+        <link href="https://remsait.com/posts/单调栈"/>
+        <updated>2025-09-08T12:14:38.000Z</updated>
+        <content type="html"><![CDATA[<p>单调栈是一种维护栈内元素单调性的数据结构，通常用于解决”最近一个比当前数大/小“的问题</p>
+<p>核心想法是：利用栈保存若干候选位置，再用单调性快速剔除不可能的候选，从而让每个元素只”进出栈“一次，实</p>
+<br/><p>访问 <a href="https://remsait.com/posts/单调栈" target="_blank">https://remsait.com/posts/单调栈</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-08T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[左叶子之和]]></title>
+        <id>https://remsait.com/posts/左叶子之和</id>
+        <link href="https://remsait.com/posts/左叶子之和"/>
+        <updated>2025-09-06T09:51:27.000Z</updated>
+        <content type="html"><![CDATA[<h2>404. 左叶子之和</h2>
+<p><a href="https://leetcode.cn/problems/sum-of-left-leaves/">题目链接</a><br>
+题意：计算给定二叉树的所有 左叶子 之和<br>
+思路：</p>
+<br/><p>访问 <a href="https://remsait.com/posts/左叶子之和" target="_blank">https://remsait.com/posts/左叶子之和</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-07T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二叉树的所有路径]]></title>
+        <id>https://remsait.com/posts/二叉树的所有路径</id>
+        <link href="https://remsait.com/posts/二叉树的所有路径"/>
+        <updated>2025-09-05T10:11:34.000Z</updated>
+        <content type="html"><![CDATA[<h2>257. 二叉树的所有路径</h2>
+<p><a href="https://leetcode.cn/problems/binary-tree-paths/">题目链接</a><br>
+题意：给一个二叉树的根节点，按任意顺序，返回所有从</p>
+<br/><p>访问 <a href="https://remsait.com/posts/二叉树的所有路径" target="_blank">https://remsait.com/posts/二叉树的所有路径</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-05T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[得到整数零需要执行的最少操作数]]></title>
+        <id>https://remsait.com/posts/得到整数零需要执行的最少操作数</id>
+        <link href="https://remsait.com/posts/得到整数零需要执行的最少操作数"/>
+        <updated>2025-09-05T09:57:11.000Z</updated>
+        <content type="html"><![CDATA[<h2>2749. 得到整数零需要执行的最少操作数</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/minimum-operations-to-make-the-integer-">https://leetcode.cn/problems/minimum-operations-to-make-the-integer-</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/得到整数零需要执行的最少操作数" target="_blank">https://remsait.com/posts/得到整数零需要执行的最少操作数</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-05T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[对称二叉树]]></title>
+        <id>https://remsait.com/posts/对称二叉树</id>
+        <link href="https://remsait.com/posts/对称二叉树"/>
+        <updated>2025-09-01T16:21:04.000Z</updated>
+        <content type="html"><![CDATA[<h2>101. 对称二叉树</h2>
+<p><a href="https://leetcode.cn/problems/symmetric-tree/">题目链接</a><br>
+题意：给一个二叉树的根节点，检查它是否轴对称</p>
+<h3>方法</h3>
+<br/><p>访问 <a href="https://remsait.com/posts/对称二叉树" target="_blank">https://remsait.com/posts/对称二叉树</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-04T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[平衡二叉树]]></title>
+        <id>https://remsait.com/posts/平衡二叉树</id>
+        <link href="https://remsait.com/posts/平衡二叉树"/>
+        <updated>2025-09-04T09:59:53.000Z</updated>
+        <content type="html"><![CDATA[<h2>110. 平衡二叉树</h2>
+<p><a href="https://leetcode.cn/problems/balanced-binary-tree/">题目链接</a><br>
+题意：给一个二叉树，判断是否为平衡二叉树</p>
+<h1></h1>
+<br/><p>访问 <a href="https://remsait.com/posts/平衡二叉树" target="_blank">https://remsait.com/posts/平衡二叉树</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-04T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二叉树层序遍历]]></title>
+        <id>https://remsait.com/posts/二叉树层序遍历</id>
+        <link href="https://remsait.com/posts/二叉树层序遍历"/>
+        <updated>2025-08-26T16:58:59.000Z</updated>
+        <content type="html"><![CDATA[<h2>102. 二叉树的层序遍历</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description">https://leetcode.cn/problems/binary-tree-level-order-traversal/description</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/二叉树层序遍历" target="_blank">https://remsait.com/posts/二叉树层序遍历</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-03T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[二叉树理论基础]]></title>
+        <id>https://remsait.com/posts/二叉树理论基础</id>
+        <link href="https://remsait.com/posts/二叉树理论基础"/>
+        <updated>2025-08-24T15:10:24.000Z</updated>
+        <content type="html"><![CDATA[<p>前序：适用从根节点开始，向下传递信息（不需要子结点信息）<br>
+后序：需要先获得子结点信息，再处理当前节点<br>
+中序：适用于二叉搜索树，需要按顺序处理节点</p>
+<p>二叉树的题目主要分为以下几部分：<br>
+*</p>
+<br/><p>访问 <a href="https://remsait.com/posts/二叉树理论基础" target="_blank">https://remsait.com/posts/二叉树理论基础</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-03T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[完全二叉树的节点个数]]></title>
+        <id>https://remsait.com/posts/完全二叉树的节点个数</id>
+        <link href="https://remsait.com/posts/完全二叉树的节点个数"/>
+        <updated>2025-09-03T09:31:15.000Z</updated>
+        <content type="html"><![CDATA[<h2>222. 完全二叉树的节点个数</h2>
+<p><a href="https://leetcode.cn/problems/count-complete-tree-nodes/description/">题目链接</a><br>
+题意：</p>
+<br/><p>访问 <a href="https://remsait.com/posts/完全二叉树的节点个数" target="_blank">https://remsait.com/posts/完全二叉树的节点个数</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-03T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[人员站位的方案数Ⅰ]]></title>
+        <id>https://remsait.com/posts/人员站位的方案数Ⅰ</id>
+        <link href="https://remsait.com/posts/人员站位的方案数Ⅰ"/>
+        <updated>2025-09-02T11:27:46.000Z</updated>
+        <content type="html"><![CDATA[<h2>3025. 人员站位的方案数 Ⅰ</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/find-the-number-of-ways-to-place-people-i/de">https://leetcode.cn/problems/find-the-number-of-ways-to-place-people-i/de</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/人员站位的方案数Ⅰ" target="_blank">https://remsait.com/posts/人员站位的方案数Ⅰ</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-02T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最大平均通过率]]></title>
+        <id>https://remsait.com/posts/最大平均通过率</id>
+        <link href="https://remsait.com/posts/最大平均通过率"/>
+        <updated>2025-09-01T17:08:48.000Z</updated>
+        <content type="html"><![CDATA[<h2>1792. 最大平均通过率</h2>
+<p>[题目链接](<a href="https://leetcode.cn/problems/maximum-average-pass-ratio/description/?envType">https://leetcode.cn/problems/maximum-average-pass-ratio/description/?envType</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/最大平均通过率" target="_blank">https://remsait.com/posts/最大平均通过率</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-01T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[翻转二叉树]]></title>
+        <id>https://remsait.com/posts/翻转二叉树</id>
+        <link href="https://remsait.com/posts/翻转二叉树"/>
+        <updated>2025-09-01T16:01:54.000Z</updated>
+        <content type="html"><![CDATA[<h2>226. 翻转二叉树</h2>
+<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">题目链接</a><br>
+题意：把一棵二叉树左右翻转</p>
+<br/><p>访问 <a href="https://remsait.com/posts/翻转二叉树" target="_blank">https://remsait.com/posts/翻转二叉树</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-09-01T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vscode配置C++环境以及主题]]></title>
+        <id>https://remsait.com/posts/Vscode配置C++环境以及主题</id>
+        <link href="https://remsait.com/posts/Vscode配置C++环境以及主题"/>
+        <updated>2024-09-26T11:06:44.000Z</updated>
+        <content type="html"><![CDATA[<h2>前言</h2>
+<p>  很早以前配置过VScode上的C++环境，这次换电脑用新的方法重新配置一遍<br>
+  PS：单纯想用VScode运行C++代码来做点题</p>
+<br/><p>访问 <a href="https://remsait.com/posts/Vscode配置C++环境以及主题" target="_blank">https://remsait.com/posts/Vscode配置C++环境以及主题</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-24T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[markdown的基础用法]]></title>
+        <id>https://remsait.com/posts/markdown的基础用法</id>
+        <link href="https://remsait.com/posts/markdown的基础用法"/>
+        <updated>2022-12-29T16:27:29.000Z</updated>
+        <content type="html"><![CDATA[<h4>1.标题</h4>
+<p> 使用#后接空格表示标题,一共六级<br>
+ 例如 # 一级标题 ## 二级标题</p>
+<h4>2.字体</h4>
+<p> (1)斜体：<code>*123*</code>或者<code>_123_</code> 效</p>
+<br/><p>访问 <a href="https://remsait.com/posts/markdown的基础用法" target="_blank">https://remsait.com/posts/markdown的基础用法</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-24T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[滑动窗口最大值]]></title>
+        <id>https://remsait.com/posts/滑动窗口最大值</id>
+        <link href="https://remsait.com/posts/滑动窗口最大值"/>
+        <updated>2025-08-22T13:26:50.000Z</updated>
+        <content type="html"><![CDATA[<h2>239. 滑动窗口最大值</h2>
+<blockquote>
+<p>解法挺好</p>
+</blockquote>
+<p><a href="https://leetcode.cn/problems/sliding-window-maximum/">题目链接</a><br>
+<strong>题意：</strong><br>
+给一个</p>
+<br/><p>访问 <a href="https://remsait.com/posts/滑动窗口最大值" target="_blank">https://remsait.com/posts/滑动窗口最大值</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-22T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[有效的括号]]></title>
+        <id>https://remsait.com/posts/有效的括号</id>
+        <link href="https://remsait.com/posts/有效的括号"/>
+        <updated>2025-08-21T16:37:28.000Z</updated>
+        <content type="html"><![CDATA[<h2>20. 有效的括号</h2>
+<p><a href="https://leetcode.cn/problems/valid-parentheses/">题目链接</a><br>
+题意：给定一个只包括各种括号的字符串 s ，其中有`( )</p>
+<br/><p>访问 <a href="https://remsait.com/posts/有效的括号" target="_blank">https://remsait.com/posts/有效的括号</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-21T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[栈与队列互相实现]]></title>
+        <id>https://remsait.com/posts/栈与队列互相实现</id>
+        <link href="https://remsait.com/posts/栈与队列互相实现"/>
+        <updated>2025-08-20T09:52:42.000Z</updated>
+        <content type="html"><![CDATA[<h2>用栈实现队列</h2>
+<p><a href="https://leetcode.cn/problems/implement-queue-using-stacks/">题目链接</a><br>
+题意：<br>
+仅用两个栈实现先入先出队列，队</p>
+<br/><p>访问 <a href="https://remsait.com/posts/栈与队列互相实现" target="_blank">https://remsait.com/posts/栈与队列互相实现</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-20T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[栈与队列理论基础]]></title>
+        <id>https://remsait.com/posts/栈与队列理论基础</id>
+        <link href="https://remsait.com/posts/栈与队列理论基础"/>
+        <updated>2025-08-19T10:03:16.000Z</updated>
+        <content type="html"><![CDATA[<p>栈是先进后出，队列是先进先出<br>
+栈和队列是 STL（C++标准库）里的两个数据结构<br>
+C++标准库是有多个版本的，我们使用的是 SGI STL，由Silicon Graphics Computer</p>
+<br/><p>访问 <a href="https://remsait.com/posts/栈与队列理论基础" target="_blank">https://remsait.com/posts/栈与队列理论基础</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-19T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[解决vercel被墙的问题]]></title>
+        <id>https://remsait.com/posts/解决vercel被墙的问题</id>
+        <link href="https://remsait.com/posts/解决vercel被墙的问题"/>
+        <updated>2024-09-11T20:29:26.000Z</updated>
+        <content type="html"><![CDATA[<h2>前言</h2>
+<p>  我在使用 valaxy 框架，搭配 yun 主题来搭建自己的博客，根据官方文档，把评论插件<code>waline</code>和追番插件<code>bangumi</code>都配置好后，评论配置在<code>netlify</code>，追番配置在<code>vercel</code>。<br>
+  但是 vercel 网站上的应用有可能因为 dns 污染而被墙，以下是让其在国内能访问的办法</p>
+<br/><p>访问 <a href="https://remsait.com/posts/解决vercel被墙的问题" target="_blank">https://remsait.com/posts/解决vercel被墙的问题</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-19T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hexo博客迁移至Valaxy]]></title>
+        <id>https://remsait.com/posts/Hexo博客迁移至Valaxy</id>
+        <link href="https://remsait.com/posts/Hexo博客迁移至Valaxy"/>
+        <updated>2024-09-07T21:50:59.000Z</updated>
+        <content type="html"><![CDATA[<p>Valaxy真的很棒<br>
+解决了不少困扰已久的问题</p>
+<br/><p>访问 <a href="https://remsait.com/posts/Hexo博客迁移至Valaxy" target="_blank">https://remsait.com/posts/Hexo博客迁移至Valaxy</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-18T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[字符串操作基础]]></title>
+        <id>https://remsait.com/posts/字符串操作基础</id>
+        <link href="https://remsait.com/posts/字符串操作基础"/>
+        <updated>2025-08-16T13:59:54.000Z</updated>
+        <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>方法/函数</th>
+<th>示例代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取长度</td>
+<td><code>s.size()</code> / `s.length()</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<br/><p>访问 <a href="https://remsait.com/posts/字符串操作基础" target="_blank">https://remsait.com/posts/字符串操作基础</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-18T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的ff14之旅]]></title>
+        <id>https://remsait.com/posts/我的ff14之旅</id>
+        <link href="https://remsait.com/posts/我的ff14之旅"/>
+        <updated>2024-09-11T14:41:59.000Z</updated>
+        <content type="html"><![CDATA[<p>What's past is prologue。<br>
+                     ———Shakespeare</p>
+<br/><p>访问 <a href="https://remsait.com/posts/我的ff14之旅" target="_blank">https://remsait.com/posts/我的ff14之旅</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2025-08-17T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[LRU缓存]]></title>
+        <id>https://remsait.com/posts/LRU缓存</id>
+        <link href="https://remsait.com/posts/LRU缓存"/>
+        <updated>2023-04-10T19:37:40.000Z</updated>
+        <content type="html"><![CDATA[<p><img src="https://cloudflare.remsait.com/img/20230410194125.png" alt=""><br>
+难度：中等<br>
+链接：[LeetCode 146. LRU Cache](https</p>
+<br/><p>访问 <a href="https://remsait.com/posts/LRU缓存" target="_blank">https://remsait.com/posts/LRU缓存</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-04-11T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用archlinux参考文章]]></title>
+        <id>https://remsait.com/posts/使用archlinux参考文章</id>
+        <link href="https://remsait.com/posts/使用archlinux参考文章"/>
+        <updated>2023-01-08T12:18:22.000Z</updated>
+        <content type="html"><![CDATA[<p>arch wiki：<a href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">https://wiki.archlinuxcn.org/wiki/安装指南</a></p>
+<p>安装参考：&lt;<a href="https://b">https://b</a></p>
+<br/><p>访问 <a href="https://remsait.com/posts/使用archlinux参考文章" target="_blank">https://remsait.com/posts/使用archlinux参考文章</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2023-01-09T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[hexo初建站]]></title>
+        <id>https://remsait.com/posts/hexo初建站</id>
+        <link href="https://remsait.com/posts/hexo初建站"/>
+        <updated>2022-12-29T16:30:48.000Z</updated>
+        <content type="html"><![CDATA[<p>1.下载安装git与node.js</p>
+<p>2.配置nodejs环境(略)<br>
+用nvm管理node.js版本</p>
+<p>3.连接github ：<br>
+`git config --global <a href="http://user.name">user.name</a> &quot;G</p>
+<br/><p>访问 <a href="https://remsait.com/posts/hexo初建站" target="_blank">https://remsait.com/posts/hexo初建站</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>西柿</name>
+            <email>i@valaxy.site</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2022-12-31T00:00:00.000Z</published>
+    </entry>
+</feed>

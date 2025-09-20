@@ -1,0 +1,45 @@
+﻿[UpArrow]
+Path=CatHead_alternate select.cur
+
+[Wait]
+Path=CatHead_busy.ani
+
+[SizeNWSE]
+Path=CatHead_diagonal resize1.ani
+
+[SizeNESW]
+Path=CatHead_diagonal resize2.ani
+
+[NWPen]
+Path=CatHead_handwriting.cur
+
+[Help]
+Path=CatHead_help.cur
+
+[SizeWE]
+Path=CatHead_horizontal resize.ani
+
+[Hand]
+Path=CatHead_link.ani
+
+[SizeAll]
+Path=CatHead_move.ani
+
+[Arrow]
+Path=CatHead_normal cursor.cur
+
+[Crosshair]
+Path=CatHead_precision.cur
+
+[IBeam]
+Path=CatHead_text.ani
+
+[No]
+Path=CatHead_unavailable.cur
+
+[SizeNS]
+Path=CatHead_vertical resize.ani
+
+[AppStarting]
+Path=CatHead_Working.ani
+
