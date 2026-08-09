@@ -37,8 +37,15 @@ print(response.content)
 ```
   更改`api_key`后运行，就能看到deepseek回答的结果。
   
+## llm_fundamentals  
+  了解什么是 `llm`、`prompt`，并开始独立完成自己搭建的第一个 agent
   
-
+### 了解 LLM
+  LLM（Large Language Model），即大语言模型。LLM可以说是 agent 最核心的大脑，没有大脑无法组织起一个 agent 热河的行为，要使用大语言模型，就要获取 api-key 作为接口，在本地自由调用 ai。
+  
+  LLM 模型分为很多类，比如视觉模型、深度思考、蒸馏模型等等。本地想要部署 LLM一般是蒸馏版用来自己玩玩，微调需要大量的算力资源。
+### LLM 怎么调用
+  
 
 
 
