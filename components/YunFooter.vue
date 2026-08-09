@@ -4,7 +4,7 @@ import YunFooter from 'valaxy-theme-yun/components/YunFooter.vue'
 import { onMounted, ref } from 'vue'
 
 // 加载 Busuanzi 统计
-useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
+useScriptTag('https://busuanzi.9420.ltd/js')
 
 const liveTime = ref('')
 
