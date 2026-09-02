@@ -692,6 +692,7 @@ if __name__ == '__main__':
   在第三章中就已经手动造轮子，知道其原理与过程，Langchain 的 Agents 模块的思路大体也是一致的，只是使用方法变更了下。在学习 Agents 之前，需要先了解 Agents 的关键零件。
 
   1. 零件一：ReAct 循环——agent 的大脑
+
     ReAct = Reason（推理/思考） + Action（行动），以下是 Agent 内部思考的逻辑循环：
 ```
 思考：LLM 分析任务（我要查看天气）
@@ -702,6 +703,7 @@ if __name__ == '__main__':
 ```
   如果想看到这个流程，可以在输出时候带上 verbose = True，来看看 ai 内部的思考过程
   2. 零件二：工具——@tool
+
     Agent 的手和脚，用以定义 Agent 能做什么
 
   Langchain 为我们封装了一个 @tool 装饰器，可以一键将任意 python 函数封装为 Agent 可用的工具，下面用一段代码演示：
@@ -919,6 +921,7 @@ if __name__ == '__main__':
   现在所作的 Agent 已经很不错，但是还有两个致命问题：每次运行 Invoke 都在烧钱；用户每次运行都必须等整个 ReAct 跑完才能得到想要的答案。下面我们依次解决这俩问题：
 
   1. 缓存
+
     你写好了一个比较复杂的项目Agent，有七八个重要组件，你需要确定它们都能成功运行。于是你开始调试，调试了二三十次，确定满意没有问题了。接着一看 llm 的 token 调用：也花了二三十次的 token 钱...
 
   简单讲就是跳过 llm 调用这一环节，优先保证其他所有模块测试都没啥问题，等其他都完毕后再去掉缓存测试一遍 llm 调用，这样只用花费一次 token 调用的钱。当问题完全一样时，直接从缓存拿答案。
@@ -949,7 +952,8 @@ print('缓存清理完成')
   如上，当缓存命中时几乎不费时
 
   2. 流式
-    回想一下，当在网页用 ai 时，它们输出都是一点点排列出来的，这就是流式输出，像流水一样。
+
+  回想一下，当在网页用 ai 时，它们输出都是一点点排列出来的，这就是流式输出，像流水一样。
 
   而我们目前的输出必须完整跑完才能看到答案，接下来就为其加入流式输出：
 ```python
@@ -982,6 +986,543 @@ if __name__ == '__main__':
  这里不需要`print(response['output'])`，因为 callbacks 做到了生成 token 时自动打印到终端。
 
  同时不能像`print(f"AI:{response['output']}")`这样写 AI： 了，得单独列出来写一下。
+## rag_basics
+  rag 能让 agent 访问本地知识库，智能检索出我们想要的某个数据。
+### Rag 概念与它的核心流程
+#### Rag 概念
+  Rag（Retrieval-Augumented Generation）：检索增强生成
+```
+检索（Retrieval）：从外部知识库中寻找与问题相关的信息
+增强（Augmented）：将检索到的信息作为上下文，提供给大模型（LLM）
+生成（Generation）：LLM 结合检索到的信息，生成更准确、更可靠的回答
+```
+  它的最大功能就是让 llm 能“开卷考试”，也就是让他能查询知识库。本节关注点就是检索，有了合理的检索，才能增强（给 LLM 学习），并生成（LLM 给回答）。
+#### Rag 核心流程
+  我们可以拆分出 rag 两条线的运行流程：
+  1. 模块 A：rag 的“离线准备”（Offline Indexing）  
+  把你的文档全部读一遍，拆成“知识卡片”（Chunks），并为每张卡片贴上“语义标签”，再把这些有“语义标签”的卡片上架到向量数据库。这个阶段没有 LLM 参与，纯数据处理，它可能很慢，但是只需做一次。
+  2. 模块B：RAG 的“在线运行（Online R-A-G Flow）  
+  当用户提问时，去智能图书馆里检索，找出相关的”知识卡片“，然后把”卡片“和”问题“一起交给 LLM（生成）。这个阶段 LLM 才会参与，每次提问时都会执行。
+  
+  模块 A 的”离线操作“是 R-A-G 中的 R（检索）前提，完成这个离线操作才能进行检索；模块 B 的”在线运行“才是完整的 R-A-G 流程。   
+  
+  所以我们会先讲这个”离线操作“的模块 A 的三大组件：加载与分块 & 向量化 & 存储
+  
+  学会这三步后才能做好这个”智能图书馆“，模块 B 的”在线运行“的 R-A-G 才能围绕着这个图书馆运行起来。同时，我们的检索精准与否，完全与这个图书馆内部的三大组件息息相关。
+### 核心组件一：加载与分块（Load & split）-（准备“知识卡片”）
+#### 加载与分块的必要性
+  1. 加载（Load）  
+  我们“私有知识”的来源五花八门，可能是 .txt 文本、pdf 报告、csv 表格，甚至可能使网页或者 Notion 笔记。所以，确定一套统一的阅读器（loader）来读懂这些格式，并最终转化为 Langchain 认识的标准格式（Document对象），这就是加载的价值。  
+  
+  2. 分块（Split）  
+  加载进来的 Document 可能非常大，但 LLM 的“桌子“（上下文长度）是有限的，比如 4k、8k、128k tokens，我们不可能将整本书都塞给他，必然要对其进行优化处理。因此，我们做法就是：将整本书切成一块块的”知识卡片“（Chunks）。
+  
+  关键参数 `- chunk_size` ：切好的”知识卡片“的大小上限
+  * 权衡：切好的”知识卡片“的大小上限。如果 size 太小，会使得语义割裂，答案被切割成两半；太大则会出现上下文噪点（llm 找不到重点）。
+  * 硬约束：必须小于使用的 Embedding 模型最大 Token 上限（比如 bge-small-zh-v1.5 为 512 token）。
+  * 数据约束：在主流中文向量模型中，1 中文字符约为 1 token，所以设 chunk_size = 250-300 是一个很安全的上限。
+  
+  关键参数`- chunk_overlap`：不同”知识卡片“可重叠的字符大小
+  * 目的：如果分块造成”语义割裂”，chunk_overlap 可以允许一定字符进行“知识卡片”间的拼接，确保语义不丢失。
+  * 通常设定：一般为 chunk_size 的 10%-20%
+  
+  这俩关键参数必须留意，建议根据具体情况配置。同时这里俩参数调优的性价比与其他模块相比非常高，所以单独讲一下。Rag 的开头找数据这里如果没配置好，那么智能是“垃圾进，垃圾出”，后面的检索也没有任何意义了。
+#### 工具
+  对于“加载”与“分块”，Langchain 都提供了专业的加载器与分割器：
+  
+  Document Loaders（加载器）：
+  * TextLoader：对应 .txt 文件
+  * PyPDFLoader：对应 .pdf 文件（需要 pypdf 库）
+  * CSVLoader：对应 .csv 文件，它会将每一行视为一个独立的 Document。
+  
+  Text Splitters（分割器）：
+  * RecursiveCharacterTextSplitter：最推荐最智能的默认分割器
+  * 它就是“造轮子”的“最终版”，它会自动按 ["\n\n", "\n", " ", ""] 的优先级列表来分割，最大限度地保留语义的完整性。
+  * 实战配置（针对TXT）：我们的 txt 文本是高度结构化的，以 \n 作为模块自然分割，最长文本“模块05”约为190字符；设定 chunk_size = 250，它小于 Embedding 设置的 512 token 限制，非常安全，且大于任何一个单独模块（如190字符的），保持每个模块的语义完整；设定 chunk_overlap = 40，设置其为 chunk_size 的15%-20%，作为“安全垫”，防止未来某个模块超过 250 字符，即设定“知识卡片”最高可有 290 个字符。
+  
+  以下是具体加载与分割的代码：
+```python
+import os
+from langchain_community.document_loaders import TextLoader # 加载
+from langchain_text_splitters import RecursiveCharacterTextSplitter # 分割
+ 
+# 创建一个演示txt文件
+knowledge_base_content = """
+### 模块 01 — Agent 入门 & 环境搭建
+- **目标**：理解 Agent 概念，完成环境配置与首次调用。
+- **内容**：环境依赖｜API Key 配置｜最小可运行 Agent
+### 模块 02 — LLM 基础调用
+- **目标**：掌握模型调用逻辑，初步构建智能体能力。
+- **内容**：LLM了解与调用｜Prompt编写与逻辑构思｜多轮对话记忆｜独立搭建一个智能体
+### 模块 03 — Function Calling 与工具调用
+- **目标**：实现 LLM 调用外部函数，赋予模型“执行力”。
+- **内容**：Function calling原理｜工具函数封装｜API接入实践｜多轮调用流程｜Agent能力扩展
+### 模块 04 — LangChain 基础篇
+- **目标**：认识Langchain六大模块，学会用Langchain构建智能体。
+- **内容**：LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
+### 模块 05 — LangChain 进阶篇
+- **目标**：掌握Langchain Agents的核心机制，构建能调用工具、持续思考、具备记忆的智能体。
+- **内容**：Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent｜记忆+流式｜开发优化
+"""
+ 
+with open('knowledge_base.txt','w',encoding='utf8') as f:
+    f.write(knowledge_base_content)
+ 
+# 1.加载
+# TextLoader 读取.txt文件，并将其转换为Document对象
+loader = TextLoader('knowledge_base.txt',encoding='utf8')
+docs = loader.load()
+print(f'{docs}已加载完成!')
+ 
+# 2.分割
+text_splitter = RecursiveCharacterTextSplitter(
+    # 本节重点
+    chunk_size=250, # 设定的chunk块大小(字符数),
+    chunk_overlap=40 # 设定的重叠大小(字符数)
+)# 创建分割器的配置模板
+splits = text_splitter.split_documents(docs) # 切割成chunk块
+ 
+print(f'分块结果:{len(splits)}')
+ 
+for i,doc in enumerate(splits):
+    print(f'片段{i+1}(长度:{len(doc.page_content)})')
+    print(doc.page_content)
+    print('-'*100+'\n')
+ 
+# 观察：
+# 我们的文本被分割成了四块，没有一块的长度超过250.
+# 所以没有用到overlap(重叠)，这是最好的结果
+```
+  chunk_overlap 本来作用就是兜底，没有用到证明“分块”策略成功，理想情况下应该是闲置的。
+
+### 核心组件二：向量化（Embedding）-（贴上语义标签）
+#### 理论：什么是 Embedding
+  我们已经把知识切分成了小卡片（chunk），接下来我们还要为它贴上“语义标签”，这样计算机才能看懂它是什么意思。
+  
+  传统搜索：如果用关键词匹配，搜“小狗”就永远也找不到“金毛犬”卡片。  
+  语义搜索：我们希望计算机立结“小狗”和金毛“是相似的概念。  
+  Embedding（向量化）的作用：Embedding 模型在此刻就能作为一个”翻译官“，把任何一段文字（知识卡片）转换为一串独特的数字，这些数字就是“向量”。  
+  “向量”就是“语义坐标”，小狗 和 金毛 在语义坐标上是非常接近的，所以计算机能认出他们是相似概念。
+  
+  另外，不同 Embedding 模型产生的向量在语义表达能力、维度、上下文感知能力、长度支持等方面是不同的，有些模型专门适配短文本，有些适合长文本，有些适合情感分析，又有些适合专门领域如法律等。选模型也是一门学问。
+#### 工具：Langchain 的 Embedding 方案
+  所谓 Embedding 方案，说简单点就是 如何将文本转换为向量 的解决方案。
+  
+  对于社区已经有的 云/本地 方案，我们可以自行选择：
+  
+  * 方案1（在线 API）：如 BaichuanTextEmbeddings 或 OpenAIEmbeddings
+    * 优点：效果好，速度快，不占本地资源
+    * 缺点：需要API Key，并且按 Token 收费
+
+  * 方案2（本地模型）：HuggingFaceEmbeddings
+    * 优点：完全免费，数据 100% 在本地，保护隐私
+    * 缺点：第一次运行需要下载模型，并且会消耗本地 CPU/GPU 资源
+
+  本片我们首选开源本地模型 HuggingFaceEmbeddings 使用，代码如下：
+```python
+from embeddings import get_embeddings
+ 
+# 首次运行可能时间较久 -- 同时运行本文件需要梯子，不然无法加载到本地
+print('---正在加载本地嵌入模型(bge-small-zh-v1.5)...---')
+ 
+# 理论：有embedding的向量模型
+embeddings_model = get_embeddings("bge-small-zh-v1.5")
+print('嵌入模型载入完毕')
+ 
+# 演示：将文本转换为向量
+text = "模块05的目标是什么"
+query_embedding = embeddings_model.embed_query(text)
+ 
+# 验证：向量存在，而且有具体数值
+print(f'文本:{text}')
+print(f'向量(前五维):{query_embedding[:5]}')
+print(f'向量维度:{len(query_embedding)}')
+
+"""
+---正在加载本地嵌入模型(bge-small-zh-v1.5)...---
+嵌入模型载入完毕
+文本:模块05的目标是什么
+向量(前五维):[0.023142, 0.057231, -0.012413, 0.041251, -0.033627]
+向量维度:512
+"""
+```
+  如上，我们成功用工具完成了小段文本的向量化工作，后续我们再想要完成类似操作，也这样做即可。
+  
+  如下是从 embeggings.py 搬运过来的 get_embeddings 这个文件：（教程作者自己封装）
+```python
+# 本文件用于下载并获取embedding向量化模型
+ 
+from pathlib import Path
+from langchain_huggingface import HuggingFaceEmbeddings
+ 
+# 获取embeddings模型 - 首次调用时自动下载
+def get_embeddings(model_name="BAAI/bge-small-zh-v1.5",device="cpu",**kwargs):
+    # 支持更换其他向量化模型
+    local_dir = Path("models")/model_name.replace("/", "_")
+    if not local_dir.exists():
+        print(f'⚠️ 首次使用嵌入模型，正在下载到{local_dir.absolute()}')
+        print("💡 提示：需要联网(必需梯子)，完成后可离线使用")
+        from huggingface_hub import snapshot_download
+        # 模型下载工具
+        snapshot_download(
+            repo_id = model_name,
+            local_dir = local_dir,
+        )
+        print('✅ 下载完成！')
+ 
+    # 构造参数字典
+    model_kwargs =  {
+            "device":device,
+            "local_files_only": True,  # 仅使用本地文件
+        }
+ 
+    # 此处实例化时，把kwargs传入
+    _EMBEDDINGS = HuggingFaceEmbeddings(
+        model_name = str(local_dir), # 使用本地已下载的模型
+        model_kwargs = model_kwargs,
+        **kwargs # 允许传入参数
+    )
+    return _EMBEDDINGS
+```
+  此代码用于 首次下载与加载向量化模型（必须开梯子下载），首次下载完成后会存在本地，之后会从本地加载，不需要重复下载。之后所有 RAG 相关会非常频繁的引入该 embeddings.py 文件使用。
+### 核心组件三：存储（Store）-（建造”智能图书馆“）
+  如果说上步的 Embeddings 目标是如何把文字变成向量，那么这一步的存储的目标则是有了向量后，如何快速找到最相似的那个。
+  
+  我们已经有了文档切片（splits）和向量化（Embedding），接着就要为这些向量构建一个高效的搜索索引。
+#### 理论：向量搜索
+  在向量化的世界里，一切的核心都是向量（Vector），每个 split（知识片段）都被 embeddings_model 转换成了一个高维知识向量，未来用户的 query（问题）也会被转换成一个查询向量。
+  
+  我们的目标是：在由成千上万个”知识向量“构成的空间中，找到与”查询向量“语义最相似的那几个。很明显，如果用暴力搜索去存储并检索，for 循环检索速度能极慢。所以我们肯定还是需要借助工具：向量索引（Vector Index）
+  
+  （离线阶段）建索引：向量索引工具会分析所有知识向量的分布，并构建一个高效的内部结构（如图、树或哈希表），这个过程可能耗时，但只需做一次。
+  
+  （在线阶段）检索：当一个新的查询向量到来时，它会利用索引结构进行”跳跃式“搜索，直接定位到最可能相关的区域，将复杂度降低到非常小的级别。（具体算法如近似最近邻、余弦相似度等）
+  
+#### 框架：选择你的向量索引工具 FAISS & Chroma
+  FAISS（Facebook AI Similarity Search）
+  
+  * 定位：一个极致轻量的向量搜索库，专注于高性能的索引构建与搜索
+  * 优点：
+    * 速度快：专为高性能向量搜索设计
+    * 纯本地：数据和索引完全在您自己的机器上，安全且无需网络
+    * 简单高效：API 直观，非常适合学习和快速原型开发
+  * 缺点：
+    * 功能相对基础，主要用于”建索引 + 搜索“，不擅长复杂的文档生命周期管理（如增删改查）。
+  * 适合场景：适合基础使用，快速体验 RAG 的核心离线流程。
+  
+  Chroma
+  
+  * 定位：一个功能完整的向量数据库，内置了索引能力
+  * 优点：
+    * 支持文档的增删改查，API 更友好
+    * 支持持久化存储（重启后数据不丢失）
+    * 可以作为独立服务运行
+  * 适合场景：当需要更复杂的文档管理时
+  
+  本章中我们选用 FAISS 来构建并保存一个本地的向量索引，为后续的实时检索做好准备，以下是完整的初始化向量数据库构建的代码：
+```python
+# 仅负责: 切片 -> 向量化 -> 构建索引 -> 保存到磁盘
+# 运行一次即可，无需每次检索都运行
+from embeddings import get_embeddings
+import os
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.vectorstores import FAISS
+ 
+# 准备知识库内容
+knowledge_base_content = """
+### 模块 01 — Agent 入门 & 环境搭建
+- **目标**：理解 Agent 概念，完成环境配置与首次调用。
+- **内容**：环境依赖｜API Key 配置｜最小可运行 Agent
+### 模块 02 — LLM 基础调用
+- **目标**：掌握模型调用逻辑，初步构建智能体能力。
+- **内容**：LLM了解与调用｜Prompt编写与逻辑构思｜多轮对话记忆｜独立搭建一个智能体
+### 模块 03 — Function Calling 与工具调用
+- **目标**：实现 LLM 调用外部函数，赋予模型“执行力”。
+- **内容**：Function calling原理｜工具函数封装｜API接入实践｜多轮调用流程｜Agent能力扩展
+### 模块 04 — LangChain 基础篇
+- **目标**：认识Langchain六大模块，学会用Langchain构建智能体。
+- **内容**：LLM 调用｜Prompt 设计｜Chain 构建｜Memory 记忆｜实战练习
+### 模块 05 — LangChain 进阶篇
+- **目标**：掌握Langchain Agents的核心机制，构建能调用工具、持续思考、具备记忆的智能体。
+- **内容**：Function Calling｜@tool 工具封装｜ReAct 循环｜Agent 构建｜SQL Agent｜记忆+流式｜开发优化
+"""
+ 
+with open("knowledge_base.txt",'w',encoding='utf8') as f:
+    f.write(knowledge_base_content)
+ 
+ 
+# 1. 加载并切分文档 (Load&Split)
+loader = TextLoader("knowledge_base.txt",encoding='utf8')
+docs = loader.load()
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=250,chunk_overlap=40) # 载入切分器模板
+splits = text_splitter.split_documents(docs) # 运行切分器
+print(f'p1完成，文档已切分成{len(splits)}个片段\n')
+ 
+# 2. 向量化(Embedding)
+embeddings_model = get_embeddings() # 载入向量化模型
+print(f'p2完成，Embedding模型已准备\n') #
+ 
+# 3. 存储(Store)
+db = FAISS.from_documents(splits,embeddings_model) # 将分割块与向量化的模型传递给FAISS，FAISS会使用它们并完成最终向量数据库的构建。
+ 
+db.save_local("faiss_index")
+print(f'p3完成，向量数据库{db}已构建')
+ 
+# 清理临时文件
+os.remove("knowledge_base.txt")
+ 
+print('---所有阶段已经完成!---')
+```
+  运行后会构建一个向量数据库，目录是`faiss_index`，里面包含 index.faiss 和 index.pkl 
+  
+  前三步的初始化（离线模块）已完成，在正式进入 RAG 前，我们再把这个离线的三步流程梳理一遍：
+  
+    第一步：文本通过加载与分割（chunking，含 overlap）
+    第二步：对每个 chunk 进行向量化（embedding）
+    第三步：将向量 + 原文 + 元数据存入向量数据库 
+
+  其中向量数据库这里不用做过多考虑，对不同文本的操作而言，主要得在前两步思考：切割与向量化。
+  
+  向量模型是针对切片 chunk 做向量化的，而不是整个文本。所以 chunk 的 token 数应尽可能接近 embedding 模型的最大支持长度，但必须 <= 上限。
+  
+  最后总结一下，设计 RAG 时，应：
+  1. 先分析原始文本长度和结构
+  2. 选择支持足够上下文长度的 embeddging 模型
+  3. 设定 chunk_size ≈ 模型最大长度（但要≤），并加入合理 overlap
+  4. 确保每个 chunk（含 overlap）都不超过模型上限；
+  5. 向量数据库只需匹配向量维度，无需过多关注（当成一个存储用的仓库）
+  
+### 让 Agent "开卷考试"：检索+生成的完美闭环
+  拥有向量数据库后，我们就可以正式开始 RAG 的”在线运行“（Online R-A-G Flow）
+  
+  1. R-A-G 流程拆解
+  
+  回顾 chain 思想，我们学过 LCEL 的 | 管道符，这个链条正好完美对应了 R-A-G 三个词：
+  
+  * R（Retrieval - 检索）：retriever = db.as_retriever()
+    * 我们把前文构建的 db 变成一个 retriever（检索器）对象。
+  * A（Augmented - 增强）：prompt = ChatPromptTemplate.from_template(...)
+    * 我们定义一个 Prompt 模板，它包含两个变量：{context}（来自 R）和{question}（来自用户）
+  * G（Generation - 生成）：llm = ChatOpenAI(...)(...)
+    * 最后，把”增强后“的 Prompt 交给 LLM 去”生成“答案
+  
+  2. format-docs：数据的适配器
+  
+  按上述做法，我们会遇到数据格式冲突的问题：
+  
+  * R（Retriever）的输出时：List[Document]（一个 Document 对象的列表，即一叠文档）。
+  * A（Prompt）的 {context} 槽位需要的是：str（一个字符串，即一段连续的文本）。
+  
+  RAG 最终只接收用户的一句话问题，但 Prompt 同时需要两份东西。如果直接输出的话，格式可能是：
+```python
+docs = [
+    Document(page_content="模块05的目标是掌握LangChain Agents的核心机制"),
+    Document(page_content="构建能调用工具、持续思考、具备记忆的智能体")
+]
+```
+  format-docs 函数就是用来解决这个冲突的”适配器“：输入 LIst[Document] -> 输出 str。
+```python
+# 4. 辅助函数：将检索到的Doc原始文档对象格式化为字符串
+def format_docs(docs):
+    # 遍历 List[Document]，取出每个 doc 的 page_content，用换行符 \n 拼成一个大字符串
+    return "\n".join(doc.page_content for doc in docs)
+```
+  这样原文就会变成：
+```
+模块05的目标是掌握LangChain Agents的核心机制
+构建能调用工具、持续思考、具备记忆的智能体
+```
+  3. 用一个输入，驱动整个 RAG 流程
+  
+  在 RAG 中，Prompt 需要两个变量：
+  
+  * {context}：来自向量检索
+  * {question}：用户的原始提问
+
+  但是我们调用链时只会传入一个输入：`rag_chain.invoke("模块05的目标是什么？")`
+  
+  如何让这个单一输入，能同时满足“检索用的问题”与“LLM要的问题”？
+  
+  关键在于这个机制：`{"context": retrieve | format_docs, "question": RunnablePassthrough()}`
+  
+  它做了一个“双线逻辑”：一条线走“context”：将传入的问题向量化，再通过去文档进行检索，并将结果格式化再返回；一条线走“question”：将传入的问题不向量化，直接返回给 LLM 作为提问内容。
+  
+    用户问题
+    ├─检索 → 格式化 → context
+    └─question 原样传给 LLM
+
+  这样，我们就能用一个输入，生成一个包含两个字段的字典，完美匹配 Prompt 的需求。
+  
+  RunnablePassthrough() 的本质是：保留原始输入，让它不被检索链“吃掉”
+  
+  同时还要额外注意下：LCEL 时图执行模式。RunnablePassthrough() 不是让链跑两遍，而是让同一个输入生成两路数据，形成 R 与 G 的闭环。
+  
+  综上，完整 RAG 链条代码如下：
+```python
+from embeddings import get_embeddings
+from config import OPENAI_API_KEY
+import os
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.vectorstores import FAISS
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough
+ 
+# --- 模块A (离线操作) ---
+# 1. 加载&分割 2. 向量化 3. 存储
+KNOWLEDGE_BASE_CONTENT = """
+### 模块 01 - Agent 入门 & 环境搭建
+- **目标**: 理解 Agent 概念, 完成环境配置与首次调用。
+- **内容**: 环境依赖 | API Key 配置 | 最小可运行 Agent
+### 模块 02 - LLM 基础调用
+- **目标**: 掌握模型调用逻辑, 初步构建智能体能力。
+- **内容**: LLM 了解与调用 | Prompt 编写与逻辑构思 | 多轮对话记忆 | 独立构建一个智能体
+### 模块 03 - Function Calling 与工具调用
+- **目标**: 实现 LLM 调用外部函数, 赋予模型“执行力”。
+- **内容**: Function calling 原理 | 工具函数封装 | API 接入实践 | 多轮调用流程 | Agent 能力扩展
+### 模块 04 - LangChain 基础篇
+- **目标**: 认识 LangChain 六大模块, 学会用 LangChain 构建智能体。
+- **内容**: LLM 调用 | Prompt 设计 | Chain 构建 | Memory 记忆 | 实战练习
+### 模块 05 - LangChain 进阶篇
+- **目标**: 掌握 LangChain Agents 的核心机制, 构建能调用工具、持续思考、具备记忆的智能体。
+- **内容**: Function Calling | @tool 工具封装 | ReAct 循环 | Agent 构建 | SQL Agent | 记忆+流式 | 开发优化
+"""
+with open("knowledge_base.txt", "w", encoding="utf-8") as f:
+    f.write(KNOWLEDGE_BASE_CONTENT)
+ 
+loader = TextLoader('knowledge_base.txt',encoding='utf8')
+docs = loader.load()
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=250,chunk_overlap=40)
+splits = text_splitter.split_documents(docs)
+embedding_model = get_embeddings("bge-small-zh-v1.5")
+db = FAISS.from_documents(splits,embedding_model) # 在内存中构建向量索引，但不持久化到本地文件
+print('---模块A(Indexing)完成---\n')
+ 
+# --- 模块B (在线运行:Online R-A-G Flow) ---
+print('--- 模块B R-A-G正在构建---\n')
+ 
+# 1. R (Retrieval - 检索)
+retrieve = db.as_retriever(search_kwarg={"k":1}) # 只返回最相关的1个
+ 
+# 2. A (Augmented - 增强)
+system = """
+请你扮演一个 Ai Agent 教学助手。
+请你只根据下面提供的“上下文”来回答问题。
+如果上下文中没有提到，请回答“对不起，我不知道”。
+[上下文]:
+{context}
+[问题]:
+{question}
+"""
+prompt = ChatPromptTemplate.from_messages([
+    ('system',system),
+    ('human','{question}')
+])
+ 
+# 3. G (Generation - 生成)
+llm = ChatOpenAI(
+    model="deepseek-chat",
+    api_key=OPENAI_API_KEY,
+    base_url="https://api.deepseek.com"
+)
+ 
+# 4. 辅助函数：将检索到的Doc原始文档对象格式化为字符串，让llm能读懂
+def format_docs(docs):
+    return "\n".join(doc.page_content for doc in docs)
+ 
+ 
+# 5. 组装 RAG 链条(LCEL)
+rag_chain = (
+    {"context":retrieve | format_docs,"question":RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
+ 
+# --- 运行 RAG 链 ---
+ 
+question = '模块05的目标是什么？'
+response = rag_chain.invoke(question)
+print(f'提问:{question}')
+print(f'回答:{response}\n')
+ 
+question = 'Langchain进阶篇讲了什么？'
+response = rag_chain.invoke(question)
+print(f'提问:{question}')
+print(f'回答:{response}\n')
+ 
+question = '今天天气怎么样？'  # 知识库中没有
+response = rag_chain.invoke(question)
+print(f'提问:{question}')
+print(f'回答:{response}\n')
+ 
+# 清理临时文件
+os.remove("knowledge_base.txt")
+```
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
