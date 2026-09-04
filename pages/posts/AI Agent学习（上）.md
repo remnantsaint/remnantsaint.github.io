@@ -1,8 +1,8 @@
 ---
 layout: post
-title: AI Agent学习
+title: AI Agent学习（上）
 date: 2026-08-09 12:39:54
-updated: 2026-09-01
+updated: 2026-09-04
 time_warning: true 
 cover: 
 top: 
@@ -1000,46 +1000,50 @@ if __name__ == '__main__':
 #### Rag 核心流程
   我们可以拆分出 rag 两条线的运行流程：
   1. 模块 A：rag 的“离线准备”（Offline Indexing）  
-  把你的文档全部读一遍，拆成“知识卡片”（Chunks），并为每张卡片贴上“语义标签”，再把这些有“语义标签”的卡片上架到向量数据库。这个阶段没有 LLM 参与，纯数据处理，它可能很慢，但是只需做一次。
+
+    把你的文档全部读一遍，拆成“知识卡片”（Chunks），并为每张卡片贴上“语义标签”，再把这些有“语义标签”的卡片上架到向量数据库。这个阶段没有 LLM 参与，纯数据处理，它可能很慢，但是只需做一次。
   2. 模块B：RAG 的“在线运行（Online R-A-G Flow）  
-  当用户提问时，去智能图书馆里检索，找出相关的”知识卡片“，然后把”卡片“和”问题“一起交给 LLM（生成）。这个阶段 LLM 才会参与，每次提问时都会执行。
-  
+
+    当用户提问时，去智能图书馆里检索，找出相关的”知识卡片“，然后把”卡片“和”问题“一起交给 LLM（生成）。这个阶段 LLM 才会参与，每次提问时都会执行。
+
   模块 A 的”离线操作“是 R-A-G 中的 R（检索）前提，完成这个离线操作才能进行检索；模块 B 的”在线运行“才是完整的 R-A-G 流程。   
-  
+
   所以我们会先讲这个”离线操作“的模块 A 的三大组件：加载与分块 & 向量化 & 存储
-  
+
   学会这三步后才能做好这个”智能图书馆“，模块 B 的”在线运行“的 R-A-G 才能围绕着这个图书馆运行起来。同时，我们的检索精准与否，完全与这个图书馆内部的三大组件息息相关。
 ### 核心组件一：加载与分块（Load & split）-（准备“知识卡片”）
 #### 加载与分块的必要性
   1. 加载（Load）  
-  我们“私有知识”的来源五花八门，可能是 .txt 文本、pdf 报告、csv 表格，甚至可能使网页或者 Notion 笔记。所以，确定一套统一的阅读器（loader）来读懂这些格式，并最终转化为 Langchain 认识的标准格式（Document对象），这就是加载的价值。  
-  
+
+    我们“私有知识”的来源五花八门，可能是 .txt 文本、pdf 报告、csv 表格，甚至可能使网页或者 Notion 笔记。所以，确定一套统一的阅读器（loader）来读懂这些格式，并最终转化为 Langchain 认识的标准格式（Document对象），这就是加载的价值。  
+
   2. 分块（Split）  
-  加载进来的 Document 可能非常大，但 LLM 的“桌子“（上下文长度）是有限的，比如 4k、8k、128k tokens，我们不可能将整本书都塞给他，必然要对其进行优化处理。因此，我们做法就是：将整本书切成一块块的”知识卡片“（Chunks）。
-  
+
+    加载进来的 Document 可能非常大，但 LLM 的“桌子“（上下文长度）是有限的，比如 4k、8k、128k tokens，我们不可能将整本书都塞给他，必然要对其进行优化处理。因此，我们做法就是：将整本书切成一块块的”知识卡片“（Chunks）。
+
   关键参数 `- chunk_size` ：切好的”知识卡片“的大小上限
   * 权衡：切好的”知识卡片“的大小上限。如果 size 太小，会使得语义割裂，答案被切割成两半；太大则会出现上下文噪点（llm 找不到重点）。
   * 硬约束：必须小于使用的 Embedding 模型最大 Token 上限（比如 bge-small-zh-v1.5 为 512 token）。
   * 数据约束：在主流中文向量模型中，1 中文字符约为 1 token，所以设 chunk_size = 250-300 是一个很安全的上限。
-  
+
   关键参数`- chunk_overlap`：不同”知识卡片“可重叠的字符大小
   * 目的：如果分块造成”语义割裂”，chunk_overlap 可以允许一定字符进行“知识卡片”间的拼接，确保语义不丢失。
   * 通常设定：一般为 chunk_size 的 10%-20%
-  
+
   这俩关键参数必须留意，建议根据具体情况配置。同时这里俩参数调优的性价比与其他模块相比非常高，所以单独讲一下。Rag 的开头找数据这里如果没配置好，那么智能是“垃圾进，垃圾出”，后面的检索也没有任何意义了。
 #### 工具
   对于“加载”与“分块”，Langchain 都提供了专业的加载器与分割器：
-  
+
   Document Loaders（加载器）：
   * TextLoader：对应 .txt 文件
   * PyPDFLoader：对应 .pdf 文件（需要 pypdf 库）
   * CSVLoader：对应 .csv 文件，它会将每一行视为一个独立的 Document。
-  
+
   Text Splitters（分割器）：
   * RecursiveCharacterTextSplitter：最推荐最智能的默认分割器
   * 它就是“造轮子”的“最终版”，它会自动按 ["\n\n", "\n", " ", ""] 的优先级列表来分割，最大限度地保留语义的完整性。
   * 实战配置（针对TXT）：我们的 txt 文本是高度结构化的，以 \n 作为模块自然分割，最长文本“模块05”约为190字符；设定 chunk_size = 250，它小于 Embedding 设置的 512 token 限制，非常安全，且大于任何一个单独模块（如190字符的），保持每个模块的语义完整；设定 chunk_overlap = 40，设置其为 chunk_size 的15%-20%，作为“安全垫”，防止未来某个模块超过 250 字符，即设定“知识卡片”最高可有 290 个字符。
-  
+
   以下是具体加载与分割的代码：
 ```python
 import os
@@ -1098,18 +1102,18 @@ for i,doc in enumerate(splits):
 ### 核心组件二：向量化（Embedding）-（贴上语义标签）
 #### 理论：什么是 Embedding
   我们已经把知识切分成了小卡片（chunk），接下来我们还要为它贴上“语义标签”，这样计算机才能看懂它是什么意思。
-  
+
   传统搜索：如果用关键词匹配，搜“小狗”就永远也找不到“金毛犬”卡片。  
   语义搜索：我们希望计算机立结“小狗”和金毛“是相似的概念。  
   Embedding（向量化）的作用：Embedding 模型在此刻就能作为一个”翻译官“，把任何一段文字（知识卡片）转换为一串独特的数字，这些数字就是“向量”。  
   “向量”就是“语义坐标”，小狗 和 金毛 在语义坐标上是非常接近的，所以计算机能认出他们是相似概念。
-  
+
   另外，不同 Embedding 模型产生的向量在语义表达能力、维度、上下文感知能力、长度支持等方面是不同的，有些模型专门适配短文本，有些适合长文本，有些适合情感分析，又有些适合专门领域如法律等。选模型也是一门学问。
 #### 工具：Langchain 的 Embedding 方案
   所谓 Embedding 方案，说简单点就是 如何将文本转换为向量 的解决方案。
-  
+
   对于社区已经有的 云/本地 方案，我们可以自行选择：
-  
+
   * 方案1（在线 API）：如 BaichuanTextEmbeddings 或 OpenAIEmbeddings
     * 优点：效果好，速度快，不占本地资源
     * 缺点：需要API Key，并且按 Token 收费
@@ -1147,7 +1151,7 @@ print(f'向量维度:{len(query_embedding)}')
 """
 ```
   如上，我们成功用工具完成了小段文本的向量化工作，后续我们再想要完成类似操作，也这样做即可。
-  
+
   如下是从 embeggings.py 搬运过来的 get_embeddings 这个文件：（教程作者自己封装）
 ```python
 # 本文件用于下载并获取embedding向量化模型
@@ -1187,20 +1191,20 @@ def get_embeddings(model_name="BAAI/bge-small-zh-v1.5",device="cpu",**kwargs):
   此代码用于 首次下载与加载向量化模型（必须开梯子下载），首次下载完成后会存在本地，之后会从本地加载，不需要重复下载。之后所有 RAG 相关会非常频繁的引入该 embeddings.py 文件使用。
 ### 核心组件三：存储（Store）-（建造”智能图书馆“）
   如果说上步的 Embeddings 目标是如何把文字变成向量，那么这一步的存储的目标则是有了向量后，如何快速找到最相似的那个。
-  
+
   我们已经有了文档切片（splits）和向量化（Embedding），接着就要为这些向量构建一个高效的搜索索引。
 #### 理论：向量搜索
   在向量化的世界里，一切的核心都是向量（Vector），每个 split（知识片段）都被 embeddings_model 转换成了一个高维知识向量，未来用户的 query（问题）也会被转换成一个查询向量。
-  
+
   我们的目标是：在由成千上万个”知识向量“构成的空间中，找到与”查询向量“语义最相似的那几个。很明显，如果用暴力搜索去存储并检索，for 循环检索速度能极慢。所以我们肯定还是需要借助工具：向量索引（Vector Index）
-  
+
   （离线阶段）建索引：向量索引工具会分析所有知识向量的分布，并构建一个高效的内部结构（如图、树或哈希表），这个过程可能耗时，但只需做一次。
-  
+
   （在线阶段）检索：当一个新的查询向量到来时，它会利用索引结构进行”跳跃式“搜索，直接定位到最可能相关的区域，将复杂度降低到非常小的级别。（具体算法如近似最近邻、余弦相似度等）
-  
+
 #### 框架：选择你的向量索引工具 FAISS & Chroma
   FAISS（Facebook AI Similarity Search）
-  
+
   * 定位：一个极致轻量的向量搜索库，专注于高性能的索引构建与搜索
   * 优点：
     * 速度快：专为高性能向量搜索设计
@@ -1209,16 +1213,16 @@ def get_embeddings(model_name="BAAI/bge-small-zh-v1.5",device="cpu",**kwargs):
   * 缺点：
     * 功能相对基础，主要用于”建索引 + 搜索“，不擅长复杂的文档生命周期管理（如增删改查）。
   * 适合场景：适合基础使用，快速体验 RAG 的核心离线流程。
-  
+
   Chroma
-  
+
   * 定位：一个功能完整的向量数据库，内置了索引能力
   * 优点：
     * 支持文档的增删改查，API 更友好
     * 支持持久化存储（重启后数据不丢失）
     * 可以作为独立服务运行
   * 适合场景：当需要更复杂的文档管理时
-  
+
   本章中我们选用 FAISS 来构建并保存一个本地的向量索引，为后续的实时检索做好准备，以下是完整的初始化向量数据库构建的代码：
 ```python
 # 仅负责: 切片 -> 向量化 -> 构建索引 -> 保存到磁盘
@@ -1275,45 +1279,45 @@ os.remove("knowledge_base.txt")
 print('---所有阶段已经完成!---')
 ```
   运行后会构建一个向量数据库，目录是`faiss_index`，里面包含 index.faiss 和 index.pkl 
-  
+
   前三步的初始化（离线模块）已完成，在正式进入 RAG 前，我们再把这个离线的三步流程梳理一遍：
-  
+
     第一步：文本通过加载与分割（chunking，含 overlap）
     第二步：对每个 chunk 进行向量化（embedding）
     第三步：将向量 + 原文 + 元数据存入向量数据库 
 
   其中向量数据库这里不用做过多考虑，对不同文本的操作而言，主要得在前两步思考：切割与向量化。
-  
+
   向量模型是针对切片 chunk 做向量化的，而不是整个文本。所以 chunk 的 token 数应尽可能接近 embedding 模型的最大支持长度，但必须 <= 上限。
-  
+
   最后总结一下，设计 RAG 时，应：
   1. 先分析原始文本长度和结构
   2. 选择支持足够上下文长度的 embeddging 模型
   3. 设定 chunk_size ≈ 模型最大长度（但要≤），并加入合理 overlap
   4. 确保每个 chunk（含 overlap）都不超过模型上限；
   5. 向量数据库只需匹配向量维度，无需过多关注（当成一个存储用的仓库）
-  
+
 ### 让 Agent "开卷考试"：检索+生成的完美闭环
   拥有向量数据库后，我们就可以正式开始 RAG 的”在线运行“（Online R-A-G Flow）
-  
+
   1. R-A-G 流程拆解
-  
+
   回顾 chain 思想，我们学过 LCEL 的 | 管道符，这个链条正好完美对应了 R-A-G 三个词：
-  
+
   * R（Retrieval - 检索）：retriever = db.as_retriever()
     * 我们把前文构建的 db 变成一个 retriever（检索器）对象。
   * A（Augmented - 增强）：prompt = ChatPromptTemplate.from_template(...)
     * 我们定义一个 Prompt 模板，它包含两个变量：{context}（来自 R）和{question}（来自用户）
   * G（Generation - 生成）：llm = ChatOpenAI(...)(...)
     * 最后，把”增强后“的 Prompt 交给 LLM 去”生成“答案
-  
+
   2. format-docs：数据的适配器
-  
+
   按上述做法，我们会遇到数据格式冲突的问题：
-  
+
   * R（Retriever）的输出时：List[Document]（一个 Document 对象的列表，即一叠文档）。
   * A（Prompt）的 {context} 槽位需要的是：str（一个字符串，即一段连续的文本）。
-  
+
   RAG 最终只接收用户的一句话问题，但 Prompt 同时需要两份东西。如果直接输出的话，格式可能是：
 ```python
 docs = [
@@ -1334,30 +1338,30 @@ def format_docs(docs):
 构建能调用工具、持续思考、具备记忆的智能体
 ```
   3. 用一个输入，驱动整个 RAG 流程
-  
+
   在 RAG 中，Prompt 需要两个变量：
-  
+
   * {context}：来自向量检索
   * {question}：用户的原始提问
 
   但是我们调用链时只会传入一个输入：`rag_chain.invoke("模块05的目标是什么？")`
-  
+
   如何让这个单一输入，能同时满足“检索用的问题”与“LLM要的问题”？
-  
+
   关键在于这个机制：`{"context": retrieve | format_docs, "question": RunnablePassthrough()}`
-  
+
   它做了一个“双线逻辑”：一条线走“context”：将传入的问题向量化，再通过去文档进行检索，并将结果格式化再返回；一条线走“question”：将传入的问题不向量化，直接返回给 LLM 作为提问内容。
-  
+
     用户问题
     ├─检索 → 格式化 → context
     └─question 原样传给 LLM
 
   这样，我们就能用一个输入，生成一个包含两个字段的字典，完美匹配 Prompt 的需求。
-  
+
   RunnablePassthrough() 的本质是：保留原始输入，让它不被检索链“吃掉”
-  
+
   同时还要额外注意下：LCEL 时图执行模式。RunnablePassthrough() 不是让链跑两遍，而是让同一个输入生成两路数据，形成 R 与 G 的闭环。
-  
+
   综上，完整 RAG 链条代码如下：
 ```python
 from embeddings import get_embeddings
@@ -1462,44 +1466,534 @@ print(f'回答:{response}\n')
 # 清理临时文件
 os.remove("knowledge_base.txt")
 ```
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+## rag_advanced
+  上一篇我们遗留了几个痛点：FAISS 知识个玩具，它是个内存索引，重启就会丢失，且无法增删改；搜索结果不准，“相似度搜索”只是海选，返回的结果可能不精确，LLM 容易被误导；没有记忆，不理解上下文，说了上句忘记下句；与之前的 agent 割裂
+
+  综上，本篇会分别从“强化 RAG 立案条件”与“扩展 RAG 应用能力”两个场景来解决这四大痛点。最终打造一个“健壮“、”智能“、”集成”的终极 RAG Agent。
+
+  本篇使用 3.2MB 的《战争与和平》（war_and_peace.txt）作为知识库测试。
+### 升级智能图书馆：从 FAISS 到 Chroma
+  FAISS 本质上是一个内存向量索引库，虽然支持通过 save_local() 将索引保存在磁盘，但它的持久化能力非常有限：保存的是一次性的静态快照，无法进行后续的增删改（CRUD）；一旦知识库需要更新，只能重新建整个索引；原始文本、元数据和向量需手动分别管理，容易出错且难维护。
+
+  这在需要持续迭代、动态扩展的 RAG 系统中是不可接受的。相比之下，Chroma 是一个真正的轻量级向量数据库：通过 persist_directory 将向量、原始文档和元数据统一持久化到磁盘；支持后续增量添加、删除或更新数据，无需重建；加载已构建的索引只需一行代码，极大简化了“离线构建+在线查询”的过程。
+
+  虽然 FAISS 在纯检索性能上可能略优，但 Chroma 在工程易用性、可维护性和可扩展性上更适合实际 RAG 应用。通过拆分构建与查询阶段，我们不仅避免了重复向量化，还未未来功能扩展打下了坚实基础。
+
+| 特性 | FAISS | Chroma |
+| --- | --- | --- |
+| 能否保存？ | 能，使用 `db.save_local()` | 能，使用 `persist_directory` 和 `.persist()` |
+| 保存的是什么？ | 一个静态快照：向量索引 + 嵌入时的文档副本 | 一个可读写的数据库目录，包含向量、文档、元数据、集合信息 |
+| 能否后续增删改？ | 不方便，需要自行维护并重新保存索引 | 能，支持 `.add_documents()`、`.delete(ids=...)`、`.update()` |
+| 是否自动持久化？ | 否，需要手动调用 `save_local()` | 可在操作后自动持久化，也可手动调用 `.persist()` |
+| 适合场景 | 一次性构建、只读检索 | 需要动态更新、长期维护的知识库 |
+
+  以下是 build_index.py，在索引构建阶段创建好 Chroma 向量数据库，为后续 rag 流程做准备。只需运行一次
+```python
+import os
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
+from embeddings import get_embeddings
+ 
+knowledge_base_file = "war_and_peace.txt"
+# 持久化目录: Chroma会把所有数据(向量+文本+元数据)都存到这个文件夹
+persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
+model_name_str = 'BAAI/bge-small-en-v1.5' # 如果愿意等待，可以换成模型"BAAI/bge-m3"，效果更好更适合长文，但下载时间也更久(2.2G)
+chunk_size = 500
+chunk_overlap = 75
+ 
+# 检查是否已创建
+if os.path.exists(persist_directory):
+    print(f"检测到已存在的向量数据库: {persist_directory}")
+    print("跳过索引构建。如需重新构建，请手动删除该目录。")
+    exit()
+ 
+if not os.path.exists(knowledge_base_file):
+    print(f"错误: 知识库文件 {knowledge_base_file} 未找到。")
+    print("请从 https://www.gutenberg.org/ebooks/2600.txt.utf-8 下载")
+    print("并重命名为 war_and_peace.txt 放在当前目录。")
+    exit()
+ 
+print('---正在构建索引---')
+ 
+# 1. 加载
+loader = TextLoader(knowledge_base_file,encoding='utf8')
+docs = loader.load()
+print('加载完成...\n')
+# 2. 分割
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=chunk_size,
+    chunk_overlap=chunk_overlap
+)
+splits = text_splitter.split_documents(docs)
+print('分割完成...\n')
+# 3. 向量化 -- 第一次运行会下载模型,预计耗时2分钟
+print(f'正在加载/下载模型{model_name_str}...')
+embedding_model = get_embeddings(
+    model_name=model_name_str,
+    device='cpu', # 强制模型在cpu上运行
+    encode_kwargs={'batch_size':64} # 每次处理64个文本片段
+)
+print('Embedding模型加载完成...\n')
+# 4. 存储
+print('正在构建Chroma索引...(注：此步耗时较久，预计要3min)\n')
+db = Chroma(
+    persist_directory=persist_directory,
+    embedding_function=embedding_model
+)
+ 
+#   分批添加切片chunks（每批不超过 5000）
+batch_size = 5000  # 必须 < 5461
+for i in range(0, len(splits), batch_size):
+    batch = splits[i:i + batch_size]
+    db.add_documents(batch)
+    print(f"已插入 {min(i + batch_size, len(splits))} / {len(splits)} 条")
+ 
+print(f'✅ 索引构建完毕，共 {len(splits)} 条，已保存到 {persist_directory}')
+```
+  运行后会生成向量数据库文件夹：`chroma_db_war_and_peace_bge_small_en_v1.5`，另外，Langchain 默认会一次性把所有 chunk 全部丢给 Chroma，但 Chroma 一次只能接收至多 5461 条记录，所以我们得专门注意下分开传，本质是 Langchain 与 Chroma 的集成不太好。
+
+  然后实际用代码对接这个向量数据库，运行 RAG 链条，看效果如何：
+```python
+from langchain_chroma import Chroma
+from langchain_core.output_parsers import StrOutputParser
+from langchain_openai import ChatOpenAI
+from embeddings import get_embeddings
+from config import OPENAI_API_KEY
+import os
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+ 
+Persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
+model_name_str = 'BAAI/bge-small-en-v1.5'
+ 
+if not os.path.exists(Persist_directory):
+    print(f"错误: 知识库文件 {Persist_directory} 未找到。")
+    print("请先运行'00_build_index.py'生成向量数据库，再运行该文件")
+    exit()
+ 
+print('---加载本地向量数据库---')
+ 
+# 模块A:链接本地Chroma向量数据库
+# 1. 加载 Embedding 模型
+# 把“用户提问”转成向量，用于后续检索
+print(f'正在加载/下载模型{model_name_str}...')
+embeddings_model = get_embeddings(
+    model_name=model_name_str,
+    device='cpu'
+)
+ 
+# 2. 从本地目录加载Chroma DB
+db = Chroma(
+    persist_directory=Persist_directory,
+    embedding_function=embeddings_model
+)
+print(f'Chroma数据库已从本地加载(共{db._collection.count()}条)\n')
+ 
+# 模块B:R-A-G Flow
+# 1. R-检索
+retriever = db.as_retriever(search_kwargs={"k": 5})  # 召回5条相关数据
+ 
+# 2. A-增强
+sys_prompt = """
+你是一个博学的历史学家和文学评论家。
+请根据以下上下文回答问题。如果上下文**强烈暗示**了答案，即使未明说，也可推理回答。
+如果完全无关，请回答“对不起，根据所提供的上下文我不知道”。
+[上下文]: {context}
+[问题]: {question}
+"""
+
+prompt = ChatPromptTemplate.from_messages([
+    ('system', sys_prompt),
+    ('human', '{question}')
+])
+ 
+# 3. G-生成
+llm = ChatOpenAI(
+    model="deepseek-chat",
+    api_key=OPENAI_API_KEY,
+    base_url="https://api.deepseek.com"
+)
+ 
+# 4. 辅助函数
+def format_docs(docs):
+    return "\n".join(doc.page_content for doc in docs)
+ 
+ 
+# 5. 组装RAG链条(LCEL)
+rag_chain = (
+    {"context":retriever | format_docs, "question": RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
+# 运行RAG链
+print('---正在运行RAG链条---')
+question = '莫斯科大火发生在小说的哪一部分？有哪些角色亲历了这场灾难？'
+response = rag_chain.invoke(question)
+print(f'提问:{question}')
+print(f'回答:{response}')
+```
+```
+用户问题
+  -> Embedding 模型转向量
+  -> Chroma 找 5 段最相近的《战争与和平》文本
+  -> 文本拼接为 context
+  -> context + 原问题发送给 DeepSeek
+  -> DeepSeek 输出最终回答
+```
+  注意：需要把 Prompt 提示词写松一点，如果提示词写的非常死，它哪怕看到了很多关键信息，也会因为限制太死板不会正确输出。如果写的稍微松一点，LLM 可以很轻松的根据相应内容判断出答案是什么。
+
+  可以看出，除了在开头加载一下已经构建好的向量数据库，其他操作几乎都和 FAISS 时差不多，但这个 RAG 链条的性能还是比基奥羸弱，比如问一些不是强语义的信号，不是文中反复提及的问题，这个 RAG 可能就检索不到。下面就来加强这个索引能力。
+
+### 升级“检索质量”：引入 Reranker 精排机制
+#### 为什么需要升级？
+  在基础 RAG 流程中，我们通常直接使用向量数据库的相似度检索结果：`retriever = db.as_retriever(search_kwargs={"k": 3})  # 召回3条相关数据`，这种做法存在明显局限：
+
+  * 仅依赖向量距离判断相关性，无法理解语义匹配的深层逻辑
+  * 召回结果可能“语义相近但事实无关”
+  * 容易导致“垃圾进，垃圾出”—— LLM 基于不准确或不想管的上下文生成错误答案
+
+  为解决这一问题，我们需要在“粗召回”后增加一个精排序（Re-ranking）步骤
+
+  升级方案：三步构建高质量检索管道，我们将原始的单步检索拆解为以下三个阶段：
+
+  1. 粗召回  
+    扩大初始召回范围，获取更多候选文档
+```python
+base_retriever = db.as_retriever(search_kwargs={"k": 50})  # 海选前五十
+```
+  2. 精排序  
+    引入交叉编码器（Cross-Encoder）对候选文档进行查询-文档对级别的相关性重打分：
+```python
+encoder = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
+reranker = CrossEncoderReranker(model=encoder, top_n=5)  # 精选 Top-50
+```
+  3. 管道封装（Pipeline Integration）  
+    使用 ContextualCompressionRetriever 将粗召回与精排序无缝串联
+```python
+compression_retriever = ContextualCompressionRetriever(
+    base_retriever=base_retriever,   # 负责广度覆盖
+    base_compressor=reranker         # 负责精度筛选
+)
+retriever = compression_retriever
+```
+  这样就既保留了足够多的候选信息（避免漏检），又通过更强的语义模型过滤噪声，显著提升最终上下文的相关性。
+
+#### RAG核心参数剖析：k 与 top_n 的博弈
+  这里再详细剖析一下这个 k 与 top_n，它是一个 rag 检索中极其重要的一个知识点。
+
+  我们假设这是个面试：
+
+  第一步（海选）：Chroma 向量数据库（Vector Store）会通过向量相似度算法，对公司收到的10000份简历（数据库里的所有切片），让HR（Base Retriever）用关键词快速扫一眼，挑选出了前50个人（k=50）。（此处没用到reranker模型，速度极快）
+
+  第二步（面试）：海选出来的50个人（k=50）被送到面试官（Reranker）的房间，面试官必须逐一面完这五十个人并给其打分。（所以k的数量直接定义了Reranker的工作量，它是耗时最久的部分）
+
+  第三步（录取）：将五十人按分数从高到低，录取前6个人（top_n=6）给老板（LLM）看。
+
+  很明显，从 rag 检索流程来看，其最终返回结构准确与否，极大程度上取决于最终录取者质量是否合格。而这又与 k 和 top_n 的数值非常强相关。文本越大，自然可以认为我们需要更多的 k 和 top_n ，但如何针对不同的文本进行数量的优化也是个问题。
+
+  * k —— 算力与时间的消耗（Latency）RAG 的主要耗时就在 Reranker 这一步，耗时随着 k 的增加呈线性增长，在 CPU 环境下，大约每增加 1 个 k ，耗时增加 0.05s。
+    * k越大，召回率越高，但也越慢
+  * top_n —— 金钱与 Token 的消耗（Cost）最终录取的 top_n 是要喂给 LLM 的，假设切片大小（chunk_size）为 500 字符，top_n = 6 意味着要输入 3000 个字符（约 2000 Tokens）
+    * top_n 越大，信息越丰富，但越贵
+
+  综上，k 和 top_n 构成了 RAG 质量的双重保险。不怕花时间（追求召回率），就大幅提升 k ，让 reranker 加班，保证不错过任何蛛丝马迹。不怕花钱（追求全能），就适当提升 top_n，给 LLM 投喂更多上下文。
+
+  k 几乎是越大越好，但 top_n 不是，过大的人 top_n 会导致**中间迷失效应**（Lost in the Middle），即噪声太多反而干扰了 LLM 对关键信息的提取。
+
+  R部分完整代码：（其他部分保持不变）
+```python
+# 1. R-检索--强化版
+# 1.1 基础检索器(Base Retriever) - '粗召回'
+base_retriever = db.as_retriever(search_kwargs={"k":50}) # K调大到60
+# 1.2 Reranker (重排器) - "精排序" -- 首次运行需要耗时下载
+print('正在加载 Reranker模型 (bge-reranker-base)...')
+encoder = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base") # 加载Ranker模型
+reranker = CrossEncoderReranker(model=encoder,top_n=6) # 对检索结果进行精排
+# 1.3 创建管道封装器
+compression_retriever = ContextualCompressionRetriever(
+    base_retriever=base_retriever, # 用Chroma做 海选
+    base_compressor=reranker # 用Reranker做 精选
+)
+retriever = compression_retriever
+ 
+print('--检索器已升级为Reranker模式--\n')
+```
+#### RAG 优化小节
+  至此， RAG 的基础与进阶优化基本完成，作为 Agent 系统中最关键也最容易被低估的模块之一，RAG 的构建质量直接决定了整个系统是否可用、可信、好用。
+
+  尤其注意，没有通用的 RAG 配置，应根据文本规模、领域特性与查询复杂度，动态选择：
+
+  * 合适的 Embedding 模型（如小文本可用 bge-small，大文档或专业领域建议 bge-large 或 bge-m3）；
+  * 匹配的检索策略（如是否引入 Reranker、是否结合关键词搜索、是否采用 Parent-Document 等高级模式）
+  * 适当的 k 与 top_n （如在确保 rag 检索返回质量，k 与 top_n 的总量足够的情况下，协调好两者比例）
+
+  对于几十 MB 甚至更大的文档集，若向量模型能力不足或分块/检索策略不当，整个 RAG 链条将形同虚设——“垃圾进，垃圾出” 在大规模场景下会被急剧方法。
+
+  因此，在构建 Agent 时，务必对 RAG 环节反复验证、持续调优。它不是一次性配置，而是需要随数据和任务演进的核心能力。
+### RAG 的工具化
+  为何需要封装为工具？ Agent 本身并不具备主动调用 RAG 的能力，如果不加封装， RAG 只是一个固定的问答流程，无法融入 Agent 的自主决策循环。
+
+  通过将其封装为 Tool ，我们实现两个关键目标：
+  1. 解耦：将“知识检索”从主逻辑中剥离，使其成为可插拔的能力模块；
+  2. 赋能：让 Agent 能在运行时自主判断当前问题是否需要查询知识库，并决定何时调用工具。
+
+  换句话说，我们不是在“用 RAG 回答问题”，而是在“给 Agent 配备一本可随时查阅的智能参考书”
+
+  实现在代码上很简单，但是思想上很重要，我们把上文的“Chroma + Reranker”的强化版 RAG 链条完整的封装成一个 py 函数 `search_war_and_peace()`，然后用上一大节学到的 `@tool` 装饰器给他注册成 Agent 即可。
+```python
+# (1) 构建一个可复用的 RAG链条 (P1+P2)
+def build_rag_chain(llm_instance):
+   ...
+#    初始化RAG链
+rag_chain_instance = build_rag_chain(llm)
+ 
+# (2) 封装为标准 Langchain Tool
+@tool
+def search_war_and_peace(query):
+    """查询《战争与和平》小说中的内容，包括人物、情节、历史事件等"""
+    print(f'\n正在检索《战争与和平》:{query}')
+    return rag_chain_instance.invoke(query)
+```
+  很显然，这里并没有直接将其封装为 @tool 工具，而是走了一个初始化链层，这么做是出于性能考虑。
+
+  封装进 @tool 后，每次被 llm 调用时，这个 tool 都会运行一次，如果将整个 rag 链封装金去，那么每问一个问题都相当于重启一次 rag 系统（加载 embedding 模型、打开 Chroma 数据库、初始化各种组件）
+
+  所以我们启动时，一次性构架完整 RAG 链，运行时，工具只调用已构建好的链即可。
+
+  完整代码如下：
+```python
+import os
+from config import OPENAI_API_KEY
+from embeddings import get_embeddings
+from langchain_chroma import Chroma
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough
+from langchain_classic.retrievers import ContextualCompressionRetriever
+from langchain_community.cross_encoders import HuggingFaceCrossEncoder
+from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
+from langchain_core.tools import tool
+ 
+ 
+# 全局 LLM (供Agent和Rag共用)
+llm = ChatOpenAI(
+    model="deepseek-chat",
+    api_key=OPENAI_API_KEY,
+    base_url="https://api.deepseek.com"
+)
+ 
+# (1) 构建一个可复用的 RAG链条 (P1+P2)
+def build_rag_chain(llm_instance):
+    print('---正在构建RAG链条...---\n')
+ 
+    persist_directory = './chroma_db_war_and_peace_bge_small_en_v1.5'
+    embedding_model_name = 'BAAI/bge-small-en-v1.5'
+    encoder_model_name = "BAAI/bge-reranker-base"
+ 
+    if not os.path.exists(persist_directory):
+        raise FileNotFoundError(f'索引目录{persist_directory}未找到，请先运行 build_index.py')
+ 
+    print(f'正在加载/下载 Embedding模型：{embedding_model_name}')
+    embeddings_model = get_embeddings(model_name=embedding_model_name,device='cpu')
+    db = Chroma(
+        persist_directory=persist_directory,
+        embedding_function=embeddings_model
+    )
+ 
+    # 1. R-检索--强化版
+    base_retriever = db.as_retriever(search_kwargs={"k":50})
+ 
+    print(f'正在加载 Reranker模型:{encoder_model_name}...')
+    encoder = HuggingFaceCrossEncoder(model_name=encoder_model_name)
+    reranker = CrossEncoderReranker(model=encoder,top_n=6)
+    compression_retriever=ContextualCompressionRetriever(
+        base_retriever=base_retriever,
+        base_compressor=reranker
+    )
+    retriever = compression_retriever
+ 
+    # 2. A-增强
+    sys_prompt = """
+    你是一个博学的历史学家和文学评论家。
+    请根据以下上下文回答问题。如果上下文**强烈暗示**了答案，即使未明说，也可推理回答。
+    如果完全无关，请回答“对不起，根据所提供的上下文我不知道”。
+    
+    [上下文]: {context}
+    [问题]: {question}
+    """
+ 
+    prompt = ChatPromptTemplate.from_messages([
+        ('system',sys_prompt),
+        ('human','{question}')
+    ])
+    # 3.G-生成(llm已在全局生成)
+ 
+    # 4. 辅助函数
+    def format_docs(docs):
+        return '\n'.join(doc.page_content for doc in docs)
+ 
+    # 5.组装RAG链条
+    rag_chain = (
+        {'context':retriever | format_docs, 'question': RunnablePassthrough()}
+        | prompt
+        | llm_instance
+        | StrOutputParser()
+    )
+    print('---RAG链条构建完毕!---\n')
+    return rag_chain
+ 
+ 
+#    初始化RAG链
+rag_chain_instance = build_rag_chain(llm)
+ 
+# (2) 封装为标准 Langchain Tool
+@tool
+def search_war_and_peace(query):
+    """查询《战争与和平》小说中的内容，包括人物、情节、历史事件等"""
+    print(f'\n正在检索《战争与和平》:{query}')
+    return rag_chain_instance.invoke(query)
+ 
+# 也可以与其他工具并列使用
+@tool
+def get_weather(location):
+    """模拟获得天气信息"""
+    return f"{location}当前天气：23℃，晴，风力2级"
+ 
+ 
+tools = [search_war_and_peace,get_weather]
+ 
+ 
+# 运行
+if __name__ == '__main__':
+    question = "皮埃尔是共济会成员吗？他在其中扮演什么角色？"
+    res = search_war_and_peace.invoke(question)
+    print(f'问题:{question}')
+    print(f'回答:{res}')
+```
+  RAG 至此已经可以完整封装进 tool 工具内了，接下来我们就可以尝试真正构建一个涵盖六大模块的智能体。
+### 最终形态：Langchain 六大模块的 “大一统”
+#### 为何整合？
+  在这个脚本中，我们首次将 LangChain 的六大核心模块完整融合到一个统一的智能体（Agent）实例中：
+
+  1. LLM（第02篇）：使用 ChatOpenAI 作为 Agent 的“大脑”，负责推理与生成
+  2. Prompt（第04篇）：通过 ChatPromptTemplate 与 MessagesPlaceholder 精准控制 Agent 的行为逻辑
+  3. Chain（第04篇）：AgentExecutor 和 RunnableWithMessageHistory 本质上都是Chain（即 Runnable），我们借助 LCEL（LangChain Expression Language）思想将它们无缝串联。
+  4. Memory（第04篇）：利用 RunnableWithMessageHistory 与 ChatMessageHistory 实现对话历史的记忆能力
+  5. Agents（第05篇）：通过 create_tool_calling_agent 与 AgentExecutor 构建完整的 ReAct 循环，支持工具自动调用。
+  6. RAG（第06/07篇）：将封装好的 RAG 链作为工具（search_war_and_peace）注入 Agent，使其具备访问私有知识库的能力。
+
+#### 如何实现？
+  我们复用第 05 篇中已验证的 带记忆的Agent 框架（基于 RunnableWithMessageHistory），一举解决两个关键痛点：RAG 本身无记忆，现在由 Agent 统一管理上下文；RAG 与原有 Agent 割裂，现在 RAG 以工具形式深度集成
+
+  LLM 在 ReAct 的“思考”阶段，结合对话历史，自主决定如何调用工具，并生成一个更精准、语义完整、适合检索的查询字符串，该字符串作为工具参数传递给 RAG 工具，从何实现对上下文敏感的知识搜索。
+
+  我们无需为 RAG 单独实现记忆机制，Agent 本身（尤其是 create_tool_calling_agent）已经天然具备“基于历史改写查询”能力，这标志着 RAG 成功融入原生 Agent 架构，真正实现了“知识+推理+记忆”三位一体。
+
+  代码实现如下，只需在原有 Agent 框架中注入 RAG 工具即可——build_rag_chain 函数保持不变，其余结构沿用前文记忆型 Agent：
+```python
+def create_agent_with_memory():
+    # LLm
+    llm = ChatOpenAI(
+        model="deepseek-chat",
+        api_key=OPENAI_API_KEY,
+        base_url="https://api.deepseek.com"
+    )
+    # Prompt
+    prompt = ChatPromptTemplate.from_messages([
+        ('system','你是一个强大的助手。你能查天气，也能查《战争与和平》。请尽力回答用户所提的所有问题。'),
+        MessagesPlaceholder(variable_name="history"), # 05篇所学:记忆占位符
+        ('human','{input}'),
+        MessagesPlaceholder(variable_name="agent_scratchpad") # 05篇所学:ReAct 思考链，使其能够调用工具
+    ])
+ 
+    # Tool
+    rag_chain_instance = build_rag_chain(llm_instance=llm)
+ 
+ 
+    @tool
+    def search_war_and_peace(query):
+        """查询《战争与和平》小说中的内容，包括人物、情节、历史事件等"""
+        print(f'\n正在检索《战争与和平》:{query}')
+        return rag_chain_instance.invoke(query)
+ 
+    @tool
+    def get_weather(location):
+        """模拟获得天气信息"""
+        return f"{location}当前天气：23℃，晴，风力2级"
+ 
+    tools = [get_weather,search_war_and_peace]
+# 先创建“会调用工具的 Agent”，再给它加“对话记忆”。
+    # 创建Agent
+    agent = create_tool_calling_agent(llm=llm,tools=tools,prompt=prompt)
+    agent_executor = AgentExecutor(agent=agent,tools=tools,verbose=False)
+ 
+    # 封装Memory
+    store = {}
+ 
+    def get_session_history(session_id:int):
+        if session_id not in store:
+            store[session_id] = ChatMessageHistory()
+        return store[session_id]
+ 
+ 
+    # 添加记忆功能
+    agent_with_memory = RunnableWithMessageHistory(
+        runnable=agent_executor,
+        get_session_history=get_session_history,
+        input_messages_key="input",
+        history_messages_key="history"
+    )
+    return agent_with_memory
+ 
+ 
+# 测试
+ 
+if __name__ == '__main__':
+    session_id = 'user123'
+    agent = create_agent_with_memory()
+    while 1:
+        user_input = input('\n你:')
+        if user_input=='quit':
+            print('拜拜~')
+            exit()
+        response = agent.invoke(
+            {'input':user_input},
+            config={'configurable':{'session_id':session_id}}
+        )
+        print(f"AI:{response['output']}")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
